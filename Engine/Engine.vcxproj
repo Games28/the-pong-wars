@@ -170,6 +170,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="P1lightsaber.cpp" />
+    <ClCompile Include="P2lightsaber.cpp" />
     <ClCompile Include="RectF.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stars.cpp" />
