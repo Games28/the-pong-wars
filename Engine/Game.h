@@ -31,6 +31,8 @@
 #include "Player2.h"
 #include "P1Head.h"
 #include "P2Head.h"
+#include "LightsaberColor.h"
+#include "LightsaberColor2.h"
 
 
 class Game
@@ -54,6 +56,8 @@ private:
 	P2lightsaber P2Saber;
 	Direction dirP1;
 	Direction dirP2;
+	LightsaberColor LC;
+	LightsaberColor2 LC2;
 	P1Head P1Head;
 	Player1 P1Robe;
 	P2Head P2Head;

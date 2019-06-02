@@ -47,39 +47,40 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	//p1
-	if (wnd.kbd.KeyIsPressed('W'))
+	
+	//lightsaber color binding p1
+	if (wnd.kbd.KeyIsPressed('1'))
 	{
-		dirP1 = Direction::TOP;
+		LC = LightsaberColor::BLUE1;
 	}
-	if (wnd.kbd.KeyIsPressed('S'))
+	if (wnd.kbd.KeyIsPressed('2'))
 	{
-		dirP1 = Direction::DOWN;
+		LC = LightsaberColor::GREEN1;
 	}
-	if (wnd.kbd.KeyIsPressed('A'))
+	if (wnd.kbd.KeyIsPressed('3'))
 	{
-		dirP1 = Direction::LEFT;
+		LC = LightsaberColor::RED1;
 	}
-	if (wnd.kbd.KeyIsPressed('D'))
+	if (wnd.kbd.KeyIsPressed('4'))
 	{
-		dirP1 = Direction::RIGHT;
+		LC = LightsaberColor::PURPLE1;
 	}
 	//p2
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	if (wnd.kbd.KeyIsPressed('5'))
 	{
-		dirP2 = Direction::TOP;
+		LC2 = LightsaberColor2::BLUE2;
 	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	if (wnd.kbd.KeyIsPressed('7'))
 	{
-		dirP2 = Direction::DOWN;
+		LC2 = LightsaberColor2::GREEN2;
 	}
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	if (wnd.kbd.KeyIsPressed('6'))
 	{
-		dirP2 = Direction::LEFT;
+		LC2 = LightsaberColor2::RED2;
 	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	if (wnd.kbd.KeyIsPressed('8'))
 	{
-		dirP2 = Direction::RIGHT;
+		LC2 = LightsaberColor2::PURPLE2;
 	}
 	//keyboard update
 	P1Saber.MovementUpdate(wnd.kbd);
@@ -113,22 +114,100 @@ void Game::ComposeFrame()
 	P1Robe.Robe1(gfx);
 	P2Robe.Robe2(gfx);
 	P2Head.ahsoka2head(gfx);
+	//p1
 	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
-		P1Saber.Upblue1(gfx);
+		if (LC == LightsaberColor::BLUE1)
+		{
+			P1Saber.Upblue1(gfx);
+		}
+		else if (LC == LightsaberColor::GREEN1)
+		{
+			P1Saber.Upgreen1(gfx);
+		}
+		else if (LC == LightsaberColor::RED1)
+		{
+			P1Saber.Upred1(gfx);
+		}
+		else if (LC == LightsaberColor::PURPLE1)
+		{
+			P1Saber.Uppurple1(gfx);
+		}
+		else {
+			P1Saber.Upwhite1(gfx);
+		}
+		
 	}
 	else {
-		P1Saber.Downblue1(gfx);
+		if (LC == LightsaberColor::BLUE1)
+		{
+			P1Saber.Downblue1(gfx);
+		}
+		else if (LC == LightsaberColor::GREEN1)
+		{
+			P1Saber.Downgreen1(gfx);
+		}
+		else if (LC == LightsaberColor::RED1)
+		{
+			P1Saber.Downred1(gfx);
+		}
+		else if (LC == LightsaberColor::PURPLE1)
+		{
+			P1Saber.Downpurple1(gfx);
+		}
+		else {
+			
+			P1Saber.Downwhite1(gfx);
+		
+		}
 	}
-	
-	if (!wnd.kbd.KeyIsPressed(VK_RETURN))
+	//p2
+	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
-		P2Saber.Upgreen2(gfx);
+		if (LC2 == LightsaberColor2::BLUE2)
+		{
+			P2Saber.Upblue2(gfx);
+		}
+		else if (LC2 == LightsaberColor2::GREEN2)
+		{
+			P2Saber.Upgreen2(gfx);
+		}
+		else if (LC2 == LightsaberColor2::RED2)
+		{
+			P2Saber.Upred2(gfx);
+		}
+		else if (LC2 == LightsaberColor2::PURPLE2)
+		{
+			P2Saber.Uppurple2(gfx);
+		}
+		else {
+			P2Saber.Upwhite2(gfx);
+		}
+
 	}
 	else {
-		P2Saber.Downgreen2(gfx);
-	}
+		if (LC2 == LightsaberColor2::BLUE2)
+		{
+			P2Saber.Downblue2(gfx);
+		}
+		else if (LC2 == LightsaberColor2::GREEN2)
+		{
+			P2Saber.Downgreen2(gfx);
+		}
+		else if (LC2 == LightsaberColor2::RED2)
+		{
+			P2Saber.Downred2(gfx);
+		}
+		else if (LC2 == LightsaberColor2::PURPLE2)
+		{
+			P2Saber.Downpurple2(gfx);
+		}
+		else {
 
+			P2Saber.Downwhite2(gfx);
+
+		}
+	}
 	
 		
 }

@@ -3,10 +3,11 @@
 
 enum class LightsaberColor
 {
-	BLUE,
-	GREEN,
-	PURPLE,
-	RED,
-	WHITE
+	BLUE1,
+	GREEN1,
+	PURPLE1,
+	RED1,
+	WHITE1
+	
 
 };

@@ -147,6 +147,7 @@
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LightsaberColor.h" />
+    <ClInclude Include="LightsaberColor2.h" />
     <ClInclude Include="P1Head.h" />
     <ClInclude Include="P2Head.h" />
     <ClInclude Include="P2lightsaber.h" />
