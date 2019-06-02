@@ -27,8 +27,13 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	back(gfx),
-	P2Saber(Vec2{ 600,100 }),
-	P1Saber(Vec2{200,100})
+	P2Saber(Vec2{ 585,160 }),
+	P1Saber(Vec2{210,160}),
+	P1Head(Vec2{105,205}),
+	P1Robe(Vec2{100,250}),
+	P2Head(Vec2{640,205}),
+	P2Robe(Vec2{600,250})
+	
 {
 }
 
@@ -76,9 +81,14 @@ void Game::UpdateModel()
 	{
 		dirP2 = Direction::RIGHT;
 	}
-	//keyboard update p1 and p2
+	//keyboard update
 	P1Saber.MovementUpdate(wnd.kbd);
+	P1Head.MovementUpdate(wnd.kbd);
+	P1Robe.MovementUpdate(wnd.kbd);
 	P2Saber.MovementUpdate(wnd.kbd);
+	P2Head.MovementUpdate(wnd.kbd);
+	P2Robe.MovementUpdate(wnd.kbd);
+
 	//collsion for p1 and p2
 	P1Saber.Collision();
 	P2Saber.Collision();
@@ -94,9 +104,13 @@ void Game::ComposeFrame()
 	back.Thestars(gfx);
 	back.Theemperor(gfx);
 	back.Throne(gfx);
+	P1Head.anakin1head(gfx);
+	P1Robe.Robe1(gfx);
+	P2Robe.Robe2(gfx);
+	P2Head.ahsoka2head(gfx);
 	P1Saber.Upblue1(gfx);
 	P2Saber.Upgreen2(gfx);
-	
+
 	
 		
 }

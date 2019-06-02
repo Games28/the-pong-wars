@@ -21,6 +21,8 @@ public:
 	void Robe1(Graphics& gfx);
 	void Robe1falling(Graphics& gfx);
 	void Robe1fallen(Graphics& gfx);
+	//movement
+	void MovementUpdate(Keyboard& kbd);
 	
 
 private:

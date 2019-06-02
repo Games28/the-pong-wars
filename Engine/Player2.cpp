@@ -102375,3 +102375,23 @@ void Player2::Robe2fallen(Graphics & gfx)
 	gfx.PutPixel(x + 128, y + 49, 0, 0, 0);
 
 }
+
+void Player2::MovementUpdate(Keyboard & kbd)
+{
+	if (kbd.KeyIsPressed(VK_UP))
+	{
+		loc.y--;
+	}
+	if (kbd.KeyIsPressed(VK_DOWN))
+	{
+		loc.y++;
+	}
+	if (kbd.KeyIsPressed(VK_LEFT))
+	{
+		loc.x--;
+	}
+	if (kbd.KeyIsPressed(VK_RIGHT))
+	{
+		loc.x++;
+	}
+}

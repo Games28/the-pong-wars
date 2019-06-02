@@ -20,7 +20,8 @@ public:
 	void Robe2(Graphics& gfx);
 	void Robe2falling(Graphics& gfx);
 	void Robe2fallen(Graphics& gfx);
-
+	//movement
+	void MovementUpdate(Keyboard& kbd);
 
 private:
 	static constexpr float width = 25;

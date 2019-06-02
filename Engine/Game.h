@@ -27,6 +27,8 @@
 #include "P1lightsaber.h"
 #include "P2lightsaber.h"
 #include "Direction.h"
+#include "Player1.h"
+#include "Player2.h"
 
 
 class Game
@@ -50,6 +52,11 @@ private:
 	P2lightsaber P2Saber;
 	Direction dirP1;
 	Direction dirP2;
+	Player1 P1Head;
+	Player1 P1Robe;
+	Player2 P2Head;
+	Player2 P2Robe;
+	
 	/********************************/
 	/*  User Variables              */
 	/********************************/
