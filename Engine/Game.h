@@ -29,6 +29,8 @@
 #include "Direction.h"
 #include "Player1.h"
 #include "Player2.h"
+#include "P1Head.h"
+#include "P2Head.h"
 
 
 class Game
@@ -52,9 +54,9 @@ private:
 	P2lightsaber P2Saber;
 	Direction dirP1;
 	Direction dirP2;
-	Player1 P1Head;
+	P1Head P1Head;
 	Player1 P1Robe;
-	Player2 P2Head;
+	P2Head P2Head;
 	Player2 P2Robe;
 	
 	/********************************/

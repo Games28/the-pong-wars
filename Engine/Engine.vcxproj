@@ -146,6 +146,9 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Laser.h" />
+    <ClInclude Include="LightsaberColor.h" />
+    <ClInclude Include="P1Head.h" />
+    <ClInclude Include="P2Head.h" />
     <ClInclude Include="P2lightsaber.h" />
     <ClInclude Include="P1lightsaber.h" />
     <ClInclude Include="MainWindow.h" />
@@ -169,7 +172,9 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="P1Head.cpp" />
     <ClCompile Include="P1lightsaber.cpp" />
+    <ClCompile Include="P2Head.cpp" />
     <ClCompile Include="P2lightsaber.cpp" />
     <ClCompile Include="Player1.cpp" />
     <ClCompile Include="Player2.cpp" />

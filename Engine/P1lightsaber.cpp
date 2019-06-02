@@ -23565,7 +23565,7 @@ void P1lightsaber::Upwhite1(Graphics & gfx)
 void P1lightsaber::Downblue1(Graphics & gfx)
 {
 	int x = int(loc.x);
-	int y = int(loc.y);
+	int y = int(loc.y) + 130;
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -28276,7 +28276,7 @@ void P1lightsaber::Downblue1(Graphics & gfx)
 void P1lightsaber::Downgreen1(Graphics & gfx)
 {
 	int x = int(loc.x);
-	int y = int(loc.y);
+	int y = int(loc.y) + 130;
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -32987,7 +32987,7 @@ void P1lightsaber::Downgreen1(Graphics & gfx)
 void P1lightsaber::Downpurple1(Graphics & gfx)
 {
 	int x = int(loc.x);
-	int y = int(loc.y);
+	int y = int(loc.y) + 130;
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -37698,7 +37698,7 @@ void P1lightsaber::Downpurple1(Graphics & gfx)
 void P1lightsaber::Downred1(Graphics & gfx)
 {
 	int x = int(loc.x);
-	int y = int(loc.y);
+	int y = int(loc.y) + 130;
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -42409,7 +42409,7 @@ void P1lightsaber::Downred1(Graphics & gfx)
 void P1lightsaber::Downwhite1(Graphics & gfx)
 {
 	int x = int(loc.x);
-	int y = int(loc.y);
+	int y = int(loc.y) + 130;
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -47142,22 +47142,22 @@ void P1lightsaber::MovementUpdate(Keyboard& kbd)
 void P1lightsaber::Collision()
 {
 	const float bottom = loc.y + height;
-	if (loc.y < 50)
+	if (loc.y < 60)
 	{
-		loc.y = 50;
+		loc.y = 60;
 	}
-	else if (bottom >= float(Graphics::ScreenHeight - 100))
+	else if (bottom >= float(Graphics::ScreenHeight - 205))
 	{
-		loc.y = float(Graphics::ScreenHeight - 100) - height;
+		loc.y = float(Graphics::ScreenHeight - 205) - height;
 	}
 	const float right = loc.x + width;
-	if (loc.x < 100)
+	if (loc.x < 155)
 	{
-		loc.x = 100;
+		loc.x = 155;
 	}
-	else if (right >= float(Graphics::ScreenWidth -450))
+	else if (right >= float(Graphics::ScreenWidth -420))
 	{
-		loc.x = float(Graphics::ScreenWidth - 450) - width;
+		loc.x = float(Graphics::ScreenWidth - 420) - width;
 	}
 }
 

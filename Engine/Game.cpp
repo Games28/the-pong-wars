@@ -89,9 +89,14 @@ void Game::UpdateModel()
 	P2Head.MovementUpdate(wnd.kbd);
 	P2Robe.MovementUpdate(wnd.kbd);
 
-	//collsion for p1 and p2
+	//collsion 
 	P1Saber.Collision();
+	P1Robe.Collision();
 	P2Saber.Collision();
+    P2Robe.collsion();
+	P1Head.Collision();
+	P2Head.Collision();
+	
 	
 }
 
@@ -108,8 +113,21 @@ void Game::ComposeFrame()
 	P1Robe.Robe1(gfx);
 	P2Robe.Robe2(gfx);
 	P2Head.ahsoka2head(gfx);
-	P1Saber.Upblue1(gfx);
-	P2Saber.Upgreen2(gfx);
+	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
+	{
+		P1Saber.Upblue1(gfx);
+	}
+	else {
+		P1Saber.Downblue1(gfx);
+	}
+	
+	if (!wnd.kbd.KeyIsPressed(VK_RETURN))
+	{
+		P2Saber.Upgreen2(gfx);
+	}
+	else {
+		P2Saber.Downgreen2(gfx);
+	}
 
 	
 		
