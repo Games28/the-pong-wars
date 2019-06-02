@@ -8,6 +8,8 @@ Player1::Player1(Vec2 & in_loc)
 
 void Player1::Leia1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -8983,6 +8985,8 @@ void Player1::Leia1head(Graphics & gfx)
 
 void Player1::Luke1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -11902,6 +11906,8 @@ void Player1::Luke1head(Graphics & gfx)
 
 void Player1::ahsoka1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -20877,6 +20883,8 @@ void Player1::ahsoka1head(Graphics & gfx)
 
 void Player1::emperor1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -26576,6 +26584,8 @@ void Player1::emperor1head(Graphics & gfx)
 
 void Player1::anakin1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -29636,6 +29646,8 @@ void Player1::anakin1head(Graphics & gfx)
 
 void Player1::Marajade1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -38611,6 +38623,8 @@ void Player1::Marajade1head(Graphics & gfx)
 
 void Player1::Rey1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -47586,6 +47600,8 @@ void Player1::Rey1head(Graphics & gfx)
 
 void Player1::Obiwan1head(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -50669,6 +50685,8 @@ void Player1::Obiwan1head(Graphics & gfx)
 
 void Player1::Robe1(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -75127,6 +75145,8 @@ void Player1::Robe1(Graphics & gfx)
 
 void Player1::Robe1falling(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
@@ -95901,6 +95921,8 @@ void Player1::Robe1falling(Graphics & gfx)
 
 void Player1::Robe1fallen(Graphics & gfx)
 {
+	int x = int(loc.x);
+	int y = int(loc.y);
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 1, 0, 0, 0);
 	gfx.PutPixel(x + 0, y + 2, 0, 0, 0);
