@@ -20,6 +20,7 @@ public:
 	void Downpurple2(Graphics& gfx);
 	void Downred2(Graphics& gfx);
 	void Downwhite2(Graphics& gfx);
+	void MovementUpdate(Keyboard& brd);
 
 
 private:

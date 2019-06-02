@@ -47115,3 +47115,23 @@ void P2lightsaber::Downwhite2(Graphics & gfx)
 	gfx.PutPixel(x + 23, y + 195, 0, 0, 0);
 
 }
+
+void P2lightsaber::MovementUpdate(Keyboard & brd)
+{
+	if (brd.KeyIsPressed(VK_UP))
+	{
+		loc.y--;
+	}
+	if (brd.KeyIsPressed(VK_DOWN))
+	{
+		loc.y++;
+	}
+	if (brd.KeyIsPressed(VK_LEFT))
+	{
+		loc.x--;
+	}
+	if (brd.KeyIsPressed(VK_RIGHT))
+	{
+		loc.x++;
+	}
+}

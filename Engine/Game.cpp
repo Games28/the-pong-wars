@@ -27,8 +27,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	back(gfx),
-	P2Saber(Vec2{ 100,100 }),
-	P1Saber(Vec2{200,100})
+	P2Saber(Vec2{ 300,100 }),
+	P1Saber(Vec2{100,100})
 {
 }
 
@@ -78,6 +78,7 @@ void Game::UpdateModel()
 	}
 
 	P1Saber.MovementUpdate(wnd.kbd);
+	P2Saber.MovementUpdate(wnd.kbd);
 }
 
 
@@ -90,4 +91,5 @@ void Game::ComposeFrame()
 	back.Theemperor(gfx);
 	back.Throne(gfx);
 	P1Saber.Upblue1(gfx);
+	P2Saber.Upgreen2(gfx);
 }
