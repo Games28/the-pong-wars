@@ -24,6 +24,6 @@ public:
 private:
 	static constexpr float width = 25;
 	static constexpr float height = 200;
-	Vec2& loc;
+	Vec2 loc;
 };
 
