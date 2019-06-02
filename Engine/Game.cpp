@@ -21,11 +21,14 @@
 #include "MainWindow.h"
 #include "Game.h"
 
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	back(gfx)
+	back(gfx),
+	P2Saber(Vec2{ 100,100 }),
+	P1Saber(Vec2{200,100})
 {
 }
 
@@ -39,6 +42,42 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	//p1
+	if (wnd.kbd.KeyIsPressed('W'))
+	{
+		dirP1 = Direction::TOP;
+	}
+	if (wnd.kbd.KeyIsPressed('S'))
+	{
+		dirP1 = Direction::DOWN;
+	}
+	if (wnd.kbd.KeyIsPressed('A'))
+	{
+		dirP1 = Direction::LEFT;
+	}
+	if (wnd.kbd.KeyIsPressed('D'))
+	{
+		dirP1 = Direction::RIGHT;
+	}
+	//p2
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		dirP2 = Direction::TOP;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		dirP2 = Direction::DOWN;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		dirP2 = Direction::LEFT;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		dirP2 = Direction::RIGHT;
+	}
+
+	P1Saber.MovementUpdate(wnd.kbd);
 }
 
 
@@ -50,4 +89,5 @@ void Game::ComposeFrame()
 	back.Thestars(gfx);
 	back.Theemperor(gfx);
 	back.Throne(gfx);
+	P1Saber.Upblue1(gfx);
 }

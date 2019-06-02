@@ -47116,3 +47116,27 @@ void P1lightsaber::Downwhite1(Graphics & gfx)
 	gfx.PutPixel(x + 23, y + 195, 0, 0, 0);
 
 }
+
+
+
+void P1lightsaber::MovementUpdate(Keyboard& kbd)
+{
+	if (kbd.KeyIsPressed('W'))
+	{
+		loc.y--;
+	}
+	if (kbd.KeyIsPressed('S'))
+	{
+		loc.y++;
+	}
+	if (kbd.KeyIsPressed('A'))
+	{
+		loc.x--;
+	}
+	if (kbd.KeyIsPressed('D'))
+	{
+		loc.x++;
+	}
+}
+
+

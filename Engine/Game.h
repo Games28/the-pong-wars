@@ -24,6 +24,10 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Background.h"
+#include "P1lightsaber.h"
+#include "P2lightsaber.h"
+#include "Direction.h"
+
 
 class Game
 {
@@ -42,6 +46,10 @@ private:
 	MainWindow& wnd;
 	Graphics gfx;
 	Background back;
+	P1lightsaber P1Saber;
+	P2lightsaber P2Saber;
+	Direction dirP1;
+	Direction dirP2;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

@@ -1,5 +1,8 @@
 #pragma once
 #include "Graphics.h"
+#include "Keyboard.h"
+#include "Laser.h"
+#include "Vec2.h"
 
 class P2lightsaber
 {
