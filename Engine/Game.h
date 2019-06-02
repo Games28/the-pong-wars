@@ -31,6 +31,8 @@
 #include "Player2.h"
 #include "LightsaberColor.h"
 #include "LightsaberColor2.h"
+#include "HeadSelect1.h"
+#include "HeadSelect2.h"
 
 
 class Game
@@ -56,11 +58,10 @@ private:
 	Direction dirP2;
 	LightsaberColor LC;
 	LightsaberColor2 LC2;
-	
 	Player1 P1Robe;
-	
 	Player2 P2Robe;
-	
+	HeadSelect1 HS1;
+	HeadSelect2 HS2;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
