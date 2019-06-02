@@ -27,8 +27,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	back(gfx),
-	P2Saber(Vec2{ 300,100 }),
-	P1Saber(Vec2{100,100})
+	P2Saber(Vec2{ 600,100 }),
+	P1Saber(Vec2{200,100})
 {
 }
 
@@ -76,9 +76,13 @@ void Game::UpdateModel()
 	{
 		dirP2 = Direction::RIGHT;
 	}
-
+	//keyboard update p1 and p2
 	P1Saber.MovementUpdate(wnd.kbd);
 	P2Saber.MovementUpdate(wnd.kbd);
+	//collsion for p1 and p2
+	P1Saber.Collision();
+	P2Saber.Collision();
+	
 }
 
 
@@ -92,4 +96,7 @@ void Game::ComposeFrame()
 	back.Throne(gfx);
 	P1Saber.Upblue1(gfx);
 	P2Saber.Upgreen2(gfx);
+	
+	
+		
 }

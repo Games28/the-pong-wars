@@ -21,6 +21,7 @@ public:
 	void Downred2(Graphics& gfx);
 	void Downwhite2(Graphics& gfx);
 	void MovementUpdate(Keyboard& brd);
+	void Collision();
 
 
 private:

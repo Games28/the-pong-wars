@@ -47135,3 +47135,25 @@ void P2lightsaber::MovementUpdate(Keyboard & brd)
 		loc.x++;
 	}
 }
+
+void P2lightsaber::Collision()
+{
+	const float bottom = loc.y + height;
+	if (loc.y < 50)
+	{
+		loc.y = 50;
+	}
+	else if (bottom >= float(Graphics::ScreenHeight - 100))
+	{
+		loc.y = float(Graphics::ScreenHeight - 100) - height;
+	}
+	const float right = loc.x + width;
+	if (loc.x < 450)
+	{
+		loc.x = 450;
+	}
+	else if (right >= float(Graphics::ScreenWidth -100))
+	{
+		loc.x = float(Graphics::ScreenWidth - 100) - width;
+	}
+}
