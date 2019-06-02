@@ -90,14 +90,8 @@
     <ClInclude Include="LightsaberColor.h">
       <Filter>characters</Filter>
     </ClInclude>
-    <ClInclude Include="P2Head.h">
-      <Filter>characters</Filter>
-    </ClInclude>
-    <ClInclude Include="P1Head.h">
-      <Filter>characters</Filter>
-    </ClInclude>
     <ClInclude Include="LightsaberColor2.h">
-      <Filter>Header Files</Filter>
+      <Filter>characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -150,12 +144,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="P1Head.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="P2Head.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

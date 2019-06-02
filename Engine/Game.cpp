@@ -29,10 +29,10 @@ Game::Game( MainWindow& wnd )
 	back(gfx),
 	P2Saber(Vec2{ 585,160 }),
 	P1Saber(Vec2{210,160}),
-	P1Head(Vec2{105,205}),
-	P1Robe(Vec2{100,250}),
-	P2Head(Vec2{640,205}),
-	P2Robe(Vec2{600,250})
+	
+	P1Robe(Vec2{100,210}),
+	
+	P2Robe(Vec2{600,210})
 	
 {
 }
@@ -84,10 +84,10 @@ void Game::UpdateModel()
 	}
 	//keyboard update
 	P1Saber.MovementUpdate(wnd.kbd);
-	P1Head.MovementUpdate(wnd.kbd);
+	
 	P1Robe.MovementUpdate(wnd.kbd);
 	P2Saber.MovementUpdate(wnd.kbd);
-	P2Head.MovementUpdate(wnd.kbd);
+	
 	P2Robe.MovementUpdate(wnd.kbd);
 
 	//collsion 
@@ -95,8 +95,7 @@ void Game::UpdateModel()
 	P1Robe.Collision();
 	P2Saber.Collision();
     P2Robe.collsion();
-	P1Head.Collision();
-	P2Head.Collision();
+	
 	
 	
 }
@@ -110,10 +109,9 @@ void Game::ComposeFrame()
 	back.Thestars(gfx);
 	back.Theemperor(gfx);
 	back.Throne(gfx);
-	P1Head.anakin1head(gfx);
-	P1Robe.Robe1(gfx);
-	P2Robe.Robe2(gfx);
-	P2Head.ahsoka2head(gfx);
+	P1Robe.anakin1head(gfx);
+	P2Robe.ahsoka2head(gfx);
+	
 	//p1
 	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{

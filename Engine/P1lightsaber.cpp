@@ -47146,9 +47146,9 @@ void P1lightsaber::Collision()
 	{
 		loc.y = 60;
 	}
-	else if (bottom >= float(Graphics::ScreenHeight - 205))
+	else if (bottom >= float(Graphics::ScreenHeight - 165))
 	{
-		loc.y = float(Graphics::ScreenHeight - 205) - height;
+		loc.y = float(Graphics::ScreenHeight - 165) - height;
 	}
 	const float right = loc.x + width;
 	if (loc.x < 155)
