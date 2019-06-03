@@ -36,7 +36,13 @@
 #include "Laser.h"
 #include <random>
 
-
+/*current objects 1. get Laser object collision working with lightsaber for player1 and player2.
+                  2. get laser collision detection with window border to display sparks images when 
+				     it by laser.
+			       3. a getting method of doing character selection for all characters instead of 
+				     just current 4. 
+			       4. code clean up. 
+*/
 class Game
 {
 public:
