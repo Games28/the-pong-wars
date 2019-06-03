@@ -42,6 +42,12 @@
 			       3. a getting method of doing character selection for all characters instead of 
 				     just current 4. 
 			       4. code clean up. 
+
+				   main objective of game will be to make menus with character and saber color selection.
+				   with gameplay being to deflect the laser from your character with saber and no get hit.
+				   if hit will have a health bar the will go down when the player it hit. also it the laser
+				   hits the walls it will respawn in the middle again.
+				 
 */
 class Game
 {
