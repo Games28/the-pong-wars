@@ -6,6 +6,11 @@ Laser::Laser(Vec2 & in_loc, Vec2& in_vel)
 	vel = in_vel;
 }
 
+Laser::Laser(Vec2 & in_loc)
+{
+	loc = in_loc;
+}
+
 void Laser::TrainingRemote(Graphics & gfx)
 {
 	int x = int(loc.x);
@@ -5480,12 +5485,15 @@ void Laser::WallCollision(Graphics& gfx)
 	{
 		loc.x = 0;
 		vel.x = -vel.x;
+		SparksLeft(gfx);
 		
 	}
 	else if (right >= float(Graphics::ScreenWidth - 1))
 	{
 		loc.x = float(Graphics::ScreenWidth - 1) - Boltwidth;
+		
 		vel.x = -vel.x;
+		SparksRight(gfx);
 		
 		
 	}
@@ -5493,13 +5501,17 @@ void Laser::WallCollision(Graphics& gfx)
 	if (loc.y < 0)
 	{
 		loc.y = 0;
-		vel.y = -vel.y;
+		
+		vel.y = -vel.y;\
+			SparksTop(gfx);
 
 	}
 	else if (bottom >= float(Graphics::ScreenHeight - 1))
 	{
 		loc.y = float(Graphics::ScreenHeight - 5) - Boltheight;
+		
 		vel.y = -vel.y;
+		SparksBottom(gfx);
 	}
 }
 

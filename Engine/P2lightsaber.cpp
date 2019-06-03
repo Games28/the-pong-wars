@@ -1,9 +1,8 @@
 #include "P2lightsaber.h"
 
 P2lightsaber::P2lightsaber(Vec2 & in_loc)
-	:
-	loc(in_loc)
 {
+	loc = in_loc;
 }
 
 void P2lightsaber::Upblue2(Graphics & gfx)
@@ -47156,4 +47155,16 @@ void P2lightsaber::Collision()
 	{
 		loc.x = float(Graphics::ScreenWidth - 110) - width;
 	}
+}
+void P2lightsaber::BoltCollision(Laser & bolt)
+{
+	const float Blade = loc.y + height;
+	const float Boltedge = bolt.getVel().y + bolt.getboltHeight();
+	
+		if (Blade > Boltedge)
+		{
+
+			bolt.ReboundY();
+		}
+		
 }

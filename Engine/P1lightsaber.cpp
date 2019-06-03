@@ -47161,4 +47161,18 @@ void P1lightsaber::Collision()
 	}
 }
 
+void P1lightsaber::BoltCollision(Laser & bolt)
+{
+	const float Blade = loc.y + height;
+	const float Boltedge = bolt.getVel().y + bolt.getboltHeight();
+			if (Blade > Boltedge)
+		{
+			
+			bolt.ReboundY();
+			
+		}
+		
+			
+}
+
 

@@ -7,6 +7,7 @@ class Laser
 {
 public:
 	Laser(Vec2& in_loc,Vec2& in_vel);
+	Laser(Vec2& in_loc);
 	void TrainingRemote(Graphics& gfx);
 	void Mainbolt(Graphics& gfx);
 	void Boltleft(Graphics& gfx);

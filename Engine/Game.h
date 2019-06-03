@@ -68,6 +68,7 @@ private:
 	HeadSelect1 HS1;
 	HeadSelect2 HS2;
 	Laser Bolt;
+	Laser Remote;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

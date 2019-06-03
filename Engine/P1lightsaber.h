@@ -26,6 +26,7 @@ public:
 	//movement
 	void MovementUpdate(Keyboard& brd);
 	void Collision();
+	void BoltCollision(Laser& bolt);
 	
 
 
@@ -33,7 +34,8 @@ private:
 	static constexpr float width = 25;
 	static constexpr float height = 200;
 	Vec2 loc;
-	Direction Dir;
+	
+	
 	
 };
 

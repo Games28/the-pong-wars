@@ -34,7 +34,8 @@ Game::Game( MainWindow& wnd )
 	P1Saber(Vec2{210,160}),
 	P1Robe(Vec2{100,210}),
 	P2Robe(Vec2{600,210}),
-	Bolt(Vec2{380,280},Vec2{xdist(rng),ydist(rng)})
+	Bolt(Vec2{380,280},Vec2{xdist(rng),ydist(rng)}),
+	Remote(Vec2{380,280})
 	
 {
 }
@@ -134,7 +135,7 @@ void Game::UpdateModel()
 	}
 	
 	//bolt
-	Bolt.WallCollision(gfx);
+	
 }
 
 
@@ -157,7 +158,13 @@ void Game::ComposeFrame()
 		Bolt.Boltright(gfx);
 	}*/
 	Bolt.Mainbolt(gfx);
-
+	Bolt.WallCollision(gfx);
+	P1Saber.BoltCollision(Bolt);
+	
+	P2Saber.BoltCollision(Bolt);
+		
+	
+	Remote.TrainingRemote(gfx);
 	//player selection
 	//p1
 	

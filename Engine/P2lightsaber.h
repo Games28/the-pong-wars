@@ -7,6 +7,7 @@
 class P2lightsaber
 {
 public:
+	P2lightsaber() = default;
 	P2lightsaber(Vec2& in_loc);
 	//up lightsabers
 	void Upblue2(Graphics& gfx);
@@ -22,10 +23,12 @@ public:
 	void Downwhite2(Graphics& gfx);
 	void MovementUpdate(Keyboard& brd);
 	void Collision();
+	void BoltCollision(Laser& bolt);
 
 
 private:
 	static constexpr float width = 25;
 	static constexpr float height = 200;
 	Vec2 loc;
+	
 };
