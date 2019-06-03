@@ -27,12 +27,14 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	back(gfx),
+	rng(std::random_device()()),
+	xdist(-1.0f,1.0f),
+	ydist(-1.0f,1.0f),
 	P2Saber(Vec2{ 585,160 }),
 	P1Saber(Vec2{210,160}),
-	
 	P1Robe(Vec2{100,210}),
-	
-	P2Robe(Vec2{600,210})
+	P2Robe(Vec2{600,210}),
+	Bolt(Vec2{380,280},Vec2{xdist(rng),ydist(rng)})
 	
 {
 }
@@ -131,6 +133,8 @@ void Game::UpdateModel()
 		HS2 = HeadSelect2::AHSOKA2;
 	}
 	
+	//bolt
+	Bolt.WallCollision(gfx);
 }
 
 
@@ -142,6 +146,17 @@ void Game::ComposeFrame()
 	back.Thestars(gfx);
 	back.Theemperor(gfx);
 	back.Throne(gfx);
+
+	//bolt images
+	/*if (Bolt.getVel().x -= -1.0f)
+	{
+		Bolt.Boltleft(gfx);
+	}
+	if (Bolt += 1.0f)
+	{
+		Bolt.Boltright(gfx);
+	}*/
+	Bolt.Mainbolt(gfx);
 
 	//player selection
 	//p1

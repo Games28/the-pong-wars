@@ -33,6 +33,8 @@
 #include "LightsaberColor2.h"
 #include "HeadSelect1.h"
 #include "HeadSelect2.h"
+#include "Laser.h"
+#include <random>
 
 
 class Game
@@ -51,6 +53,9 @@ private:
 private:
 	MainWindow& wnd;
 	Graphics gfx;
+	std::mt19937 rng;
+	std::uniform_real_distribution<float> xdist;
+	std::uniform_real_distribution<float> ydist;
 	Background back;
 	P1lightsaber P1Saber;
 	P2lightsaber P2Saber;
@@ -62,6 +67,7 @@ private:
 	Player2 P2Robe;
 	HeadSelect1 HS1;
 	HeadSelect2 HS2;
+	Laser Bolt;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
