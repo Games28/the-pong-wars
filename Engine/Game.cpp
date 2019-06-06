@@ -221,41 +221,43 @@ void Game::ComposeFrame()
 	Remote.TrainingRemote(gfx);
 	//player selection
 	//p1
-	
-	if (HS1 == HeadSelect::ANAKIN1)
+	switch (HS1)
 	{
-		P1Robe.anakin1head(gfx);
-	}
-	if (HS1 == HeadSelect::MARAJADE1)
-	{
-		P1Robe.Marajade1head(gfx);
-	}
-	if (HS1 == HeadSelect::EMPEROR1)
-	{
-		P1Robe.emperor1head(gfx);
-	}
-	if (HS1 == HeadSelect::LEIA1)
-	{
-		P1Robe.Leia1head(gfx);
-	}
-	if (HS1 == HeadSelect::LUKE1)
-	{
-		P1Robe.Luke1head(gfx);
-	}
+		case HeadSelect::ANAKIN1:
+		{
+			P1Robe.anakin1head(gfx);
 
-	if (HS1 == HeadSelect::REY1)
-	{
-		P1Robe.Rey1head(gfx);
-	}
-	if (HS1 == HeadSelect::OBIWAN1)
-	{
-		P1Robe.Obiwan1head(gfx);
-	}
-	if (HS1 == HeadSelect::AHSOKA1)
-	{
-		P1Robe.ahsoka1head(gfx);
-	}
+		}break;
+		case HeadSelect::MARAJADE1:
+		{
+			P1Robe.Marajade1head(gfx);
+		}break;
+		case HeadSelect::EMPEROR1:
+		{
+			P1Robe.emperor1head(gfx);
+		}break;
+		case HeadSelect::LEIA1:
+		{
+			P1Robe.Leia1head(gfx);
+		}break;
+		case  HeadSelect::LUKE1:
+		{
+			P1Robe.Luke1head(gfx);
+		}break;
 
+		case  HeadSelect::REY1:
+		{
+			P1Robe.Rey1head(gfx);
+		}break;
+		case  HeadSelect::OBIWAN1:
+		{
+			P1Robe.Obiwan1head(gfx);
+		}break;
+		case  HeadSelect::AHSOKA1:
+		{
+			P1Robe.ahsoka1head(gfx);
+		}break;
+	}
 	//p2
 	if (HS2 == HeadSelect::LUKE2)
 	{
