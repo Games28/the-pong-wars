@@ -47,11 +47,115 @@ void Game::Go()
 	ComposeFrame();
 	gfx.EndFrame();
 }
-
 void Game::UpdateModel()
 {
 	
+		
+	CharacterSelect(wnd.kbd.KeyIsPressed('Z'));
+
+	LightSaberSelect();
+	//keyboard update
+	P1Saber.MovementUpdate(wnd.kbd);
+	P1Robe.MovementUpdate(wnd.kbd);
+	P2Saber.MovementUpdate(wnd.kbd);
+	P2Robe.MovementUpdate(wnd.kbd);
+
+	//collsion 
+	P1Saber.Collision();
+	P1Robe.Collision();
+	P2Saber.Collision();
+    P2Robe.collsion();
+
+	//head selection
+	//p1
+	
+	
+	//bolt
+	
+}
+
+void Game::CharacterSelect(bool iskeypressed)
+{
+	
+	if (!iskeypressed)
+	{
+		if (wnd.kbd.KeyIsPressed(VK_F1))
+		{
+			HS1 = HeadSelect::ANAKIN1;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F2))
+		{
+			HS1 = HeadSelect::MARAJADE1;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F3))
+		{
+			HS1 = HeadSelect::EMPEROR1;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F4))
+		{
+			HS1 = HeadSelect::LEIA1;
+		}
+
+		if (wnd.kbd.KeyIsPressed(VK_F5))
+		{
+			HS1 = HeadSelect::LUKE1;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F6))
+		{
+			HS1 = HeadSelect::REY1;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F7))
+		{
+			HS1 = HeadSelect::OBIWAN1;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F8))
+		{
+			HS1 = HeadSelect::AHSOKA1;
+		}
+	}
+	else {
+		//p2
+		if (wnd.kbd.KeyIsPressed(VK_F1))
+		{
+			HS2 = HeadSelect::ANAKIN2;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F2))
+		{
+			HS2 = HeadSelect::MARAJADE2;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F3))
+		{
+			HS2 = HeadSelect::EMPEROR2;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F4))
+		{
+			HS2 = HeadSelect::LEIA2;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F5))
+		{
+			HS2 = HeadSelect::LUKE2;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F6))
+		{
+			HS2 = HeadSelect::REY2;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F7))
+		{
+			HS2 = HeadSelect::OBIWAN2;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_F8))
+		{
+			HS2 = HeadSelect::AHSOKA2;
+		}
+
+	
+	}
+}
+
+void Game::LightSaberSelect()
+{
 	//lightsaber color binding p1
+
 	if (wnd.kbd.KeyIsPressed('1'))
 	{
 		LC = LightsaberColor::BLUE1;
@@ -69,7 +173,7 @@ void Game::UpdateModel()
 		LC = LightsaberColor::PURPLE1;
 	}
 	//p2
-	
+
 	if (wnd.kbd.KeyIsPressed('5'))
 	{
 		LC2 = LightsaberColor2::BLUE2;
@@ -86,56 +190,6 @@ void Game::UpdateModel()
 	{
 		LC2 = LightsaberColor2::PURPLE2;
 	}
-	//keyboard update
-	P1Saber.MovementUpdate(wnd.kbd);
-	P1Robe.MovementUpdate(wnd.kbd);
-	P2Saber.MovementUpdate(wnd.kbd);
-	P2Robe.MovementUpdate(wnd.kbd);
-
-	//collsion 
-	P1Saber.Collision();
-	P1Robe.Collision();
-	P2Saber.Collision();
-    P2Robe.collsion();
-
-	//head selection
-	//p1
-	if (wnd.kbd.KeyIsPressed(VK_F1))
-	{
-		HS1 = HeadSelect1::ANAKIN1;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_F2))
-	{
-		HS1 = HeadSelect1::MARAJADE1;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_F3))
-	{
-		HS1 = HeadSelect1::EMPEROR1;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_F4))
-	{
-		HS1 = HeadSelect1::LEIA1;
-	}
-	//p2
-	if (wnd.kbd.KeyIsPressed(VK_F5))
-	{
-		HS2 = HeadSelect2::LUKE2;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_F6))
-	{
-		HS2 = HeadSelect2::REY2;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_F7))
-	{
-		HS2 = HeadSelect2::OBIWAN2;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_F8))
-	{
-		HS2 = HeadSelect2::AHSOKA2;
-	}
-	
-	//bolt
-	
 }
 
 
@@ -168,39 +222,73 @@ void Game::ComposeFrame()
 	//player selection
 	//p1
 	
-	if (HS1 == HeadSelect1::ANAKIN1)
+	if (HS1 == HeadSelect::ANAKIN1)
 	{
 		P1Robe.anakin1head(gfx);
 	}
-	if (HS1 == HeadSelect1::MARAJADE1)
+	if (HS1 == HeadSelect::MARAJADE1)
 	{
 		P1Robe.Marajade1head(gfx);
 	}
-	if (HS1 == HeadSelect1::EMPEROR1)
+	if (HS1 == HeadSelect::EMPEROR1)
 	{
 		P1Robe.emperor1head(gfx);
 	}
-	if (HS1 == HeadSelect1::LEIA1)
+	if (HS1 == HeadSelect::LEIA1)
 	{
 		P1Robe.Leia1head(gfx);
 	}
+	if (HS1 == HeadSelect::LUKE1)
+	{
+		P1Robe.Luke1head(gfx);
+	}
+
+	if (HS1 == HeadSelect::REY1)
+	{
+		P1Robe.Rey1head(gfx);
+	}
+	if (HS1 == HeadSelect::OBIWAN1)
+	{
+		P1Robe.Obiwan1head(gfx);
+	}
+	if (HS1 == HeadSelect::AHSOKA1)
+	{
+		P1Robe.ahsoka1head(gfx);
+	}
+
 	//p2
-	if (HS2 == HeadSelect2::LUKE2)
+	if (HS2 == HeadSelect::LUKE2)
 	{
 		P2Robe.Luke2head(gfx);
 	}
 
-		if (HS2 == HeadSelect2::REY2)
+		if (HS2 == HeadSelect::REY2)
 		{
 			P2Robe.Rey2head(gfx);
 		}
-		if (HS2 == HeadSelect2::OBIWAN2)
+		if (HS2 == HeadSelect::OBIWAN2)
 		{
 			P2Robe.Obiwan2head(gfx);
 		}
-		if (HS2 == HeadSelect2::AHSOKA2)
+		if (HS2 == HeadSelect::AHSOKA2)
 		{
 			P2Robe.ahsoka2head(gfx);
+		}
+		if (HS2 == HeadSelect::ANAKIN2)
+		{
+			P2Robe.anakin2head(gfx);
+		}
+		if (HS2 == HeadSelect::MARAJADE2)
+		{
+			P2Robe.Marajade2head(gfx);
+		}
+		if (HS2 == HeadSelect::EMPEROR2)
+		{
+			P2Robe.emperor2head(gfx);
+		}
+		if (HS2 == HeadSelect::LEIA2)
+		{
+			P2Robe.Leia2head(gfx);
 		}
 
 		//lightsaber selection

@@ -59,6 +59,8 @@ public:
 private:
 	void ComposeFrame();
 	void UpdateModel();
+	void CharacterSelect(bool iskeypressed);
+	void LightSaberSelect();
 	/********************************/
 	/*  User Functions              */
 	/********************************/
@@ -77,10 +79,11 @@ private:
 	LightsaberColor2 LC2;
 	Player1 P1Robe;
 	Player2 P2Robe;
-	HeadSelect1 HS1;
-	HeadSelect2 HS2;
+	HeadSelect HS1;
+	HeadSelect HS2;
 	Laser Bolt;
 	Laser Remote;
+
 	/********************************/
 	/*  User Variables              */
 	/********************************/
