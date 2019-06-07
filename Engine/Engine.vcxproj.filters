@@ -19,6 +19,18 @@
     <Filter Include="characters">
       <UniqueIdentifier>{1f76d993-39ac-49eb-945d-ae0ce858ccc7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sprites">
+      <UniqueIdentifier>{242ee445-8a1c-4d45-80f0-7aeb7b0041b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sprites\characters">
+      <UniqueIdentifier>{dd26cf72-0ecd-4a52-a8eb-7f431d56c6ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sprites\lightsaberColor">
+      <UniqueIdentifier>{c9c3fdaf-17ab-481d-ae3f-58c40ce431d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sprites\projectile">
+      <UniqueIdentifier>{7980f635-2003-4b20-b104-04d1a6310c6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChiliWin.h">
@@ -169,6 +181,156 @@
   <ItemGroup>
     <Image Include="Chili.ico">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\leia1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\luke1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\marajade1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\obiwan1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\rey1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\robe1.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\robe1falling.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\robe1fell.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\ahsoka1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\anakin1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\character\emperor1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\down1white.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\up1blue.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\up1green.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\up1purple.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\up1red.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\up1white.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\down1blue.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\down1green.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\down1purple.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 1\lightsaber\down1red.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\mainbolt.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\projectileleft art.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\projectileright art.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\sparksbottom art.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\sparksleft art.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\sparksright art.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\sparkstop art.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\projectile\training remote art.png">
+      <Filter>sprites\projectile</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\leia1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\luke1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\marajade1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\obiwan1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\rey1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\robe1.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\robe1falling.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\robe1fell.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\ahsoka1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\anakin1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\character\emperor1head.png">
+      <Filter>sprites\characters</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\up1green.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\up1purple.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\up1red.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\up1white.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\down1blue.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\down1green.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\down1purple.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\down1red.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\down1white.png">
+      <Filter>sprites\lightsaberColor</Filter>
+    </Image>
+    <Image Include="..\..\ascii art\game stuff\player 2\lightsaber\up1blue.png">
+      <Filter>sprites\lightsaberColor</Filter>
     </Image>
   </ItemGroup>
 </Project>
