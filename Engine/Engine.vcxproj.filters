@@ -75,8 +75,26 @@
     <ClInclude Include="Meter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Player2.h">
+      <Filter>characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Player1.h">
+      <Filter>characters</Filter>
+    </ClInclude>
+    <ClInclude Include="P2lightsaber.h">
+      <Filter>characters</Filter>
+    </ClInclude>
+    <ClInclude Include="P1lightsaber.h">
+      <Filter>characters</Filter>
+    </ClInclude>
     <ClInclude Include="LightsaberColor.h">
       <Filter>characters</Filter>
+    </ClInclude>
+    <ClInclude Include="LightsaberColor2.h">
+      <Filter>characters</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadSelect2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LightSabers.h">
       <Filter>characters</Filter>
@@ -125,7 +143,19 @@
     <ClCompile Include="Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="P1lightsaber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Laser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="P2lightsaber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LightSabers.cpp">

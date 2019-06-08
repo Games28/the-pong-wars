@@ -21,9 +21,6 @@ public:
 	void Robe1(Graphics& gfx);
 	void Robe1falling(Graphics& gfx);
 	void Robe1fallen(Graphics& gfx);
-	void Robe1Stand(Graphics& gfx);
-	void Robe1MoveX(Graphics& gfx);
-	void Robe1MoveY(Graphics& gfx);
 
 	//player 2 characters
 	void Leia2head(Graphics& gfx);
@@ -38,9 +35,6 @@ public:
 	void Robe2(Graphics& gfx);
 	void Robe2falling(Graphics& gfx);
 	void Robe2fallen(Graphics& gfx);
-	void Robe2Stand(Graphics& gfx);
-	void Robe2MoveX(Graphics& gfx);
-	void Robe2MoveY(Graphics& gfx);
 
 
 	//movement
@@ -50,10 +44,8 @@ public:
 	void Player1Collision();
 	
 private:
-	static constexpr float width = 38.0f;
-	static constexpr float height = 225.0f;
-	float MovementCounter = 0.0f;
-	float MovementReset = 60.0f;
+	static constexpr float width = 38;
+	static constexpr float height = 225;
 	Vec2 loc;
 
 };

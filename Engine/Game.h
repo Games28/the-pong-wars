@@ -24,15 +24,17 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Background.h"
-
+#include "P1lightsaber.h"
+#include "P2lightsaber.h"
 #include "Direction.h"
-
+#include "Player1.h"
+#include "Player2.h"
 #include "Characters.h"
 #include "LightSabers.h"
 #include "LightsaberColor.h"
-
+#include "LightsaberColor2.h"
 #include "HeadSelect.h"
-
+#include "HeadSelect2.h"
 #include "Laser.h"
 #include <random>
 
@@ -61,7 +63,6 @@ private:
 	void UpdateModel();
 	void CharacterSelect(bool iskeypressed);
 	void LightSaberSelect();
-	
 	/********************************/
 	/*  User Functions              */
 	/********************************/
@@ -84,8 +85,7 @@ private:
 	HeadSelect HS2;
 	Laser Bolt;
 	Laser Remote;
-	int MovementCounter = 0;
-	int MovementReset = 60;
+
 	/********************************/
 	/*  User Variables              */
 	/********************************/
