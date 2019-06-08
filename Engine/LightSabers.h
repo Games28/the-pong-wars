@@ -41,7 +41,7 @@ public:
 	void P2Collision();
 
 private:
-	static constexpr float width = 25;
-	static constexpr float height = 200;
+	static constexpr float width = 250.0f;
+	static constexpr float height = 200.0f;
 	Vec2 loc;
 };
