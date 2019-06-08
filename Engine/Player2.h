@@ -26,8 +26,8 @@ public:
 	
 
 private:
-	static constexpr float width = 25;
-	static constexpr float height = 200;
+	static constexpr float width = 38;
+	static constexpr float height = 225;
 	static constexpr float HeadWidth = 12;
 	static constexpr float HeadHeight = 25;
 	Vec2 loc;

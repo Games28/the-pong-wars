@@ -29,9 +29,11 @@
 #include "Direction.h"
 #include "Player1.h"
 #include "Player2.h"
+#include "Characters.h"
+#include "LightSabers.h"
 #include "LightsaberColor.h"
 #include "LightsaberColor2.h"
-#include "HeadSelect1.h"
+#include "HeadSelect.h"
 #include "HeadSelect2.h"
 #include "Laser.h"
 #include <random>
@@ -71,14 +73,14 @@ private:
 	std::uniform_real_distribution<float> xdist;
 	std::uniform_real_distribution<float> ydist;
 	Background back;
-	P1lightsaber P1Saber;
-	P2lightsaber P2Saber;
+	LightSaber P1Saber;
+	LightSaber P2Saber;
 	Direction dirP1;
 	Direction dirP2;
 	LightsaberColor LC;
-	LightsaberColor2 LC2;
-	Player1 P1Robe;
-	Player2 P2Robe;
+	LightsaberColor LC2;
+	Characters P1Robe;
+	Characters P2Robe;
 	HeadSelect HS1;
 	HeadSelect HS2;
 	Laser Bolt;

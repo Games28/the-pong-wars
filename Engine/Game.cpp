@@ -55,16 +55,16 @@ void Game::UpdateModel()
 
 	LightSaberSelect();
 	//keyboard update
-	P1Saber.MovementUpdate(wnd.kbd);
-	P1Robe.MovementUpdate(wnd.kbd);
-	P2Saber.MovementUpdate(wnd.kbd);
-	P2Robe.MovementUpdate(wnd.kbd);
+	P1Saber.P1MovementUpdate(wnd.kbd);
+	P1Robe.P1MovementUpdate(wnd.kbd);
+	P2Saber.P2MovementUpdate(wnd.kbd);
+	P2Robe.P2MovementUpdate(wnd.kbd);
 
 	//collsion 
-	P1Saber.Collision();
-	P1Robe.Collision();
-	P2Saber.Collision();
-    P2Robe.collsion();
+	P1Saber.P1Collision();
+	P1Robe.Player1Collision();
+	P2Saber.P2Collision();
+	P2Robe.Player2Collision();
 
 	//head selection
 	//p1
@@ -176,19 +176,19 @@ void Game::LightSaberSelect()
 
 	if (wnd.kbd.KeyIsPressed('5'))
 	{
-		LC2 = LightsaberColor2::BLUE2;
+		LC2 = LightsaberColor::BLUE2;
 	}
 	if (wnd.kbd.KeyIsPressed('7'))
 	{
-		LC2 = LightsaberColor2::GREEN2;
+		LC2 = LightsaberColor::GREEN2;
 	}
 	if (wnd.kbd.KeyIsPressed('6'))
 	{
-		LC2 = LightsaberColor2::RED2;
+		LC2 = LightsaberColor::RED2;
 	}
 	if (wnd.kbd.KeyIsPressed('8'))
 	{
-		LC2 = LightsaberColor2::PURPLE2;
+		LC2 = LightsaberColor::PURPLE2;
 	}
 }
 
@@ -213,9 +213,7 @@ void Game::ComposeFrame()
 	}*/
 	Bolt.Mainbolt(gfx);
 	Bolt.WallCollision(gfx);
-	P1Saber.BoltCollision(Bolt);
 	
-	P2Saber.BoltCollision(Bolt);
 		
 	
 	Remote.TrainingRemote(gfx);
@@ -344,19 +342,19 @@ void Game::ComposeFrame()
 		//p2
 		if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 		{
-			if (LC2 == LightsaberColor2::BLUE2)
+			if (LC2 == LightsaberColor::BLUE2)
 			{
 				P2Saber.Upblue2(gfx);
 			}
-			else if (LC2 == LightsaberColor2::GREEN2)
+			else if (LC2 == LightsaberColor::GREEN2)
 			{
 				P2Saber.Upgreen2(gfx);
 			}
-			else if (LC2 == LightsaberColor2::RED2)
+			else if (LC2 == LightsaberColor::RED2)
 			{
 				P2Saber.Upred2(gfx);
 			}
-			else if (LC2 == LightsaberColor2::PURPLE2)
+			else if (LC2 == LightsaberColor::PURPLE2)
 			{
 				P2Saber.Uppurple2(gfx);
 			}
@@ -366,19 +364,19 @@ void Game::ComposeFrame()
 
 		}
 		else {
-			if (LC2 == LightsaberColor2::BLUE2)
+			if (LC2 == LightsaberColor::BLUE2)
 			{
 				P2Saber.Downblue2(gfx);
 			}
-			else if (LC2 == LightsaberColor2::GREEN2)
+			else if (LC2 == LightsaberColor::GREEN2)
 			{
 				P2Saber.Downgreen2(gfx);
 			}
-			else if (LC2 == LightsaberColor2::RED2)
+			else if (LC2 == LightsaberColor::RED2)
 			{
 				P2Saber.Downred2(gfx);
 			}
-			else if (LC2 == LightsaberColor2::PURPLE2)
+			else if (LC2 == LightsaberColor::PURPLE2)
 			{
 				P2Saber.Downpurple2(gfx);
 			}

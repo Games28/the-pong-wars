@@ -1,0 +1,20 @@
+#pragma once
+enum class HeadSelect
+{
+	LEIA1,
+	LUKE1,
+	ANAKIN1,
+	AHSOKA1,
+	EMPEROR1,
+	REY1,
+	OBIWAN1,
+	MARAJADE1,
+	LEIA2,
+	LUKE2,
+	ANAKIN2,
+	AHSOKA2,
+	EMPEROR2,
+	REY2,
+	OBIWAN2,
+	MARAJADE2
+};

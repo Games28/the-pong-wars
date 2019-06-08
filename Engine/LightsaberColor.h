@@ -7,7 +7,12 @@ enum class LightsaberColor
 	GREEN1,
 	PURPLE1,
 	RED1,
-	WHITE1
+	WHITE1,
+	BLUE2,
+	GREEN2,
+	PURPLE2,
+	RED2,
+	WHITE2
 	
 
 };
