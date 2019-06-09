@@ -21,6 +21,9 @@ public:
 	void Robe1(Graphics& gfx);
 	void Robe1falling(Graphics& gfx);
 	void Robe1fallen(Graphics& gfx);
+	void Robe1Stand(Graphics& gfx);
+	void Robe1moveX(Graphics& gfx);
+	void Robe1moveY(Graphics& gfx); 
 
 	//player 2 characters
 	void Leia2head(Graphics& gfx);
@@ -35,8 +38,11 @@ public:
 	void Robe2(Graphics& gfx);
 	void Robe2falling(Graphics& gfx);
 	void Robe2fallen(Graphics& gfx);
+	void Robe2Stand(Graphics& gfx);
+	void Robe2moveX(Graphics& gfx);
+	void Robe2moveY(Graphics& gfx);
 
-
+	
 	//movement
 	void P1MovementUpdate(Keyboard& kbd);
 	void P2MovementUpdate(Keyboard& kbd);
