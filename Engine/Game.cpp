@@ -218,41 +218,100 @@ void Game::ComposeFrame()
 	
 	Remote.TrainingRemote(gfx);
 	//player selection
-	//p1
+	//player1 animation
+	MovementCounter++;
+	if (MovementCounter >= MovementReset)
+	{
+		MovementCounter = 0;
+		if (wnd.kbd.KeyIsPressed('W'))
+		{
+			P1Robe.Robe1moveY(gfx);
+		}
+		else if (MovementCounter < 20)
+		{
+			P1Robe.Robe1Stand(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed('S'))
+		{
+			P1Robe.Robe1moveY(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed('A'))
+		{
+			P1Robe.Robe1moveX(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed('D'))
+		{
+			P1Robe.Robe1moveX(gfx);
+		}
+
+	}
+	else if (MovementCounter < 20)
+	{
+		
+		if (wnd.kbd.KeyIsPressed('W'))
+		{
+			P1Robe.Robe1Stand(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed('S'))
+		{
+			P1Robe.Robe1Stand(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed('A'))
+		{
+			P1Robe.Robe1Stand(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed('S'))
+		{
+			P1Robe.Robe1Stand(gfx);
+		}
+	}
+	 
+
+
+	//p1 character select art
 	switch (HS1)
 	{
 		case HeadSelect::ANAKIN1:
 		{
+			
 			P1Robe.anakin1head(gfx);
+
 
 		}break;
 		case HeadSelect::MARAJADE1:
 		{
+			
 			P1Robe.Marajade1head(gfx);
 		}break;
 		case HeadSelect::EMPEROR1:
 		{
+			
 			P1Robe.emperor1head(gfx);
 		}break;
 		case HeadSelect::LEIA1:
 		{
+			
 			P1Robe.Leia1head(gfx);
 		}break;
 		case  HeadSelect::LUKE1:
 		{
+			
 			P1Robe.Luke1head(gfx);
 		}break;
 
 		case  HeadSelect::REY1:
 		{
+			
 			P1Robe.Rey1head(gfx);
 		}break;
 		case  HeadSelect::OBIWAN1:
 		{
+			
 			P1Robe.Obiwan1head(gfx);
 		}break;
 		case  HeadSelect::AHSOKA1:
 		{
+			
 			P1Robe.ahsoka1head(gfx);
 		}break;
 	}
@@ -387,5 +446,6 @@ void Game::ComposeFrame()
 			}
 		}
 
-
+		
+	
 	}
