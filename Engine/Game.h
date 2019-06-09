@@ -61,6 +61,9 @@ private:
 	void UpdateModel();
 	void CharacterSelect(bool iskeypressed);
 	void LightSaberSelect();
+	void CharacterAnimation();
+	void CharacterDisplay();
+	void LightsaberDisplay();
 	/********************************/
 	/*  User Functions              */
 	/********************************/
@@ -83,6 +86,11 @@ private:
 	HeadSelect HS2;
 	Laser Bolt;
 	Laser Remote;
+	bool GameOver = false;
+	bool Player1Select = false;
+	bool Player2Select = false;
+	bool Lightsaber1select = false;
+	bool Lightsaber2select = false;
 	int MovementCounter = 0;
 	int MovementReset = 40;
 	/********************************/

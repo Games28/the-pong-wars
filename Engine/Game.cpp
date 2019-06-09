@@ -66,11 +66,8 @@ void Game::UpdateModel()
 	P2Saber.P2Collision();
 	P2Robe.Player2Collision();
 
-	//head selection
-	//p1
 	
 	
-	//bolt
 	
 }
 
@@ -192,33 +189,8 @@ void Game::LightSaberSelect()
 	}
 }
 
-
-
-void Game::ComposeFrame()
+void Game::CharacterAnimation()
 {
-	back.Midline(gfx);
-	back.Window(gfx);
-	back.Thestars(gfx);
-	back.Theemperor(gfx);
-	back.Throne(gfx);
-
-	//bolt images
-	/*if (Bolt.getVel().x -= -1.0f)
-	{
-		Bolt.Boltleft(gfx);
-	}
-	if (Bolt += 1.0f)
-	{
-		Bolt.Boltright(gfx);
-	}*/
-	Bolt.Mainbolt(gfx);
-	Bolt.WallCollision(gfx);
-	
-		
-	
-	Remote.TrainingRemote(gfx);
-	//player selection
-	//player1 animation
 	MovementCounter++;
 	if (MovementCounter >= MovementReset)
 	{
@@ -227,7 +199,7 @@ void Game::ComposeFrame()
 		{
 			P1Robe.Robe1moveY(gfx);
 		}
-		
+
 		if (wnd.kbd.KeyIsPressed('S'))
 		{
 			P1Robe.Robe1moveY(gfx);
@@ -244,7 +216,7 @@ void Game::ComposeFrame()
 	}
 	else if (MovementCounter < 20)
 	{
-		
+
 		if (wnd.kbd.KeyIsPressed('W'))
 		{
 			P1Robe.Robe1Stand(gfx);
@@ -262,7 +234,7 @@ void Game::ComposeFrame()
 			P1Robe.Robe1Stand(gfx);
 		}
 	}
-	 
+
 	//player2 animation
 	if (MovementCounter >= MovementReset)
 	{
@@ -306,54 +278,56 @@ void Game::ComposeFrame()
 			P2Robe.Robe2Stand(gfx);
 		}
 	}
+}
 
-
+void Game::CharacterDisplay()
+{
 	//p1 character select art
 	switch (HS1)
 	{
-		case HeadSelect::ANAKIN1:
-		{
-			
-			P1Robe.anakin1head(gfx);
+	case HeadSelect::ANAKIN1:
+	{
+
+		P1Robe.anakin1head(gfx);
 
 
-		}break;
-		case HeadSelect::MARAJADE1:
-		{
-			
-			P1Robe.Marajade1head(gfx);
-		}break;
-		case HeadSelect::EMPEROR1:
-		{
-			
-			P1Robe.emperor1head(gfx);
-		}break;
-		case HeadSelect::LEIA1:
-		{
-			
-			P1Robe.Leia1head(gfx);
-		}break;
-		case  HeadSelect::LUKE1:
-		{
-			
-			P1Robe.Luke1head(gfx);
-		}break;
+	}break;
+	case HeadSelect::MARAJADE1:
+	{
 
-		case  HeadSelect::REY1:
-		{
-			
-			P1Robe.Rey1head(gfx);
-		}break;
-		case  HeadSelect::OBIWAN1:
-		{
-			
-			P1Robe.Obiwan1head(gfx);
-		}break;
-		case  HeadSelect::AHSOKA1:
-		{
-			
-			P1Robe.ahsoka1head(gfx);
-		}break;
+		P1Robe.Marajade1head(gfx);
+	}break;
+	case HeadSelect::EMPEROR1:
+	{
+
+		P1Robe.emperor1head(gfx);
+	}break;
+	case HeadSelect::LEIA1:
+	{
+
+		P1Robe.Leia1head(gfx);
+	}break;
+	case  HeadSelect::LUKE1:
+	{
+
+		P1Robe.Luke1head(gfx);
+	}break;
+
+	case  HeadSelect::REY1:
+	{
+
+		P1Robe.Rey1head(gfx);
+	}break;
+	case  HeadSelect::OBIWAN1:
+	{
+
+		P1Robe.Obiwan1head(gfx);
+	}break;
+	case  HeadSelect::AHSOKA1:
+	{
+
+		P1Robe.ahsoka1head(gfx);
+	}break;
 	}
 	//p2
 	if (HS2 == HeadSelect::LUKE2)
@@ -361,130 +335,145 @@ void Game::ComposeFrame()
 		P2Robe.Luke2head(gfx);
 	}
 
-		if (HS2 == HeadSelect::REY2)
-		{
-			P2Robe.Rey2head(gfx);
-		}
-		if (HS2 == HeadSelect::OBIWAN2)
-		{
-			P2Robe.Obiwan2head(gfx);
-		}
-		if (HS2 == HeadSelect::AHSOKA2)
-		{
-			P2Robe.ahsoka2head(gfx);
-		}
-		if (HS2 == HeadSelect::ANAKIN2)
-		{
-			P2Robe.anakin2head(gfx);
-		}
-		if (HS2 == HeadSelect::MARAJADE2)
-		{
-			P2Robe.Marajade2head(gfx);
-		}
-		if (HS2 == HeadSelect::EMPEROR2)
-		{
-			P2Robe.emperor2head(gfx);
-		}
-		if (HS2 == HeadSelect::LEIA2)
-		{
-			P2Robe.Leia2head(gfx);
-		}
+	if (HS2 == HeadSelect::REY2)
+	{
+		P2Robe.Rey2head(gfx);
+	}
+	if (HS2 == HeadSelect::OBIWAN2)
+	{
+		P2Robe.Obiwan2head(gfx);
+	}
+	if (HS2 == HeadSelect::AHSOKA2)
+	{
+		P2Robe.ahsoka2head(gfx);
+	}
+	if (HS2 == HeadSelect::ANAKIN2)
+	{
+		P2Robe.anakin2head(gfx);
+	}
+	if (HS2 == HeadSelect::MARAJADE2)
+	{
+		P2Robe.Marajade2head(gfx);
+	}
+	if (HS2 == HeadSelect::EMPEROR2)
+	{
+		P2Robe.emperor2head(gfx);
+	}
+	if (HS2 == HeadSelect::LEIA2)
+	{
+		P2Robe.Leia2head(gfx);
+	}
+}
 
-		//lightsaber selection
+void Game::LightsaberDisplay()
+{
 		//p1
-		if (!wnd.kbd.KeyIsPressed(VK_SPACE))
+	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
+	{
+		if (LC == LightsaberColor::BLUE1)
 		{
-			if (LC == LightsaberColor::BLUE1)
-			{
-				P1Saber.Upblue1(gfx);
-			}
-			else if (LC == LightsaberColor::GREEN1)
-			{
-				P1Saber.Upgreen1(gfx);
-			}
-			else if (LC == LightsaberColor::RED1)
-			{
-				P1Saber.Upred1(gfx);
-			}
-			else if (LC == LightsaberColor::PURPLE1)
-			{
-				P1Saber.Uppurple1(gfx);
-			}
-			else {
-				P1Saber.Upwhite1(gfx);
-			}
-
+			P1Saber.Upblue1(gfx);
 		}
-		else {
-			if (LC == LightsaberColor::BLUE1)
-			{
-				P1Saber.Downblue1(gfx);
-			}
-			else if (LC == LightsaberColor::GREEN1)
-			{
-				P1Saber.Downgreen1(gfx);
-			}
-			else if (LC == LightsaberColor::RED1)
-			{
-				P1Saber.Downred1(gfx);
-			}
-			else if (LC == LightsaberColor::PURPLE1)
-			{
-				P1Saber.Downpurple1(gfx);
-			}
-			else {
-
-				P1Saber.Downwhite1(gfx);
-
-			}
-		}
-		//p2
-		if (!wnd.kbd.KeyIsPressed(VK_SPACE))
+		else if (LC == LightsaberColor::GREEN1)
 		{
-			if (LC2 == LightsaberColor::BLUE2)
-			{
-				P2Saber.Upblue2(gfx);
-			}
-			else if (LC2 == LightsaberColor::GREEN2)
-			{
-				P2Saber.Upgreen2(gfx);
-			}
-			else if (LC2 == LightsaberColor::RED2)
-			{
-				P2Saber.Upred2(gfx);
-			}
-			else if (LC2 == LightsaberColor::PURPLE2)
-			{
-				P2Saber.Uppurple2(gfx);
-			}
-			else {
-				P2Saber.Upwhite2(gfx);
-			}
-
+			P1Saber.Upgreen1(gfx);
 		}
-		else {
-			if (LC2 == LightsaberColor::BLUE2)
-			{
-				P2Saber.Downblue2(gfx);
-			}
-			else if (LC2 == LightsaberColor::GREEN2)
-			{
-				P2Saber.Downgreen2(gfx);
-			}
-			else if (LC2 == LightsaberColor::RED2)
-			{
-				P2Saber.Downred2(gfx);
-			}
-			else if (LC2 == LightsaberColor::PURPLE2)
-			{
-				P2Saber.Downpurple2(gfx);
-			}
-			else {
-
-				P2Saber.Downwhite2(gfx);
-
-			}
+		else if (LC == LightsaberColor::RED1)
+		{
+			P1Saber.Upred1(gfx);
 		}
+		else if (LC == LightsaberColor::PURPLE1)
+		{
+			P1Saber.Uppurple1(gfx);
+		}
+
+
+	}
+	else {
+		if (LC == LightsaberColor::BLUE1)
+		{
+			P1Saber.Downblue1(gfx);
+		}
+		else if (LC == LightsaberColor::GREEN1)
+		{
+			P1Saber.Downgreen1(gfx);
+		}
+		else if (LC == LightsaberColor::RED1)
+		{
+			P1Saber.Downred1(gfx);
+		}
+		else if (LC == LightsaberColor::PURPLE1)
+		{
+			P1Saber.Downpurple1(gfx);
+		}
+
+	}
+	//p2
+	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
+	{
+		if (LC2 == LightsaberColor::BLUE2)
+		{
+			P2Saber.Upblue2(gfx);
+		}
+		else if (LC2 == LightsaberColor::GREEN2)
+		{
+			P2Saber.Upgreen2(gfx);
+		}
+		else if (LC2 == LightsaberColor::RED2)
+		{
+			P2Saber.Upred2(gfx);
+		}
+		else if (LC2 == LightsaberColor::PURPLE2)
+		{
+			P2Saber.Uppurple2(gfx);
+		}
+	}
+	else {
+		if (LC2 == LightsaberColor::BLUE2)
+		{
+			P2Saber.Downblue2(gfx);
+		}
+		else if (LC2 == LightsaberColor::GREEN2)
+		{
+			P2Saber.Downgreen2(gfx);
+		}
+		else if (LC2 == LightsaberColor::RED2)
+		{
+			P2Saber.Downred2(gfx);
+		}
+		else if (LC2 == LightsaberColor::PURPLE2)
+		{
+			P2Saber.Downpurple2(gfx);
+		}
+
+	}
+}
+
+
+
+void Game::ComposeFrame()
+{
+	back.Midline(gfx);
+	back.Window(gfx);
+	back.Thestars(gfx);
+	back.Theemperor(gfx);
+	back.Throne(gfx);
+
+
+	Bolt.Mainbolt(gfx);
+	Bolt.WallCollision(gfx);
+	
+		
+	
+	Remote.TrainingRemote(gfx);
+	
+	
+	CharacterAnimation();
+	CharacterDisplay();
+	LightsaberDisplay();
+	
+
+		
 
 		
 	
