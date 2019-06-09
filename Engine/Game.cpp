@@ -227,10 +227,7 @@ void Game::ComposeFrame()
 		{
 			P1Robe.Robe1moveY(gfx);
 		}
-		else if (MovementCounter < 20)
-		{
-			P1Robe.Robe1Stand(gfx);
-		}
+		
 		if (wnd.kbd.KeyIsPressed('S'))
 		{
 			P1Robe.Robe1moveY(gfx);
@@ -260,12 +257,55 @@ void Game::ComposeFrame()
 		{
 			P1Robe.Robe1Stand(gfx);
 		}
-		if (wnd.kbd.KeyIsPressed('S'))
+		if (wnd.kbd.KeyIsPressed('D'))
 		{
 			P1Robe.Robe1Stand(gfx);
 		}
 	}
 	 
+	//player2 animation
+	if (MovementCounter >= MovementReset)
+	{
+		MovementCounter = 0;
+		if (wnd.kbd.KeyIsPressed(VK_UP))
+		{
+			P2Robe.Robe2moveY(gfx);
+		}
+
+		if (wnd.kbd.KeyIsPressed(VK_DOWN))
+		{
+			P2Robe.Robe2moveY(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed(VK_LEFT))
+		{
+			P2Robe.Robe2moveX(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+		{
+			P2Robe.Robe2moveX(gfx);
+		}
+
+	}
+	else if (MovementCounter < 20)
+	{
+
+		if (wnd.kbd.KeyIsPressed(VK_UP))
+		{
+			P2Robe.Robe2Stand(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed(VK_DOWN))
+		{
+			P2Robe.Robe2Stand(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed(VK_LEFT))
+		{
+			P2Robe.Robe2Stand(gfx);
+		}
+		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+		{
+			P2Robe.Robe2Stand(gfx);
+		}
+	}
 
 
 	//p1 character select art
