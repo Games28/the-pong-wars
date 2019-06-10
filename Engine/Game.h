@@ -89,9 +89,11 @@ private:
 	Menus DOit;
 	Menus mainmenu;
 	bool GameOver = false;
-	bool Player1Select = false;
-	bool Player2Select = false;
-	bool Lightsaber1select = false;
+	bool Player1Select = true;
+	bool Player2Select = true;
+	bool CharactersSelected = false;
+	bool LightsabersSelected = false;
+	bool Lightsaber1select =false;
 	bool Lightsaber2select = false;
 	bool GameStarted = false;
 	int MovementCounter = 0;

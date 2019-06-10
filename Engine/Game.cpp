@@ -52,177 +52,218 @@ void Game::Go()
 }
 void Game::UpdateModel()
 {
-	if(Player1Select && Player2Select && 
-		Lightsaber1select && Lightsaber2select)
+	if (CharactersSelected && LightsabersSelected)
 	{
 		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
 
 		LightSaberSelect();
 	}
-	else if (!Player1Select && !Player2Select &&
-		!Lightsaber1select && !Lightsaber2select)
+	else
 	{
-		if (wnd.kbd.KeyIsPressed(VK_RETURN))
-		{
-			GameStarted = true;
-
-			//keyboard update
-			P1Saber.P1MovementUpdate(wnd.kbd);
-			P1Robe.P1MovementUpdate(wnd.kbd);
-			P2Saber.P2MovementUpdate(wnd.kbd);
-			P2Robe.P2MovementUpdate(wnd.kbd);
-
-			//collsion 
-			P1Saber.P1Collision();
-			P1Robe.Player1Collision();
-			P2Saber.P2Collision();
-			P2Robe.Player2Collision();
-		}
+		GameStarted = true;
 	}
-	
+	if (!GameStarted)
+	{
+		//keyboard update
+		P1Saber.P1MovementUpdate(wnd.kbd);
+		P1Robe.P1MovementUpdate(wnd.kbd);
+		P2Saber.P2MovementUpdate(wnd.kbd);
+		P2Robe.P2MovementUpdate(wnd.kbd);
+
+		//collsion 
+		P1Saber.P1Collision();
+		P1Robe.Player1Collision();
+		P2Saber.P2Collision();
+		P2Robe.Player2Collision();
+
+	}
 	
 	
 }
 
 void Game::CharacterSelect(bool iskeypressed)
 {
-	
 	if (!iskeypressed)
 	{
-		if (wnd.kbd.KeyIsPressed(VK_F1))
+		if (Player1Select)
 		{
-			HS1 = HeadSelect::ANAKIN1;
-			Player1Select = true;
+			if (wnd.kbd.KeyIsPressed(VK_F1))
+			{
+				HS1 = HeadSelect::ANAKIN1;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F2))
+			{
+				HS1 = HeadSelect::MARAJADE1;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F3))
+			{
+				HS1 = HeadSelect::EMPEROR1;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F4))
+			{
+				HS1 = HeadSelect::LEIA1;
+				Player1Select = true;
+
+			}
+
+			if (wnd.kbd.KeyIsPressed(VK_F5))
+			{
+				HS1 = HeadSelect::LUKE1;
+				Player1Select = true;
+
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F6))
+			{
+				HS1 = HeadSelect::REY1;
+				Player1Select = true;
+
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F7))
+			{
+				HS1 = HeadSelect::OBIWAN1;
+				Player1Select = true;
+
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F8))
+			{
+				HS1 = HeadSelect::AHSOKA1;
+				Player1Select = true;
+
+			}
 		}
-		if (wnd.kbd.KeyIsPressed(VK_F2))
-		{
-			HS1 = HeadSelect::MARAJADE1;
-			Player1Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F3))
-		{
-			HS1 = HeadSelect::EMPEROR1;
-			Player1Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F4))
-		{
-			HS1 = HeadSelect::LEIA1;
-			Player1Select = true;
+		else {
+			Player1Select = false;
 		}
 
-		if (wnd.kbd.KeyIsPressed(VK_F5))
+	}
+	
+	
+	if (iskeypressed)
+	{
+		if (Player2Select)
 		{
-			HS1 = HeadSelect::LUKE1;
-			Player1Select = true;
+			//p2
+			if (wnd.kbd.KeyIsPressed(VK_F1))
+			{
+				Player1Select = true;
+				HS2 = HeadSelect::ANAKIN2;
+				
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F2))
+			{
+				HS2 = HeadSelect::MARAJADE2;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F3))
+			{
+				HS2 = HeadSelect::EMPEROR2;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F4))
+			{
+				HS2 = HeadSelect::LEIA2;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F5))
+			{
+				HS2 = HeadSelect::LUKE2;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F6))
+			{
+				HS2 = HeadSelect::REY2;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F7))
+			{
+				HS2 = HeadSelect::OBIWAN2;
+				Player1Select = true;
+			}
+			if (wnd.kbd.KeyIsPressed(VK_F8))
+			{
+				HS2 = HeadSelect::AHSOKA2;
+				Player1Select = true;
+			}
+
+
 		}
-		if (wnd.kbd.KeyIsPressed(VK_F6))
-		{
-			HS1 = HeadSelect::REY1;
-			Player1Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F7))
-		{
-			HS1 = HeadSelect::OBIWAN1;
-			Player1Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F8))
-		{
-			HS1 = HeadSelect::AHSOKA1;
-			Player1Select = true;
+		else {
+			Player2Select = false;
 		}
 	}
-	else {
-		//p2
-		if (wnd.kbd.KeyIsPressed(VK_F1))
-		{
-			HS2 = HeadSelect::ANAKIN2;
-			Player2Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F2))
-		{
-			HS2 = HeadSelect::MARAJADE2;
-			Player2Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F3))
-		{
-			HS2 = HeadSelect::EMPEROR2;
-			Player2Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F4))
-		{
-			HS2 = HeadSelect::LEIA2;
-			Player2Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F5))
-		{
-			HS2 = HeadSelect::LUKE2;
-			Player2Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F6))
-		{
-			HS2 = HeadSelect::REY2;
-			Player2Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F7))
-		{
-			HS2 = HeadSelect::OBIWAN2;
-			Player2Select = true;
-		}
-		if (wnd.kbd.KeyIsPressed(VK_F8))
-		{
-			HS2 = HeadSelect::AHSOKA2;
-			Player2Select = true;
-		}
-
 	
+	if (!Player1Select && !Player2Select)
+	{
+		CharactersSelected = true;
 	}
 }
 
 void Game::LightSaberSelect()
 {
 	//lightsaber color binding p1
-
-	if (wnd.kbd.KeyIsPressed('1'))
+	if (!Lightsaber1select)
 	{
-		LC = LightsaberColor::BLUE1;
-		Lightsaber1select = true;
+		if (wnd.kbd.KeyIsPressed('1'))
+		{
+			LC = LightsaberColor::BLUE1;
+			Lightsaber1select = true;
+		}
+		if (wnd.kbd.KeyIsPressed('2'))
+		{
+			LC = LightsaberColor::GREEN1;
+			Lightsaber1select = true;
+		}
+		if (wnd.kbd.KeyIsPressed('3'))
+		{
+			LC = LightsaberColor::RED1;
+			Lightsaber1select = true;
+		}
+		if (wnd.kbd.KeyIsPressed('4'))
+		{
+			LC = LightsaberColor::PURPLE1;
+			Lightsaber1select = true;
+		}
 	}
-	if (wnd.kbd.KeyIsPressed('2'))
-	{
-		LC = LightsaberColor::GREEN1;
-		Lightsaber1select = true;
-	}
-	if (wnd.kbd.KeyIsPressed('3'))
-	{
-		LC = LightsaberColor::RED1;
-		Lightsaber1select = true;
-	}
-	if (wnd.kbd.KeyIsPressed('4'))
-	{
-		LC = LightsaberColor::PURPLE1;
-		Lightsaber1select = true;
+	else {
+		Lightsaber1select = false;
 	}
 	//p2
 
-	if (wnd.kbd.KeyIsPressed('5'))
+	if (!Lightsaber2select)
 	{
-		LC2 = LightsaberColor::BLUE2;
-		Lightsaber2select = true;
+
+
+		if (wnd.kbd.KeyIsPressed('5'))
+		{
+			LC2 = LightsaberColor::BLUE2;
+			Lightsaber2select = true;
+		}
+		if (wnd.kbd.KeyIsPressed('7'))
+		{
+			LC2 = LightsaberColor::GREEN2;
+			Lightsaber2select = true;
+		}
+		if (wnd.kbd.KeyIsPressed('6'))
+		{
+			LC2 = LightsaberColor::RED2;
+			Lightsaber2select = true;
+		}
+		if (wnd.kbd.KeyIsPressed('8'))
+		{
+			LC2 = LightsaberColor::PURPLE2;
+			Lightsaber2select = true;
+		}
 	}
-	if (wnd.kbd.KeyIsPressed('7'))
-	{
-		LC2 = LightsaberColor::GREEN2;
-		Lightsaber2select = true;
+	else {
+		Lightsaber2select = false;
 	}
-	if (wnd.kbd.KeyIsPressed('6'))
+
+	if (!Lightsaber1select && !Lightsaber2select)
 	{
-		LC2 = LightsaberColor::RED2;
-		Lightsaber2select = true;
-	}
-	if (wnd.kbd.KeyIsPressed('8'))
-	{
-		LC2 = LightsaberColor::PURPLE2;
-		Lightsaber2select = true;
+		LightsabersSelected = true;
 	}
 }
 
@@ -495,37 +536,30 @@ void Game::ComposeFrame()
 	back.Thestars(gfx);
 	back.Theemperor(gfx);
 	back.Throne(gfx);
+	mainmenu.MainMenu(gfx);
 	
-	if (Player1Select && Player2Select &&
-		Lightsaber1select && Lightsaber2select)
+	if (CharactersSelected && LightsabersSelected)
 	{
-		mainmenu.MainMenu(gfx);
+       
 		CharacterDisplay();
 		LightsaberDisplay();
 	}
-	else if (!Player1Select && !Player2Select &&
-		!Lightsaber1select && !Lightsaber2select)
+	else if (!GameStarted)
 	{
-		DOit.EmporerDoit(gfx);
-		if (!GameStarted)
-		{
+
+
+		Bolt.Mainbolt(gfx);
+		Bolt.WallCollision(gfx);
 
 
 
-			Bolt.Mainbolt(gfx);
-			Bolt.WallCollision(gfx);
+		Remote.TrainingRemote(gfx);
 
 
-
-			Remote.TrainingRemote(gfx);
-
-
-			CharacterAnimation();
-
-
-		}
+		CharacterAnimation();
 
 	}
+		
 		
 	
 	}
