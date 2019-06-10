@@ -30,7 +30,7 @@
 #include "Characters.h"
 #include "LightSabers.h"
 #include "LightsaberColor.h"
-
+#include "Menus.h"
 #include "HeadSelect.h"
 #include "HeadSelect2.h"
 #include "Laser.h"
@@ -86,11 +86,14 @@ private:
 	HeadSelect HS2;
 	Laser Bolt;
 	Laser Remote;
+	Menus DOit;
+	Menus mainmenu;
 	bool GameOver = false;
 	bool Player1Select = false;
 	bool Player2Select = false;
 	bool Lightsaber1select = false;
 	bool Lightsaber2select = false;
+	bool GameStarted = false;
 	int MovementCounter = 0;
 	int MovementReset = 40;
 	/********************************/
