@@ -46,8 +46,7 @@ public:
 
 	
 	//movement
-	void P1MovementUpdate(Keyboard& kbd);
-	void P2MovementUpdate(Keyboard& kbd);
+	void Move(Vec2 moveAmount);
 	void Player2Collision();
 	void Player1Collision();
 	

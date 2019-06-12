@@ -56,6 +56,9 @@ class Game
 	{
 		PLAYER1,
 		PLAYER2,
+
+		// NOTE:	Make sure number of characters is 
+		//			last in the enumeration list 
 		NUMBER_OF_CHRS
 	};
 public:
@@ -68,7 +71,7 @@ private:
 	void UpdateModel();
 	void CharacterSelect(bool iskeypressed);
 	void LightSaberSelect();
-	void CharacterAnimation();
+	//void CharacterAnimation();
 	void CharacterDisplay();
 	void LightsaberDisplay();
 	/********************************/
@@ -100,8 +103,8 @@ private:
 	Menus DOit;
 	Menus mainmenu;
 	bool GameOver = false;
-	bool Player1Select = true;
-	bool Player2Select = true;
+	bool Player1Select = false;
+	bool Player2Select = false;
 	bool CharactersSelected = false;
 	bool LightsabersSelected = false;
 	bool Lightsaber1select =false;

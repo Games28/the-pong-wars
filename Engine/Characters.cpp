@@ -173,45 +173,12 @@ void Characters::Robe2moveY(Graphics & gfx)
 }
 
 
-void Characters::P1MovementUpdate(Keyboard & kbd)
+void Characters::Move(Vec2 moveAmount)
 {
-	if (kbd.KeyIsPressed('W'))
-	{
-		loc.y--;
-	}
-	if (kbd.KeyIsPressed('S'))
-	{
-		loc.y++;
-	}
-	if (kbd.KeyIsPressed('A'))
-	{
-		loc.x--;
-	}
-	if (kbd.KeyIsPressed('D'))
-	{
-		loc.x++;
-	}
+	loc += moveAmount;
 }
 
-void Characters::P2MovementUpdate(Keyboard & kbd)
-{
-	if (kbd.KeyIsPressed(VK_UP))
-	{
-		loc.y--;
-	}
-	if (kbd.KeyIsPressed(VK_DOWN))
-	{
-		loc.y++;
-	}
-	if (kbd.KeyIsPressed(VK_LEFT))
-	{
-		loc.x--;
-	}
-	if (kbd.KeyIsPressed(VK_RIGHT))
-	{
-		loc.x++;
-	}
-}
+
 
 void Characters::Player2Collision()
 {
