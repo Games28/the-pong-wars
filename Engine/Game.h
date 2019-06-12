@@ -32,9 +32,10 @@
 #include "LightsaberColor.h"
 #include "Menus.h"
 #include "HeadSelect.h"
-#include "HeadSelect2.h"
+
 #include "Laser.h"
 #include <random>
+//#define NUMBER_OF_CHRS 2
 
 /*current objects 1. get Laser object collision working with lightsaber for player1 and player2.
                   2. get laser collision detection with window border to display sparks images when 
@@ -51,6 +52,12 @@
 */
 class Game
 {
+	enum
+	{
+		PLAYER1,
+		PLAYER2,
+		NUMBER_OF_CHRS
+	};
 public:
 	Game( class MainWindow& wnd );
 	Game( const Game& ) = delete;
@@ -80,10 +87,14 @@ private:
 	Direction dirP2;
 	LightsaberColor LC;
 	LightsaberColor LC2;
-	Characters P1Robe;
-	Characters P2Robe;
-	HeadSelect HS1;
-	HeadSelect HS2;
+	//Characters P1Robe;
+	//Characters P2Robe;
+
+	Characters characters[NUMBER_OF_CHRS];
+
+	
+	//HeadSelect HS1;
+	//HeadSelect HS2;
 	Laser Bolt;
 	Laser Remote;
 	Menus DOit;

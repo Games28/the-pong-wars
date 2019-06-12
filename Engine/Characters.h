@@ -3,10 +3,12 @@
 #include "Keyboard.h"
 #include "Graphics.h"
 #include "Vec2.h"
+#include "HeadSelect.h"
 
 class Characters
 {
 public:
+	Characters() = default;
 	Characters(Vec2& in_loc);
 	//player 1 characters
 	void Leia1head(Graphics& gfx);
@@ -53,5 +55,8 @@ private:
 	static constexpr float width = 38;
 	static constexpr float height = 225;
 	Vec2 loc;
-
+public:
+	HeadSelect HS = HeadSelect::LUKE1;
+	
+	
 };

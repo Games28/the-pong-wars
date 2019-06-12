@@ -8,168 +8,168 @@ Characters::Characters(Vec2 & in_loc)
 // Player 1 characters
 void Characters::Leia1head(Graphics & gfx)
 {
-	gfx.Leia1head(gfx, int(loc.x), int(loc.y));
+	gfx.Leia1head( int(loc.x), int(loc.y));
 }
 
 void Characters::Luke1head(Graphics & gfx)
 {
-	gfx.Luke1head(gfx, int(loc.x), int(loc.y));
+	gfx.Luke1head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::ahsoka1head(Graphics & gfx)
 {
-	gfx.ahsoka1head(gfx, int(loc.x), int(loc.y));
+	gfx.ahsoka1head( int(loc.x), int(loc.y));
 }
 
 void Characters::emperor1head(Graphics & gfx)
 {
-	gfx.emperor1head(gfx, int(loc.x), int(loc.y));
+	gfx.emperor1head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::anakin1head(Graphics & gfx)
 {
-	gfx.anakin1head(gfx, int(loc.x), int(loc.y));
+	gfx.anakin1head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Marajade1head(Graphics & gfx)
 {
-	gfx.Marajade1head(gfx, int(loc.x), int(loc.y));
+	gfx.Marajade1head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Rey1head(Graphics & gfx)
 {
-	gfx.Rey1head(gfx, int(loc.x), int(loc.y));
+	gfx.Rey1head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Obiwan1head(Graphics & gfx)
 {
-	gfx.Obiwan1head(gfx, int(loc.x), int(loc.y));
+	gfx.Obiwan1head( int(loc.x), int(loc.y));
 }
 
 
 //Player 1 robes
 void Characters::Robe1(Graphics & gfx)
 {
-	gfx.Robe1(gfx, int(loc.x), int(loc.y));
+	gfx.Robe1( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe1falling(Graphics & gfx)
 {
-	gfx.Robe1falling(gfx, int(loc.x), int(loc.y));
+	gfx.Robe1falling( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe1fallen(Graphics & gfx)
 {
-	gfx.Robe1fallen(gfx, int(loc.x), int(loc.y));
+	gfx.Robe1fallen( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe1Stand(Graphics & gfx)
 {
-	gfx.Robe1Stand(gfx, int(loc.x), int(loc.y));
+	gfx.Robe1Stand( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe1moveX(Graphics & gfx)
 {
-	gfx.Robe1moveX(gfx, int(loc.x), int(loc.y));
+	gfx.Robe1moveX( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe1moveY(Graphics & gfx)
 {
-	gfx.Robe1moveY(gfx, int(loc.x), int(loc.y));
+	gfx.Robe1moveY( int(loc.x), int(loc.y));
 }
 
 
 //Player 2 Characters
 void Characters::Leia2head(Graphics & gfx)
 {
-	gfx.Leia2head(gfx, int(loc.x), int(loc.y));
+	gfx.Leia2head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Luke2head(Graphics & gfx)
 {
-	gfx.Luke2head(gfx, int(loc.x), int(loc.y));
+	gfx.Luke2head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::ahsoka2head(Graphics & gfx)
 {
-	gfx.ahsoka2head(gfx, int(loc.x), int(loc.y));
+	gfx.ahsoka2head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::emperor2head(Graphics & gfx)
 {
-	gfx.emperor2head(gfx, int(loc.x), int(loc.y));
+	gfx.emperor2head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::anakin2head(Graphics & gfx)
 {
-	gfx.anakin2head(gfx, int(loc.x), int(loc.y));
+	gfx.anakin2head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Marajade2head(Graphics & gfx)
 {
-	gfx.Marajade2head(gfx, int(loc.x), int(loc.y));
+	gfx.Marajade2head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Rey2head(Graphics & gfx)
 {
-	gfx.Rey2head(gfx, int(loc.x), int(loc.y));
+	gfx.Rey2head( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Obiwan2head(Graphics & gfx)
 {
-	gfx.Obiwan2head(gfx, int(loc.x), int(loc.y));
+	gfx.Obiwan2head( int(loc.x), int(loc.y));
 }
 
 //Player 2 robes
 void Characters::Robe2(Graphics & gfx)
 {
-	gfx.Robe2(gfx, int(loc.x), int(loc.y));
+	gfx.Robe2( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe2falling(Graphics & gfx)
 {
-	gfx.Robe1falling(gfx, int(loc.x), int(loc.y));
+	gfx.Robe1falling( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe2fallen(Graphics & gfx)
 {
-	gfx.Robe2fallen(gfx, int(loc.x), int(loc.y));
+	gfx.Robe2fallen( int(loc.x), int(loc.y));
 }
 
 void Characters::Robe2Stand(Graphics & gfx)
 {
-	gfx.Robe2Stand(gfx, int(loc.x), int(loc.y));
+	gfx.Robe2Stand( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe2moveX(Graphics & gfx)
 {
-	gfx.Robe2moveX(gfx, int(loc.x), int(loc.y));
+	gfx.Robe2moveX( int(loc.x), int(loc.y));
 }
 
 
 void Characters::Robe2moveY(Graphics & gfx)
 {
-	gfx.Robe2moveY(gfx, int(loc.x), int(loc.y));
+	gfx.Robe2moveY( int(loc.x), int(loc.y));
 }
 
 

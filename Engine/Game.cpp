@@ -41,6 +41,7 @@ Game::Game( MainWindow& wnd )
 	
 	
 {
+
 }
 
 void Game::Go()
@@ -89,47 +90,47 @@ void Game::CharacterSelect(bool iskeypressed)
 		{
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
-				HS1 = HeadSelect::ANAKIN1;
+				characters[PLAYER1].HS = HeadSelect::ANAKIN1;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				HS1 = HeadSelect::MARAJADE1;
+				characters[PLAYER1].HS = HeadSelect::MARAJADE1;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				HS1 = HeadSelect::EMPEROR1;
+				characters[PLAYER1].HS = HeadSelect::EMPEROR1;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				HS1 = HeadSelect::LEIA1;
+				characters[PLAYER1].HS = HeadSelect::LEIA1;
 				Player1Select = true;
 
 			}
 
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				HS1 = HeadSelect::LUKE1;
+				characters[PLAYER1].HS = HeadSelect::LUKE1;
 				Player1Select = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				HS1 = HeadSelect::REY1;
+				characters[PLAYER1].HS = HeadSelect::REY1;
 				Player1Select = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				HS1 = HeadSelect::OBIWAN1;
+				characters[PLAYER1].HS = HeadSelect::OBIWAN1;
 				Player1Select = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				HS1 = HeadSelect::AHSOKA1;
+				characters[PLAYER1].HS = HeadSelect::AHSOKA1;
 				Player1Select = true;
 
 			}
@@ -149,42 +150,42 @@ void Game::CharacterSelect(bool iskeypressed)
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
 				Player1Select = true;
-				HS2 = HeadSelect::ANAKIN2;
+				characters[PLAYER2].HS = HeadSelect::ANAKIN2;
 				
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				HS2 = HeadSelect::MARAJADE2;
+				characters[PLAYER2].HS = HeadSelect::MARAJADE2;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				HS2 = HeadSelect::EMPEROR2;
+				characters[PLAYER2].HS = HeadSelect::EMPEROR2;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				HS2 = HeadSelect::LEIA2;
+				characters[PLAYER2].HS = HeadSelect::LEIA2;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				HS2 = HeadSelect::LUKE2;
+				characters[PLAYER2].HS = HeadSelect::LUKE2;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				HS2 = HeadSelect::REY2;
+				characters[PLAYER2].HS = HeadSelect::REY2;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				HS2 = HeadSelect::OBIWAN2;
+				characters[PLAYER2].HS = HeadSelect::OBIWAN2;
 				Player1Select = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				HS2 = HeadSelect::AHSOKA2;
+				characters[PLAYER2].HS = HeadSelect::AHSOKA2;
 				Player1Select = true;
 			}
 
@@ -272,6 +273,7 @@ void Game::CharacterAnimation()
 	MovementCounter++;
 	if (MovementCounter >= MovementReset)
 	{
+
 		MovementCounter = 0;
 		if (wnd.kbd.KeyIsPressed('W'))
 		{
@@ -361,85 +363,90 @@ void Game::CharacterAnimation()
 void Game::CharacterDisplay()
 {
 	//p1 character select art
-	switch (HS1)
+	for (int i = 0; i < NUMBER_OF_CHRS; i++)
 	{
-	case HeadSelect::ANAKIN1:
-	{
+		
+		switch (characters[i].HS)
 
-		P1Robe.anakin1head(gfx);
+		{
+		case HeadSelect::ANAKIN1:
+		{
+
+			characters[i].anakin1head(gfx);
+		}break;
+		case HeadSelect::MARAJADE1:
+		{
+
+			characters[i].Marajade1head(gfx);
+		}break;
+		case HeadSelect::EMPEROR1:
+		{
+
+			characters[i].emperor1head(gfx);
+		}break;
+		case HeadSelect::LEIA1:
+		{
+
+			characters[i].Leia1head(gfx);
+		}break;
+		case  HeadSelect::LUKE1:
+		{
+
+			characters[i].Luke1head(gfx);
+		}break;
+
+		case  HeadSelect::REY1:
+		{
+
+			characters[i].Rey1head(gfx);
+		}break;
+		case  HeadSelect::OBIWAN1:
+		{
+
+			characters[i].Obiwan1head(gfx);
+		}break;
+		case  HeadSelect::AHSOKA1:
+		{
+
+			characters[i].ahsoka1head(gfx);
+		}break;
 
 
-	}break;
-	case HeadSelect::MARAJADE1:
-	{
+		//p2
+		case HeadSelect::LUKE2:
+		{
+			characters[i].Luke2head(gfx);
+		}break;
 
-		P1Robe.Marajade1head(gfx);
-	}break;
-	case HeadSelect::EMPEROR1:
-	{
-
-		P1Robe.emperor1head(gfx);
-	}break;
-	case HeadSelect::LEIA1:
-	{
-
-		P1Robe.Leia1head(gfx);
-	}break;
-	case  HeadSelect::LUKE1:
-	{
-
-		P1Robe.Luke1head(gfx);
-	}break;
-
-	case  HeadSelect::REY1:
-	{
-
-		P1Robe.Rey1head(gfx);
-	}break;
-	case  HeadSelect::OBIWAN1:
-	{
-
-		P1Robe.Obiwan1head(gfx);
-	}break;
-	case  HeadSelect::AHSOKA1:
-	{
-
-		P1Robe.ahsoka1head(gfx);
-	}break;
-	}
-	//p2
-	if (HS2 == HeadSelect::LUKE2)
-	{
-		P2Robe.Luke2head(gfx);
-	}
-
-	if (HS2 == HeadSelect::REY2)
-	{
-		P2Robe.Rey2head(gfx);
-	}
-	if (HS2 == HeadSelect::OBIWAN2)
-	{
-		P2Robe.Obiwan2head(gfx);
-	}
-	if (HS2 == HeadSelect::AHSOKA2)
-	{
-		P2Robe.ahsoka2head(gfx);
-	}
-	if (HS2 == HeadSelect::ANAKIN2)
-	{
-		P2Robe.anakin2head(gfx);
-	}
-	if (HS2 == HeadSelect::MARAJADE2)
-	{
-		P2Robe.Marajade2head(gfx);
-	}
-	if (HS2 == HeadSelect::EMPEROR2)
-	{
-		P2Robe.emperor2head(gfx);
-	}
-	if (HS2 == HeadSelect::LEIA2)
-	{
-		P2Robe.Leia2head(gfx);
+		case HeadSelect::REY2:
+		{
+			characters[i].Rey2head(gfx);
+		}break;
+		case HeadSelect::OBIWAN2:
+		{
+			characters[i].Obiwan2head(gfx);
+		}break;
+		case HeadSelect::AHSOKA2:
+		{
+			characters[i].ahsoka2head(gfx);
+		}break;
+		case HeadSelect::ANAKIN2:
+		{
+			characters[i].anakin2head(gfx);
+		}break;
+		case HeadSelect::MARAJADE2:
+		{
+			characters[i].Marajade2head(gfx);
+		}break;
+		case HeadSelect::EMPEROR2:
+		{
+			characters[i].emperor2head(gfx);
+		}break;
+		case HeadSelect::LEIA2:
+		{
+			characters[i].Leia2head(gfx);
+		}break;
+		}
 	}
 }
 

@@ -68,38 +68,38 @@ public:
 		DrawRect(int(rect.left), int(rect.top),int(rect.right), int(rect.bottom), c);
 	}
 	//Player 1 characters
-	void Leia1head(Graphics & gfx, int x, int y);
-	void Luke1head(Graphics & gfx, int x, int y);
-	void ahsoka1head(Graphics & gfx, int x, int y);
-	void emperor1head(Graphics & gfx, int x, int y);
-	void anakin1head(Graphics & gfx, int x, int y);
-	void Marajade1head(Graphics & gfx, int x, int y);
-	void Rey1head(Graphics & gfx, int x, int y);
-	void Obiwan1head(Graphics & gfx, int x, int y);
+	void Leia1head( int x, int y);
+	void Luke1head( int x, int y);
+	void ahsoka1head( int x, int y);
+	void emperor1head( int x, int y);
+	void anakin1head( int x, int y);
+	void Marajade1head( int x, int y);
+	void Rey1head( int x, int y);
+	void Obiwan1head( int x, int y);
 	//player 1 robe
-	void Robe1(Graphics & gfx, int x, int y);
-	void Robe1falling(Graphics & gfx, int x, int y);
-	void Robe1fallen(Graphics & gfx, int x, int y);
-	void Robe1Stand(Graphics & gfx, int x, int y);
-	void Robe1moveX(Graphics & gfx, int x, int y);
-	void Robe1moveY(Graphics & gfx, int x, int y);
+	void Robe1( int x, int y);
+	void Robe1falling( int x, int y);
+	void Robe1fallen( int x, int y);
+	void Robe1Stand( int x, int y);
+	void Robe1moveX( int x, int y);
+	void Robe1moveY( int x, int y);
 
 	//player 2 characters
-	void Leia2head(Graphics & gfx, int x, int y);
-	void Luke2head(Graphics & gfx, int x, int y);
-	void ahsoka2head(Graphics & gfx, int x, int y);
-	void emperor2head(Graphics & gfx, int x, int y);
-	void anakin2head(Graphics & gfx, int x, int y);
-	void Marajade2head(Graphics & gfx, int x, int y);
-	void Rey2head(Graphics & gfx, int x, int y);
-	void Obiwan2head(Graphics & gfx, int x, int y);
+	void Leia2head( int x, int y);
+	void Luke2head( int x, int y);
+	void ahsoka2head( int x, int y);
+	void emperor2head( int x, int y);
+	void anakin2head( int x, int y);
+	void Marajade2head( int x, int y);
+	void Rey2head( int x, int y);
+	void Obiwan2head( int x, int y);
 	//player 2 robe
-	void Robe2(Graphics & gfx, int x, int y);
-	void Robe2falling(Graphics & gfx, int x, int y);
-	void Robe2fallen(Graphics & gfx, int x, int y);
-	void Robe2Stand(Graphics & gfx, int x, int y);
-	void Robe2moveX(Graphics & gfx, int x, int y);
-	void Robe2moveY(Graphics & gfx, int x, int y);
+	void Robe2( int x, int y);
+	void Robe2falling( int x, int y);
+	void Robe2fallen( int x, int y);
+	void Robe2Stand( int x, int y);
+	void Robe2moveX( int x, int y);
+	void Robe2moveY( int x, int y);
 
 	~Graphics();
 private:

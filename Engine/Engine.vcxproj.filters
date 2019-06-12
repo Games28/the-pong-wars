@@ -78,9 +78,6 @@
     <ClInclude Include="LightsaberColor.h">
       <Filter>characters</Filter>
     </ClInclude>
-    <ClInclude Include="HeadSelect2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LightSabers.h">
       <Filter>characters</Filter>
     </ClInclude>
