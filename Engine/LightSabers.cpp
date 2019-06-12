@@ -94232,41 +94232,43 @@ void LightSaber::Downwhite2(Graphics & gfx)
 
 void LightSaber::P1MovementUpdate(Keyboard & kbd)
 {
+	float amount = 2.0f;
 	if (kbd.KeyIsPressed('W'))
 	{
-		loc.y--;
+		loc.y -= amount;
 	}
 	if (kbd.KeyIsPressed('S'))
 	{
-		loc.y++;
+		loc.y += amount;
 	}
 	if (kbd.KeyIsPressed('A'))
 	{
-		loc.x--;
+		loc.x -= amount;
 	}
 	if (kbd.KeyIsPressed('D'))
 	{
-		loc.x++;
+		loc.x += amount;
 	}
 }
 
 void LightSaber::P2MovementUpdate(Keyboard & kbd)
 {
+	float amount = 2.0f;
 	if (kbd.KeyIsPressed(VK_UP))
 	{
-		loc.y--;
+		loc.y -= amount;
 	}
 	if (kbd.KeyIsPressed(VK_DOWN))
 	{
-		loc.y++;
+		loc.y += amount;
 	}
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		loc.x--;
+		loc.x -= amount;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		loc.x++;
+		loc.x += amount;
 	}
 }
 
