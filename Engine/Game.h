@@ -54,12 +54,11 @@ class Game
 {
 	enum
 	{
-		PLAYER1,
-		PLAYER2,
-
-		// NOTE:	Make sure number of characters is 
-		//			last in the enumeration list 
-		NUMBER_OF_CHRS
+		// Note: keep the following settings
+		// as it's for array access and size declaration 
+		PLAYER1 = 0,
+		PLAYER2 = 1,
+		NUMBER_OF_CHRS = 2
 	};
 public:
 	Game( class MainWindow& wnd );
@@ -72,8 +71,10 @@ private:
 	void CharacterSelect(bool iskeypressed);
 	void LightSaberSelect();
 	//void CharacterAnimation();
+	void UpdateCharacters();
 	void CharacterDisplay();
 	void LightsaberDisplay();
+	void UpdateLightSaber();
 	/********************************/
 	/*  User Functions              */
 	/********************************/
@@ -84,31 +85,18 @@ private:
 	std::uniform_real_distribution<float> xdist;
 	std::uniform_real_distribution<float> ydist;
 	Background back;
-	LightSaber P1Saber;
-	LightSaber P2Saber;
 	Direction dirP1;
 	Direction dirP2;
-	LightsaberColor LC;
-	LightsaberColor LC2;
-	//Characters P1Robe;
-	//Characters P2Robe;
 
 	Characters characters[NUMBER_OF_CHRS];
 
-	
-	//HeadSelect HS1;
-	//HeadSelect HS2;
 	Laser Bolt;
 	Laser Remote;
 	Menus DOit;
 	Menus mainmenu;
 	bool GameOver = false;
-	bool Player1Select = false;
-	bool Player2Select = false;
 	bool CharactersSelected = false;
 	bool LightsabersSelected = false;
-	bool Lightsaber1select =false;
-	bool Lightsaber2select = false;
 	bool GameStarted = false;
 	int MovementCounter = 0;
 	int MovementReset = 40;

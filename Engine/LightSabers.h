@@ -2,10 +2,12 @@
 #include "Graphics.h"
 #include "Vec2.h"
 #include "Keyboard.h"
+#include "LightsaberColor.h"
 
 class LightSaber
 {
 public:
+	LightSaber() = default;
 	LightSaber(Vec2& in_loc);
 
 	//Player 1 Lightsabers up
@@ -34,9 +36,7 @@ public:
 	void Downred2(Graphics& gfx);
 	void Downwhite2(Graphics& gfx);
 	
-	// movement
-	void P1MovementUpdate(Keyboard& kbd);
-	void P2MovementUpdate(Keyboard& kbd);
+	// collision
 	void P1Collision();
 	void P2Collision();
 
@@ -44,4 +44,9 @@ private:
 	static constexpr float width = 25;
 	static constexpr float height = 200;
 	Vec2 loc;
+public:
+	bool isSelected = false;
+	LightsaberColor saberColor = LightsaberColor::DEFAULT;
+	void LightSaber::Move(Vec2 moveAmount);
+	void (LightSaber::*DrawLightSaber)(Graphics&);
 };

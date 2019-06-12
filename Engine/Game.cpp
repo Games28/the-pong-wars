@@ -30,11 +30,9 @@ Game::Game( MainWindow& wnd )
 	rng(std::random_device()()),
 	xdist(-1.0f,1.0f),
 	ydist(-1.0f,1.0f),
-	P2Saber(Vec2{ 585,160 }),
-	P1Saber(Vec2{210,160}),
 	//P1Robe(Vec2{100,210}),
 	//P2Robe(Vec2{600,210}),
-	characters{{Vec2{100,210}}, Vec2{600,210} },
+	characters{ {Vec2{100,210}, Vec2{210,160}}, {Vec2{600,210}, Vec2{ 585,160 } } },
 	Bolt(Vec2{380,280},Vec2{xdist(rng),ydist(rng)}),
 	Remote(Vec2{380,280}),
 	DOit(gfx),
@@ -42,7 +40,8 @@ Game::Game( MainWindow& wnd )
 	
 	
 {
-	
+	characters[PLAYER1].DrawCharacter = &Graphics::ahsoka1head;
+	characters[PLAYER2].DrawCharacter = &Graphics::ahsoka2head;
 }
 
 void Game::Go()
@@ -54,181 +53,187 @@ void Game::Go()
 }
 void Game::UpdateModel()
 {
-	if (!CharactersSelected || !LightsabersSelected)
+	//if (!CharactersSelected || !LightsabersSelected)
 	{
+
+
 		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
 
 		LightSaberSelect();
 	}
-	else
+	//else
 	{
 		GameStarted = true;
 	}
 	if (GameStarted)
 	{
-		float moveAmount = 2.0f;
-		//keyboard update
-		if (wnd.kbd.KeyIsPressed('W'))
-		{
-			characters[PLAYER1].Move( Vec2( 0,-moveAmount));
-		}
-		if (wnd.kbd.KeyIsPressed('S'))
-		{
-			characters[PLAYER1].Move(Vec2( 0,  moveAmount));
-		}
-		if (wnd.kbd.KeyIsPressed('A'))
-		{
-			characters[PLAYER1].Move(Vec2(-moveAmount,  0));
-		}
-		if (wnd.kbd.KeyIsPressed('D'))
-		{
-			characters[PLAYER1].Move(Vec2( moveAmount,  0));
-		}
-		if (wnd.kbd.KeyIsPressed(VK_UP))
-		{
-			characters[PLAYER2].Move(Vec2(0, -moveAmount));
-		}
-		if (wnd.kbd.KeyIsPressed(VK_DOWN))
-		{
-			characters[PLAYER2].Move(Vec2(0,  moveAmount));
-		}
-		if (wnd.kbd.KeyIsPressed(VK_LEFT))
-		{
-			characters[PLAYER2].Move(Vec2(-moveAmount, 0));
-		}
-		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-		{
-			characters[PLAYER2].Move(Vec2(moveAmount, 0));
-		}
-		P1Saber.P1MovementUpdate(wnd.kbd);
-		P2Saber.P2MovementUpdate(wnd.kbd);
+		
+		UpdateCharacters();
 
 		//collsion 
-		P1Saber.P1Collision();
+		//P1Saber.P1Collision();
 		//P1Robe.Player1Collision();
-		P2Saber.P2Collision();
+		//P2Saber.P2Collision();
 		//P2Robe.Player2Collision();
 
 	}
 	
 	
 }
+void Game::UpdateCharacters()
+{
+	float moveAmount = 2.0f;
+	//keyboard update
+	if (wnd.kbd.KeyIsPressed('W'))
+	{
+		characters[PLAYER1].Move(Vec2(0, -moveAmount));
+	}
+	if (wnd.kbd.KeyIsPressed('S'))
+	{
+		characters[PLAYER1].Move(Vec2(0, moveAmount));
+	}
+	if (wnd.kbd.KeyIsPressed('A'))
+	{
+		characters[PLAYER1].Move(Vec2(-moveAmount, 0));
+	}
+	if (wnd.kbd.KeyIsPressed('D'))
+	{
+		characters[PLAYER1].Move(Vec2(moveAmount, 0));
+	}
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		characters[PLAYER2].Move(Vec2(0, -moveAmount));
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		characters[PLAYER2].Move(Vec2(0, moveAmount));
+	}
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		characters[PLAYER2].Move(Vec2(-moveAmount, 0));
+	}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		characters[PLAYER2].Move(Vec2(moveAmount, 0));
+	}
+}
+
 
 void Game::CharacterSelect(bool iskeypressed)
 {
 	if (!iskeypressed)
 	{
-		if (!Player1Select)
+		//if (!Player1Select)
 		{
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
-				characters[PLAYER1].HS = HeadSelect::ANAKIN1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::anakin1head;
+				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				characters[PLAYER1].HS = HeadSelect::MARAJADE1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::Marajade1head;
+				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				characters[PLAYER1].HS = HeadSelect::EMPEROR1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::emperor1head;
+				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				characters[PLAYER1].HS = HeadSelect::LEIA1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::Leia1head;
+				characters[PLAYER1].isSelected = true;
 
 			}
 
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				characters[PLAYER1].HS = HeadSelect::LUKE1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::Luke1head;
+				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				characters[PLAYER1].HS = HeadSelect::REY1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::Rey1head;
+				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				characters[PLAYER1].HS = HeadSelect::OBIWAN1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::Obiwan1head;
+				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				characters[PLAYER1].HS = HeadSelect::AHSOKA1;
-				Player1Select = true;
+				characters[PLAYER1].DrawCharacter = &Graphics::ahsoka1head;
+				characters[PLAYER1].isSelected = true;
 
 			}
 		}
-		else {
+		//else {
 			//Player1Select = false;
-		}
+		//}
 
 	}
 	
 	
 	if (iskeypressed)
 	{
-		if (!Player2Select)
+		//if (!Player2Select)
 		{
 			//p2
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
-				Player2Select = true;
-				characters[PLAYER2].HS = HeadSelect::ANAKIN2;
+				characters[PLAYER2].DrawCharacter = &Graphics::anakin2head;
+				characters[PLAYER2].isSelected = true;
 				
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				characters[PLAYER2].HS = HeadSelect::MARAJADE2;
-				Player2Select = true;
+				characters[PLAYER2].DrawCharacter = &Graphics::Marajade2head;
+				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				characters[PLAYER2].HS = HeadSelect::EMPEROR2;
-				Player2Select = true;
+				characters[PLAYER2].DrawCharacter = &Graphics::emperor2head;
+				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				characters[PLAYER2].HS = HeadSelect::LEIA2;
-				Player2Select = true;
+				characters[PLAYER2].DrawCharacter = &Graphics::Leia2head;
+				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				characters[PLAYER2].HS = HeadSelect::LUKE2;
-				Player2Select = true;
+				characters[PLAYER2].DrawCharacter = &Graphics::Luke2head;
+				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				characters[PLAYER2].HS = HeadSelect::REY2;
-				Player2Select = true;
+				characters[PLAYER2].DrawCharacter = &Graphics::Rey2head;
+				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				characters[PLAYER2].HS = HeadSelect::OBIWAN2;
-				Player2Select = true;
+				characters[PLAYER2].DrawCharacter = &Graphics::Obiwan2head;
+				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				characters[PLAYER2].HS = HeadSelect::AHSOKA2;
-				Player2Select = true;
+				characters[PLAYER2].DrawCharacter = &Graphics::ahsoka2head;
+				characters[PLAYER2].isSelected = true;
 			}
 
 
 		}
-		else {
+		//else {
 			//Player2Select = true;
-		}
+		//}
 	}
 	
-	if (Player1Select && Player2Select)
+	if (characters[PLAYER1].isSelected && characters[PLAYER2].isSelected)
 	{
 		CharactersSelected = true;
 	}
@@ -237,64 +242,72 @@ void Game::CharacterSelect(bool iskeypressed)
 void Game::LightSaberSelect()
 {
 	//lightsaber color binding p1
-	if (!Lightsaber1select)
+	//if (!Lightsaber1select)
 	{
 		if (wnd.kbd.KeyIsPressed('1'))
 		{
-			LC = LightsaberColor::BLUE1;
-			Lightsaber1select = true;
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upblue1;
+			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::BLUE1;
+			characters[PLAYER1].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('2'))
 		{
-			LC = LightsaberColor::GREEN1;
-			Lightsaber1select = true;
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upgreen1;
+			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::GREEN1;
+			characters[PLAYER1].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('3'))
 		{
-			LC = LightsaberColor::RED1;
-			Lightsaber1select = true;
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upred1;
+			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::RED1;
+			characters[PLAYER1].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('4'))
 		{
-			LC = LightsaberColor::PURPLE1;
-			Lightsaber1select = true;
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Uppurple1;
+			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::PURPLE1;
+			characters[PLAYER1].lightSaber.isSelected = true;
 		}
 	}
-	else {
+	//else {
 		//Lightsaber1select = false;
-	}
+	//}
 	//p2
 
-	if (!Lightsaber2select)
+	//if (!Lightsaber2select)
 	{
 
 
 		if (wnd.kbd.KeyIsPressed('5'))
 		{
-			LC2 = LightsaberColor::BLUE2;
-			Lightsaber2select = true;
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upblue2;
+			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::BLUE2;
+			characters[PLAYER2].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('7'))
 		{
-			LC2 = LightsaberColor::GREEN2;
-			Lightsaber2select = true;
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upgreen2;
+			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::GREEN2;
+			characters[PLAYER2].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('6'))
 		{
-			LC2 = LightsaberColor::RED2;
-			Lightsaber2select = true;
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upred2;
+			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::RED2;
+			characters[PLAYER2].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('8'))
 		{
-			LC2 = LightsaberColor::PURPLE2;
-			Lightsaber2select = true;
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Uppurple2;
+			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::PURPLE2;
+			characters[PLAYER2].lightSaber.isSelected = true;
 		}
 	}
-	else {
+	//else {
 		//Lightsaber2select = false;
-	}
+	//}
 
-	if (Lightsaber1select && Lightsaber2select)
+	if (characters[PLAYER1].lightSaber.isSelected && characters[PLAYER2].lightSaber.isSelected)
 	{
 		LightsabersSelected = true;
 	}
@@ -394,174 +407,105 @@ void Game::LightSaberSelect()
 
 void Game::CharacterDisplay()
 {
-	//p1 character select art
+	// Loop through characters and call selected character 
+	// via a function pointer
 	for (int i = 0; i < NUMBER_OF_CHRS; i++)
 	{
-		
-		switch (characters[i].HS)
+		(this->gfx.*(characters[i].DrawCharacter))((int)characters[i].loc.x, (int)characters[i].loc.y);
 
-		{
-		case HeadSelect::ANAKIN1:
-		{
-
-			characters[i].anakin1head(gfx);
-		}break;
-		case HeadSelect::MARAJADE1:
-		{
-
-			characters[i].Marajade1head(gfx);
-		}break;
-		case HeadSelect::EMPEROR1:
-		{
-
-			characters[i].emperor1head(gfx);
-		}break;
-		case HeadSelect::LEIA1:
-		{
-
-			characters[i].Leia1head(gfx);
-		}break;
-		case  HeadSelect::LUKE1:
-		{
-
-			characters[i].Luke1head(gfx);
-		}break;
-
-		case  HeadSelect::REY1:
-		{
-
-			characters[i].Rey1head(gfx);
-		}break;
-		case  HeadSelect::OBIWAN1:
-		{
-
-			characters[i].Obiwan1head(gfx);
-		}break;
-		case  HeadSelect::AHSOKA1:
-		{
-
-			characters[i].ahsoka1head(gfx);
-		}break;
-
-
-		//p2
-		case HeadSelect::LUKE2:
-		{
-			characters[i].Luke2head(gfx);
-		}break;
-
-		case HeadSelect::REY2:
-		{
-			characters[i].Rey2head(gfx);
-		}break;
-		case HeadSelect::OBIWAN2:
-		{
-			characters[i].Obiwan2head(gfx);
-		}break;
-		case HeadSelect::AHSOKA2:
-		{
-			characters[i].ahsoka2head(gfx);
-		}break;
-		case HeadSelect::ANAKIN2:
-		{
-			characters[i].anakin2head(gfx);
-		}break;
-		case HeadSelect::MARAJADE2:
-		{
-			characters[i].Marajade2head(gfx);
-		}break;
-		case HeadSelect::EMPEROR2:
-		{
-			characters[i].emperor2head(gfx);
-		}break;
-		case HeadSelect::LEIA2:
-		{
-			characters[i].Leia2head(gfx);
-		}break;
-		}
 	}
 }
-
-void Game::LightsaberDisplay()
+void Game::UpdateLightSaber()
 {
-		//p1
+	//p1
 	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
-		if (LC == LightsaberColor::BLUE1)
+		if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::BLUE1)
 		{
-			P1Saber.Upblue1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upblue1;
 		}
-		else if (LC == LightsaberColor::GREEN1)
+		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::GREEN1)
 		{
-			P1Saber.Upgreen1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upgreen1;
 		}
-		else if (LC == LightsaberColor::RED1)
+		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::RED1)
 		{
-			P1Saber.Upred1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upred1;
 		}
-		else if (LC == LightsaberColor::PURPLE1)
+		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::PURPLE1)
 		{
-			P1Saber.Uppurple1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Uppurple1;
 		}
 
 
 	}
 	else {
-		if (LC == LightsaberColor::BLUE1)
+		if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::BLUE1)
 		{
-			P1Saber.Downblue1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downblue1;
 		}
-		else if (LC == LightsaberColor::GREEN1)
+		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::GREEN1)
 		{
-			P1Saber.Downgreen1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downgreen1;
 		}
-		else if (LC == LightsaberColor::RED1)
+		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::RED1)
 		{
-			P1Saber.Downred1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downred1;
 		}
-		else if (LC == LightsaberColor::PURPLE1)
+		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::PURPLE1)
 		{
-			P1Saber.Downpurple1(gfx);
+			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downpurple1;
 		}
 
 	}
 	//p2
 	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
-		if (LC2 == LightsaberColor::BLUE2)
+		if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::BLUE2)
 		{
-			P2Saber.Upblue2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upblue2;
 		}
-		else if (LC2 == LightsaberColor::GREEN2)
+		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::GREEN2)
 		{
-			P2Saber.Upgreen2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upgreen2;
 		}
-		else if (LC2 == LightsaberColor::RED2)
+		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::RED2)
 		{
-			P2Saber.Upred2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upred2;
 		}
-		else if (LC2 == LightsaberColor::PURPLE2)
+		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::PURPLE2)
 		{
-			P2Saber.Uppurple2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Uppurple2;
 		}
+
+
 	}
 	else {
-		if (LC2 == LightsaberColor::BLUE2)
+		if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::BLUE2)
 		{
-			P2Saber.Downblue2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downblue2;
 		}
-		else if (LC2 == LightsaberColor::GREEN2)
+		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::GREEN2)
 		{
-			P2Saber.Downgreen2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downgreen2;
 		}
-		else if (LC2 == LightsaberColor::RED2)
+		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::RED2)
 		{
-			P2Saber.Downred2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downred2;
 		}
-		else if (LC2 == LightsaberColor::PURPLE2)
+		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::PURPLE2)
 		{
-			P2Saber.Downpurple2(gfx);
+			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downpurple2;
 		}
+
+	}
+}
+
+void Game::LightsaberDisplay()
+{
+	for (int i = 0; i < NUMBER_OF_CHRS; i++)
+	{
+		(characters[i].lightSaber.*(characters[i].lightSaber.DrawLightSaber))(gfx);
 
 	}
 }
@@ -576,17 +520,21 @@ void Game::ComposeFrame()
 	back.Theemperor(gfx);
 	back.Throne(gfx);
 	
-	if (!GameStarted)
+	if (!CharactersSelected )
 	{
 		mainmenu.MainMenu(gfx);
 	}
-	if (CharactersSelected && LightsabersSelected)
+	if (CharactersSelected)
 	{
-       
+
 		CharacterDisplay();
+	}
+	if(LightsabersSelected)
+	{
+		UpdateLightSaber();
 		LightsaberDisplay();
 	}
-	else if (GameStarted)
+	if (GameStarted)
 	{
 
 

@@ -94230,46 +94230,9 @@ void LightSaber::Downwhite2(Graphics & gfx)
 
 }
 
-void LightSaber::P1MovementUpdate(Keyboard & kbd)
+void LightSaber::Move(Vec2 moveAmount)
 {
-	float amount = 2.0f;
-	if (kbd.KeyIsPressed('W'))
-	{
-		loc.y -= amount;
-	}
-	if (kbd.KeyIsPressed('S'))
-	{
-		loc.y += amount;
-	}
-	if (kbd.KeyIsPressed('A'))
-	{
-		loc.x -= amount;
-	}
-	if (kbd.KeyIsPressed('D'))
-	{
-		loc.x += amount;
-	}
-}
-
-void LightSaber::P2MovementUpdate(Keyboard & kbd)
-{
-	float amount = 2.0f;
-	if (kbd.KeyIsPressed(VK_UP))
-	{
-		loc.y -= amount;
-	}
-	if (kbd.KeyIsPressed(VK_DOWN))
-	{
-		loc.y += amount;
-	}
-	if (kbd.KeyIsPressed(VK_LEFT))
-	{
-		loc.x -= amount;
-	}
-	if (kbd.KeyIsPressed(VK_RIGHT))
-	{
-		loc.x += amount;
-	}
+	loc += moveAmount;
 }
 
 void LightSaber::P1Collision()
