@@ -549,7 +549,16 @@ void Game::ComposeFrame()
 		//CharacterAnimation();
 
 	}
-		
+	static int saberlength = 0;
+	if (wnd.kbd.KeyIsPressed('G'))
+	{
+		saberlength++;
+	}
+	if (wnd.kbd.KeyIsPressed('H'))
+	{
+		saberlength--;
+	}
+	gfx.DrawSaber(100, 400,saberlength, Colors::Blue);
 		
 	
 	}
