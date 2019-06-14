@@ -522,6 +522,8 @@ void Game::ComposeFrame()
 	
 	if (!CharactersSelected )
 	{
+		gfx.PstartPosition(100, 210);
+		gfx.PstartPosition(600,210);
 		mainmenu.MainMenu(gfx);
 	}
 	if (CharactersSelected)
@@ -553,15 +555,13 @@ void Game::ComposeFrame()
 	if (wnd.kbd.KeyIsPressed('G'))
 	{
 		saberlength++;
-
 	}
 	if (wnd.kbd.KeyIsPressed('H'))
 	{
 		saberlength--;
-		if (saberlength < 0)
-			saberlength = 0;
 	}
-	gfx.DrawSaber(200, 400,saberlength, Colors::Blue);
+	gfx.DrawSaber(140, 370,saberlength, Colors::Blue);
+	gfx.DrawSaber(640, 370, saberlength, Colors::Green);
 		
 	
 	}
