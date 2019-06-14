@@ -265,13 +265,18 @@ void Graphics::DrawSaber(int x, int y,int length, Color c)
 	int HiltHeight = 58;
 	int BaseHeight = y - HiltHeight;
 	TheHilt(x,BaseHeight);
-	
-	for (int i = 0; i < length; i++)
+	if (length > 0)
 	{
+		SaberTop(x, BaseHeight - (length * SaberBitHeight), c);
+		if (length > 1)
+		{
+			for (int i = 1; i < length; i++)
+			{
 
-		SaberBit(x, BaseHeight - (i * SaberBitHeight), c);
+				SaberBit(x, BaseHeight - (i * SaberBitHeight), c);
+			}
+		}
 	}
-	SaberTop(x, BaseHeight - (length * SaberBitWidth), c);
 }
 
 void Graphics::SaberBit(int x, int y, Color c)

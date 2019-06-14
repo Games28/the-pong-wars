@@ -5,6 +5,7 @@
 #include "Vec2.h"
 #include "HeadSelect.h"
 #include "LightSabers.h"
+#include "ArtHeads.h"
 
 class Characters
 {
@@ -24,6 +25,6 @@ private:
 public:
 	bool isSelected = false;
 	Vec2 loc;
-	void (Graphics::*DrawCharacter)(int, int);
+	void (ArtHeads::*DrawCharacter)(int, int, Graphics&);
 	LightSaber lightSaber;
 };

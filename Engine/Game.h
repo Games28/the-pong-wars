@@ -28,6 +28,8 @@
 #include "Direction.h"
 
 #include "Characters.h"
+#include "ArtHeads.h"
+
 #include "LightSabers.h"
 #include "LightsaberColor.h"
 #include "Menus.h"
@@ -89,7 +91,7 @@ private:
 	Direction dirP2;
 
 	Characters characters[NUMBER_OF_CHRS];
-
+	ArtHeads artHeads;
 	Laser Bolt;
 	Laser Remote;
 	Menus DOit;

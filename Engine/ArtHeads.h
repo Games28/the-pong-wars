@@ -3,6 +3,8 @@ class Graphics;
 
 class ArtHeads
 {
+public:
+	ArtHeads() {};
 	void Leia1head( int x, int y, Graphics& gfx);
 	void Luke1head( int x, int y, Graphics& gfx);
 	void ahsoka1head( int x, int y, Graphics& gfx);
