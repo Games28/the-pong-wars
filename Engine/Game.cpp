@@ -21,7 +21,7 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-
+void robeselect(int& robetype, Keyboard& kbd);
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -524,6 +524,17 @@ void Game::ComposeFrame()
 	{
 		gfx.PstartPosition(100, 210);
 		gfx.PstartPosition(600,210);
+		static int saberlength = 0;
+		if (wnd.kbd.KeyIsPressed('G'))
+		{
+			saberlength++;
+		}
+		if (wnd.kbd.KeyIsPressed('H'))
+		{
+			saberlength--;
+		}
+		gfx.DrawSaber(140, 370, saberlength, Colors::Blue);
+		gfx.DrawSaber(640, 370, saberlength, Colors::Green);
 		mainmenu.MainMenu(gfx);
 	}
 	if (CharactersSelected)
@@ -551,17 +562,42 @@ void Game::ComposeFrame()
 		//CharacterAnimation();
 
 	}
-	static int saberlength = 0;
-	if (wnd.kbd.KeyIsPressed('G'))
+	
+	static int robetype = 0;
+	robeselect(robetype, wnd.kbd);
+	switch (robetype)
 	{
-		saberlength++;
-	}
-	if (wnd.kbd.KeyIsPressed('H'))
-	{
-		saberlength--;
-	}
-	gfx.DrawSaber(140, 370,saberlength, Colors::Blue);
-	gfx.DrawSaber(640, 370, saberlength, Colors::Green);
+	case 0:
 		
+		gfx.Robe1(100, 100);
+		break;
+	case 1:
+		
+		gfx.Robe1falling(100, 100);
+		break;
+	case 2:
+		
+		gfx.Robe1fallen(100, 100);
+		break;
+	}
 	
 	}
+void robeselect(int& robetype,Keyboard& kbd)
+{
+	if (robetype > 2)
+	{
+		robetype = 2;
+	}
+	if (robetype < 0)
+	{
+		robetype = 0;
+	}
+	if (kbd.KeyIsPressed(VK_UP))
+	{
+		robetype++;
+	}
+	if (kbd.KeyIsPressed(VK_DOWN))
+	{
+		robetype--;
+	}
+}

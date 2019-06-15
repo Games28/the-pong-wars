@@ -72,6 +72,7 @@ public:
 	void SaberTop(int x, int y, Color c);
 	void TheSaber(int x, int y);
 	void TheHilt(int x, int y);
+
 	void PstartPosition(int x, int y);
 	//Player 1 characters
 	void Leia1head( int x, int y);
