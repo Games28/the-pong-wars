@@ -136,6 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArtRobes.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="ChiliException.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Meter.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="ArtHeads.h" />
     <ClInclude Include="RectF.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sound.h" />
@@ -161,6 +163,7 @@
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArtRobes.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Characters.cpp" />
     <ClCompile Include="DXErr.cpp" />
@@ -173,6 +176,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="ArtHeads.cpp" />
     <ClCompile Include="RectF.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stars.cpp" />

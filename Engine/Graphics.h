@@ -74,39 +74,6 @@ public:
 	void TheHilt(int x, int y);
 
 	void PstartPosition(int x, int y);
-	//Player 1 characters
-	void Leia1head( int x, int y);
-	void Luke1head( int x, int y);
-	void ahsoka1head( int x, int y);
-	void emperor1head( int x, int y);
-	void anakin1head( int x, int y);
-	void Marajade1head( int x, int y);
-	void Rey1head( int x, int y);
-	void Obiwan1head( int x, int y);
-	//player 1 robe
-	void Robe1( int x, int y);
-	void Robe1falling( int x, int y);
-	void Robe1fallen( int x, int y);
-	void Robe1Stand( int x, int y);
-	void Robe1moveX( int x, int y);
-	void Robe1moveY( int x, int y);
-
-	//player 2 characters
-	void Leia2head( int x, int y);
-	void Luke2head( int x, int y);
-	void ahsoka2head( int x, int y);
-	void emperor2head( int x, int y);
-	void anakin2head( int x, int y);
-	void Marajade2head( int x, int y);
-	void Rey2head( int x, int y);
-	void Obiwan2head( int x, int y);
-	//player 2 robe
-	void Robe2( int x, int y);
-	void Robe2falling( int x, int y);
-	void Robe2fallen( int x, int y);
-	void Robe2Stand( int x, int y);
-	void Robe2moveX( int x, int y);
-	void Robe2moveY( int x, int y);
 
 	~Graphics();
 private:

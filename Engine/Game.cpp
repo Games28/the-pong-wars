@@ -21,7 +21,7 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-void robeselect(int& robetype, Keyboard& kbd);
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -40,8 +40,8 @@ Game::Game( MainWindow& wnd )
 	
 	
 {
-	characters[PLAYER1].DrawCharacter = &Graphics::ahsoka1head;
-	characters[PLAYER2].DrawCharacter = &Graphics::ahsoka2head;
+	characters[PLAYER1].DrawCharacter = &ArtHeads::ahsoka1head;
+	characters[PLAYER2].DrawCharacter = &ArtHeads::ahsoka2head;
 }
 
 void Game::Go()
@@ -127,47 +127,47 @@ void Game::CharacterSelect(bool iskeypressed)
 		{
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::anakin1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::anakin1head;
 				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::Marajade1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::Marajade1head;
 				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::emperor1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::emperor1head;
 				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::Leia1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::Leia1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::Luke1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::Luke1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::Rey1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::Rey1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::Obiwan1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::Obiwan1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				characters[PLAYER1].DrawCharacter = &Graphics::ahsoka1head;
+				characters[PLAYER1].DrawCharacter = &ArtHeads::ahsoka1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
@@ -186,43 +186,43 @@ void Game::CharacterSelect(bool iskeypressed)
 			//p2
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::anakin2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::anakin2head;
 				characters[PLAYER2].isSelected = true;
 				
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::Marajade2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::Marajade2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::emperor2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::emperor2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::Leia2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::Leia2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::Luke2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::Luke2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::Rey2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::Rey2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::Obiwan2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::Obiwan2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				characters[PLAYER2].DrawCharacter = &Graphics::ahsoka2head;
+				characters[PLAYER2].DrawCharacter = &ArtHeads::ahsoka2head;
 				characters[PLAYER2].isSelected = true;
 			}
 
@@ -411,7 +411,7 @@ void Game::CharacterDisplay()
 	// via a function pointer
 	for (int i = 0; i < NUMBER_OF_CHRS; i++)
 	{
-		(this->gfx.*(characters[i].DrawCharacter))((int)characters[i].loc.x, (int)characters[i].loc.y);
+		(this->artHeads.*(characters[i].DrawCharacter))((int)characters[i].loc.x, (int)characters[i].loc.y, gfx);
 
 	}
 }
@@ -524,17 +524,6 @@ void Game::ComposeFrame()
 	{
 		gfx.PstartPosition(100, 210);
 		gfx.PstartPosition(600,210);
-		static int saberlength = 0;
-		if (wnd.kbd.KeyIsPressed('G'))
-		{
-			saberlength++;
-		}
-		if (wnd.kbd.KeyIsPressed('H'))
-		{
-			saberlength--;
-		}
-		gfx.DrawSaber(140, 370, saberlength, Colors::Blue);
-		gfx.DrawSaber(640, 370, saberlength, Colors::Green);
 		mainmenu.MainMenu(gfx);
 	}
 	if (CharactersSelected)
@@ -562,42 +551,19 @@ void Game::ComposeFrame()
 		//CharacterAnimation();
 
 	}
-	
-	static int robetype = 0;
-	robeselect(robetype, wnd.kbd);
-	switch (robetype)
+	static int saberlength = 0;
+	if (wnd.kbd.KeyIsPressed('G'))
 	{
-	case 0:
-		
-		gfx.Robe1(100, 100);
-		break;
-	case 1:
-		
-		gfx.Robe1falling(100, 100);
-		break;
-	case 2:
-		
-		gfx.Robe1fallen(100, 100);
-		break;
+		saberlength++;
 	}
+	if (wnd.kbd.KeyIsPressed('H'))
+	{
+		saberlength--;
+		if (saberlength < 0)
+			saberlength = 0;
+	}
+	gfx.DrawSaber(140, 370,saberlength, Colors::Blue);
+	gfx.DrawSaber(640, 370, saberlength, Colors::Green);
+		
 	
 	}
-void robeselect(int& robetype,Keyboard& kbd)
-{
-	if (robetype > 2)
-	{
-		robetype = 2;
-	}
-	if (robetype < 0)
-	{
-		robetype = 0;
-	}
-	if (kbd.KeyIsPressed(VK_UP))
-	{
-		robetype++;
-	}
-	if (kbd.KeyIsPressed(VK_DOWN))
-	{
-		robetype--;
-	}
-}
