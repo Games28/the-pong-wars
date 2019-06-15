@@ -1,10 +1,10 @@
 #include "Characters.h"
 
-Characters::Characters(Vec2 &player_loc, Vec2 &saber_loc)
-	:
-	loc(player_loc),
-	lightSaber(saber_loc)
+Characters::Characters(Vec2 &player_loc, Vec2 &saber_loc, Vec2& robe_loc)
 {
+	loc = player_loc;
+	lightSaber = saber_loc;
+	artrobes = robe_loc;
 }
 
 void Characters::Move(Vec2 moveAmount)

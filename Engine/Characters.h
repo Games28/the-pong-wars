@@ -6,12 +6,13 @@
 #include "HeadSelect.h"
 #include "LightSabers.h"
 #include "ArtHeads.h"
+#include "ArtRobes.h"
 
 class Characters
 {
 public:
 	Characters() = default;
-	Characters(Vec2& player_loc, Vec2 &saber_loc);
+	Characters(Vec2& player_loc, Vec2 &saber_loc, Vec2& robe_loc);
 
 	//movement
 	void Move(Vec2 moveAmount);
@@ -27,4 +28,5 @@ public:
 	Vec2 loc;
 	void (ArtHeads::*DrawCharacter)(int, int, Graphics&);
 	LightSaber lightSaber;
+	ArtRobes artrobes;
 };

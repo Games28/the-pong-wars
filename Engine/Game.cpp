@@ -32,7 +32,7 @@ Game::Game( MainWindow& wnd )
 	ydist(-1.0f,1.0f),
 	//P1Robe(Vec2{100,210}),
 	//P2Robe(Vec2{600,210}),
-	characters{ {Vec2{100,210}, Vec2{210,160}}, {Vec2{600,210}, Vec2{ 585,160 } } },
+	characters{ {Vec2{100,210}, Vec2{210,160}}, {Vec2{600,210}, Vec2{ 585,160 } }, {Vec2{100,240}, Vec2{ 600,240 }} },
 	Bolt(Vec2{380,280},Vec2{xdist(rng),ydist(rng)}),
 	Remote(Vec2{380,280}),
 	DOit(gfx),

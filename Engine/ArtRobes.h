@@ -1,8 +1,12 @@
 #pragma once
+#include "Vec2.h"
 class Graphics;
 
 class ArtRobes
 {
+public:
+	ArtRobes() = default;
+	ArtRobes(Vec2& loc_in);
 	//player 1 robe
 	void Robe1( int x,  int y, Graphics &gfx);
 	void Robe1falling( int x,  int y, Graphics &gfx);
@@ -18,5 +22,7 @@ class ArtRobes
 	void Robe2Stand( int x,  int y, Graphics &gfx);
 	void Robe2moveX( int x,  int y, Graphics &gfx);
 	void Robe2moveY( int x,  int y, Graphics &gfx);
+private:
+	Vec2 loc;
 
 };

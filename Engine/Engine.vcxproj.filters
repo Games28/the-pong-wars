@@ -90,11 +90,11 @@
     <ClInclude Include="Menus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArtHeads.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ArtRobes.h">
-      <Filter>Header Files</Filter>
+      <Filter>characters</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtHeads.h">
+      <Filter>characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
