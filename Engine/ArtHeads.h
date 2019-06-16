@@ -6,6 +6,7 @@ class ArtHeads
 public:
 	ArtHeads() = default;
 
+	//player 1 characters
 	void Leia1head( int x, int y, Graphics& gfx);
 	void Luke1head( int x, int y, Graphics& gfx);
 	void ahsoka1head( int x, int y, Graphics& gfx);

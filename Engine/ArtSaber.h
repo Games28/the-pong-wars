@@ -32,5 +32,13 @@ public:
 	void Downpurple2(int x, int y, Graphics& gfx);
 	void Downred2(int x, int y, Graphics& gfx);
 	void Downwhite2(int x, int y, Graphics& gfx);
+
+	//Updated Saber parts
+	void Bit(int x, int y, Color c);
+	void Top(int x, int y, Color c);
+	void Hilt(int x, int y);
+
+	//Updated Saber Draw
+	void Draw(int x, int y, int length, Color c);
 };
 

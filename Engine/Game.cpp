@@ -436,7 +436,7 @@ void Game::CharacterDisplay()
 	// via a function pointer
 	for (int i = 0; i < NUMBER_OF_CHRS; i++)
 	{
-		characters[i].Draw(gfx, artHeads, artRobes, artSaber);
+		characters[i].Draw(gfx);
 	}
 }
 void Game::UpdateLightSaber()

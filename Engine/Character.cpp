@@ -1,6 +1,6 @@
-#include "Characters.h"
+#include "Character.h"
 
-Characters::Characters(Vec2 &head_loc, Vec2 & robe_loc, Vec2& saber_loc)
+Character::Character(Vec2 &head_loc, Vec2 & robe_loc, Vec2& saber_loc)
 	:
 	lightSaber(saber_loc)
 {
@@ -13,26 +13,26 @@ Characters::Characters(Vec2 &head_loc, Vec2 & robe_loc, Vec2& saber_loc)
 	
 }
 
-void Characters::Move(Vec2 moveAmount)
+void Character::Move(Vec2 moveAmount)
 {
 	loc.head += moveAmount;
 	loc.robe += moveAmount;
 	lightSaber.Move(moveAmount);
 }
 
-void Characters::Draw(Graphics& gfx, ArtHeads &artHead, ArtRobes &artRobe, ArtSaber &artSaber)
+void Character::Draw(Graphics& gfx)
 {
-	(artRobe.*(DrawRobe))((int)loc.robe.x, (int)loc.robe.y, gfx);
-	(artHead.*(DrawHead))((int)loc.head.x, (int)loc.head.y, gfx);
+	(gfx.robes.*(DrawRobe))((int)loc.robe.x, (int)loc.robe.y, gfx);
+	(gfx.heads.*(DrawHead))((int)loc.head.x, (int)loc.head.y, gfx);
 	if (lightSaber.DrawSaber[0] && lightSaber.DrawSaber[1])
 	{
 		if (lightSaber.isdown)
 		{
-			(artSaber.*(lightSaber.DrawSaber[1]))((int)lightSaber.loc.x, (int)lightSaber.loc.y + 130, gfx);
+			(gfx.saber.*(lightSaber.DrawSaber[1]))((int)lightSaber.loc.x, (int)lightSaber.loc.y + 130, gfx);
 		}
 		else
 		{
-			(artSaber.*(lightSaber.DrawSaber[0]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, gfx);
+			(gfx.saber.*(lightSaber.DrawSaber[0]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, gfx);
 		}
 	}
 }

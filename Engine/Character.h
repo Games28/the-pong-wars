@@ -9,12 +9,12 @@
 #include "ArtRobes.h"
 #include "ArtSaber.h"
 
-class Characters
+class Character
 {
 
 public:
-	Characters() = default;
-	Characters(Vec2& head_loc, Vec2& robe_loc, Vec2& saber_loc);
+	Character() = default;
+	Character(Vec2& head_loc, Vec2& robe_loc, Vec2& saber_loc);
 
 	//movement
 	void Move(Vec2 moveAmount);
@@ -42,5 +42,5 @@ public:
 	void (ArtHeads::*DrawHead)(int, int, Graphics&);
 	void (ArtRobes::*DrawRobe)(int, int, Graphics&);
 
-	void Draw(Graphics& gfx, ArtHeads &artHead, ArtRobes & artRobe, ArtSaber &artSaber);
+	void Draw(Graphics& gfx);
 };
