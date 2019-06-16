@@ -4,6 +4,8 @@ LightSaber::LightSaber(Vec2& in_loc)
 	:
 	loc(in_loc)
 {
+	Draw[0] = &ArtSaber::DrawUp;
+	Draw[1] = &ArtSaber::DrawDown;
 }
 
 void LightSaber::Move(Vec2 moveAmount)

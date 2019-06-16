@@ -1,10 +1,19 @@
 #pragma once
 class Graphics;
-
+class Color;
 class ArtSaber
 {
 public:
 	ArtSaber() = default;
+	//Updated Saber Draw
+	void DrawUp(int x, int y, int length, Color c, Graphics& gfx);
+	void DrawDown(int x, int y, int length, Color c, Graphics& gfx);
+	//Updated Saber parts
+	void Bit(int x, int y, Color c, Graphics& gfx);
+	void Top(int x, int y, Color c, Graphics& gfx);
+	void Hilt(int x, int y, Graphics& gfx);
+	void Saber(int x, int y, Graphics& gfx);
+
 	//Player 1 Lightsabers up
 	void Upblue1(int x, int y, Graphics& gfx);
 	void Upgreen1(int x, int y, Graphics& gfx);
@@ -32,5 +41,7 @@ public:
 	void Downpurple2(int x, int y, Graphics& gfx);
 	void Downred2(int x, int y, Graphics& gfx);
 	void Downwhite2(int x, int y, Graphics& gfx);
+
+	
 };
 

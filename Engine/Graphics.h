@@ -24,7 +24,9 @@
 #include "ChiliException.h"
 #include "Colors.h"
 #include "RectF.h"
-
+#include "ArtHeads.h"
+#include "ArtRobes.h"
+#include "ArtSaber.h"
 class Graphics
 {
 public:
@@ -56,6 +58,7 @@ public:
 	{
 		PutPixel( x,y,{ unsigned char( r ),unsigned char( g ),unsigned char( b ) } );
 	}
+	//Primitives
 	void PutPixel( int x,int y,Color c );
 	void DrawRect(int x0, int y0, int x1, int y1, Color c);
 	void DrawRectDim(int x0, int y0, int width, int height, Color c)
@@ -67,11 +70,11 @@ public:
 	{
 		DrawRect(int(rect.left), int(rect.top),int(rect.right), int(rect.bottom), c);
 	}
-	void DrawSaber(int x, int y, int length, Color c);
-	void SaberBit(int x, int y, Color c);
-	void SaberTop(int x, int y, Color c);
-	void TheSaber(int x, int y);
-	void TheHilt(int x, int y);
+	
+	//Character Art
+	ArtHeads heads;
+	ArtRobes robes;
+	ArtSaber saber;
 
 	void PstartPosition(int x, int y);
 

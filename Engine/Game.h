@@ -27,10 +27,8 @@
 
 #include "Direction.h"
 
-#include "Characters.h"
-#include "ArtHeads.h"
-#include "ArtRobes.h"
-#include "ArtSaber.h"
+#include "Character.h"
+
 #include "LightSabers.h"
 #include "LightsaberColor.h"
 #include "Menus.h"
@@ -86,14 +84,13 @@ private:
 	std::mt19937 rng;
 	std::uniform_real_distribution<float> xdist;
 	std::uniform_real_distribution<float> ydist;
+
 	Background back;
 	Direction dirP1;
 	Direction dirP2;
 
-	Characters characters[NUMBER_OF_CHRS];
-	ArtRobes artRobes;
-	ArtHeads artHeads;
-	ArtSaber artSaber;
+	Character characters[NUMBER_OF_CHRS];
+	
 	Laser Bolt;
 	Laser Remote;
 	Menus DOit;
