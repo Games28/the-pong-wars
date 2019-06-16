@@ -21,6 +21,7 @@ private:
 	static constexpr float height = 200;
 	
 public:
+	int length = 0;
 	bool isSelected = false;
 	bool isdown = false;
 	Vec2 loc;

@@ -6,8 +6,8 @@ class ArtSaber
 public:
 	ArtSaber() = default;
 	//Updated Saber Draw
-	void Draw(int x, int y, int length, Color c, Graphics& gfx);
-
+	void DrawUp(int x, int y, int length, Color c, Graphics& gfx);
+	void DrawDown(int x, int y, int length, Color c, Graphics& gfx);
 	//Updated Saber parts
 	void Bit(int x, int y, Color c, Graphics& gfx);
 	void Top(int x, int y, Color c, Graphics& gfx);

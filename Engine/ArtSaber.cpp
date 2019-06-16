@@ -2,23 +2,44 @@
 #include "Graphics.h"
 #include "Colors.h"
 
-void ArtSaber::Draw(int x, int y, int length, Color c, Graphics& gfx)
+void ArtSaber::DrawUp(int x, int y, int length, Color c, Graphics& gfx)
 {
 	int SaberBitHeight = 12;
 	int SaberBitWidth = 13;
 	int SaberTopHeight = 13;
 	int HiltHeight = 58;
-	int BaseHeight = y - HiltHeight;
 
-	Hilt(x, BaseHeight, gfx);
+	Hilt(x, y, gfx);
 	if (length > 0)
 	{
-		Top(x, BaseHeight - (length * SaberBitHeight), c, gfx);
+		Top(x, y - (length * SaberBitHeight), c, gfx);
 		if (length > 1)
 		{
 			for (int i = 1; i < length; i++)
 			{
-				Bit(x, BaseHeight - (i * SaberBitHeight), c, gfx);
+				Bit(x, y - (i * SaberBitHeight), c, gfx);
+			}
+		}
+	}
+}
+
+void ArtSaber::DrawDown(int x, int y, int length, Color c, Graphics& gfx)
+{
+	int SaberBitHeight = 12;
+	int SaberBitWidth = 13;
+	int SaberTopHeight = 13;
+	int HiltHeight = 58;
+	int Base = y + HiltHeight;
+
+	Hilt(x, y, gfx);
+	if (length > 0)
+	{
+		Top(x, Base + ((length - 1) * SaberBitHeight), c, gfx);
+		if (length > 1)
+		{
+			for (int i = 0; i < length-1; i++)
+			{
+				Bit(x, Base + (i * SaberBitHeight), c, gfx);
 			}
 		}
 	}

@@ -24,15 +24,17 @@ void Character::Draw(Graphics& gfx)
 {
 	(gfx.robes.*(DrawRobe))((int)loc.robe.x, (int)loc.robe.y, gfx);
 	(gfx.heads.*(DrawHead))((int)loc.head.x, (int)loc.head.y, gfx);
-	if (lightSaber.DrawSaber[0] && lightSaber.DrawSaber[1])
+	if (lightSaber.isSelected)
 	{
 		if (lightSaber.isdown)
 		{
-			(gfx.saber.*(lightSaber.DrawSaber[1]))((int)lightSaber.loc.x, (int)lightSaber.loc.y + 130, gfx);
+			(gfx.saber.*(lightSaber.Draw[1]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, 
+												lightSaber.length, lightSaber.color, gfx);
 		}
 		else
 		{
-			(gfx.saber.*(lightSaber.DrawSaber[0]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, gfx);
+			(gfx.saber.*(lightSaber.Draw[0]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, 
+												lightSaber.length, lightSaber.color, gfx);
 		}
 	}
 }
