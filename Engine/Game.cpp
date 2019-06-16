@@ -250,11 +250,15 @@ void Game::CharacterSelect(bool iskeypressed)
 
 void Game::LightSaberSelect()
 {
+	characters[PLAYER1].lightSaber.Draw[0] = &gfx.saber.Draw;
+
 	//lightsaber color binding p1
 	//if (!Lightsaber1select)
 	{
 		if (wnd.kbd.KeyIsPressed('1'))
 		{
+			characters[PLAYER1].lightSaber.color = Colors::Blue;
+
 			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Upblue1;
 			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downblue1;
 
@@ -263,6 +267,8 @@ void Game::LightSaberSelect()
 		}
 		if (wnd.kbd.KeyIsPressed('2'))
 		{
+			characters[PLAYER1].lightSaber.color = Colors::Green;
+
 			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Upgreen1;
 			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downgreen1;
 
@@ -271,6 +277,7 @@ void Game::LightSaberSelect()
 		}
 		if (wnd.kbd.KeyIsPressed('3'))
 		{
+			characters[PLAYER1].lightSaber.color = Colors::Red;
 			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Upred1;
 			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downred1;
 
@@ -279,6 +286,7 @@ void Game::LightSaberSelect()
 		}
 		if (wnd.kbd.KeyIsPressed('4'))
 		{
+			characters[PLAYER1].lightSaber.color = Colors::Magenta;
 			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Uppurple1;
 			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downpurple1;
 
@@ -442,20 +450,20 @@ void Game::CharacterDisplay()
 void Game::UpdateLightSaber()
 {
 	//p1
-	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
+	if (wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
-		characters[PLAYER1].lightSaber.isdown = false;
-	}
-	else {
 		characters[PLAYER1].lightSaber.isdown = true;
 	}
+	else {
+		characters[PLAYER1].lightSaber.isdown = false;
+	}
 	//p2
-	if (!wnd.kbd.KeyIsPressed(VK_NUMPAD0))
+	if (wnd.kbd.KeyIsPressed(VK_NUMPAD0))
 	{
-		characters[PLAYER2].lightSaber.isdown = false;
+		characters[PLAYER2].lightSaber.isdown = true;
 	}
 	else {
-		characters[PLAYER2].lightSaber.isdown = true;
+		characters[PLAYER2].lightSaber.isdown = false;
 	}
 }
 
@@ -494,8 +502,6 @@ void Game::ComposeFrame()
 		Bolt.Mainbolt(gfx);
 		Bolt.WallCollision(gfx);
 
-
-
 		Remote.TrainingRemote(gfx);
 
 
@@ -513,8 +519,7 @@ void Game::ComposeFrame()
 		if (saberlength < 0)
 			saberlength = 0;
 	}
-	gfx.DrawSaber(140, 370,saberlength, Colors::Blue);
-	gfx.DrawSaber(640, 370, saberlength, Colors::Green);
+
 		
 	
 	}

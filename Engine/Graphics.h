@@ -76,12 +76,6 @@ public:
 	ArtRobes robes;
 	ArtSaber saber;
 
-	void DrawSaber(int x, int y, int length, Color c);
-	void SaberBit(int x, int y, Color c);
-	void SaberTop(int x, int y, Color c);
-	void TheSaber(int x, int y);
-	void TheHilt(int x, int y);
-
 	void PstartPosition(int x, int y);
 
 	~Graphics();
