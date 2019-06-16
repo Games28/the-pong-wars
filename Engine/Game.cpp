@@ -453,8 +453,13 @@ void Game::ComposeFrame()
 	back.Midline(gfx);
 	back.Window(gfx);
 	back.Thestars(gfx);
+	back.Vader(gfx);
 	back.Theemperor(gfx);
 	back.Throne(gfx);
+	back.EmperorGuard(100, 110, gfx);
+	back.GuardSaber(110, 100, gfx);
+	back.EmperorGuard(600, 110, gfx);
+	back.GuardSaber(610, 100, gfx);
 
 	if (!CharactersSelected)
 	{
