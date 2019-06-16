@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ArtRobes.h" />
+    <ClInclude Include="ArtSaber.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="ChiliException.h" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArtRobes.cpp" />
+    <ClCompile Include="ArtSaber.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Characters.cpp" />
     <ClCompile Include="DXErr.cpp" />

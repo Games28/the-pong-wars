@@ -30,6 +30,7 @@
 #include "Characters.h"
 #include "ArtHeads.h"
 #include "ArtRobes.h"
+#include "ArtSaber.h"
 #include "LightSabers.h"
 #include "LightsaberColor.h"
 #include "Menus.h"
@@ -75,7 +76,6 @@ private:
 	//void CharacterAnimation();
 	void UpdateCharacters();
 	void CharacterDisplay();
-	void LightsaberDisplay();
 	void UpdateLightSaber();
 	/********************************/
 	/*  User Functions              */
@@ -91,8 +91,9 @@ private:
 	Direction dirP2;
 
 	Characters characters[NUMBER_OF_CHRS];
-	ArtRobes artrobes;
+	ArtRobes artRobes;
 	ArtHeads artHeads;
+	ArtSaber artSaber;
 	Laser Bolt;
 	Laser Remote;
 	Menus DOit;

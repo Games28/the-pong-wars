@@ -39570,6 +39570,7 @@ void ArtHeads::emperor2head(int x, int y, Graphics& gfx)
 	gfx.PutPixel(x + 73, y + 69, 0, 0, 0);
 
 }
+
 void ArtHeads::anakin2head(int x, int y, Graphics& gfx)
 {
 	gfx.PutPixel(x + 0, y + 0, 0, 0, 0);

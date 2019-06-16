@@ -7,12 +7,14 @@
 #include "LightSabers.h"
 #include "ArtHeads.h"
 #include "ArtRobes.h"
+#include "ArtSaber.h"
 
 class Characters
 {
+
 public:
 	Characters() = default;
-	Characters(Vec2& player_loc, Vec2 &saber_loc, Vec2& robe_loc);
+	Characters(Vec2& head_loc, Vec2& robe_loc, Vec2& saber_loc);
 
 	//movement
 	void Move(Vec2 moveAmount);
@@ -22,11 +24,23 @@ public:
 private:
 	static constexpr float width = 38;
 	static constexpr float height = 225;
+
+	struct ArtCoords
+	{
+		Vec2 head;
+		Vec2 robe;
+	};
 	
 public:
-	bool isSelected = false;
-	Vec2 loc;
-	void (ArtHeads::*DrawCharacter)(int, int, Graphics&);
+	
+	ArtCoords loc;
 	LightSaber lightSaber;
-	ArtRobes artrobes;
+
+	bool isSelected = false;
+	
+	//Art
+	void (ArtHeads::*DrawHead)(int, int, Graphics&);
+	void (ArtRobes::*DrawRobe)(int, int, Graphics&);
+
+	void Draw(Graphics& gfx, ArtHeads &artHead, ArtRobes & artRobe, ArtSaber &artSaber);
 };

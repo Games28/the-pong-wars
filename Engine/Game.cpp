@@ -32,8 +32,9 @@ Game::Game( MainWindow& wnd )
 	ydist(-1.0f,1.0f),
 	//P1Robe(Vec2{100,210}),
 	//P2Robe(Vec2{600,210}),
-	characters{ {Vec2{100,210}, Vec2{210,160}, Vec2{100,240}}, 
-				{Vec2{600,210}, Vec2{ 585,160 }, Vec2{ 600,240 }} },
+	//			Head			Robe			Saber
+	characters{ {Vec2{110,192}, Vec2{100,240}, Vec2{210,160}},
+				{Vec2{634,192}, Vec2{600,240}, Vec2{585,160}} },
 	Bolt(Vec2{380,280},Vec2{xdist(rng),ydist(rng)}),
 	Remote(Vec2{380,280}),
 	DOit(gfx),
@@ -41,8 +42,11 @@ Game::Game( MainWindow& wnd )
 	
 	
 {
-	characters[PLAYER1].DrawCharacter = &ArtHeads::ahsoka1head;
-	characters[PLAYER2].DrawCharacter = &ArtHeads::ahsoka2head;
+	characters[PLAYER1].DrawHead = &ArtHeads::ahsoka1head;
+	characters[PLAYER1].DrawRobe = &ArtRobes::Robe1;
+
+	characters[PLAYER2].DrawHead = &ArtHeads::ahsoka2head;
+	characters[PLAYER2].DrawRobe = &ArtRobes::Robe2;
 }
 
 void Game::Go()
@@ -128,51 +132,55 @@ void Game::CharacterSelect(bool iskeypressed)
 		{
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::anakin1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::anakin1head;
 				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::Marajade1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::Marajade1head;
 				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::emperor1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::emperor1head;
 				characters[PLAYER1].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::Leia1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::Leia1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::Luke1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::Luke1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::Rey1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::Rey1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::Obiwan1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::Obiwan1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				characters[PLAYER1].DrawCharacter = &ArtHeads::ahsoka1head;
+				characters[PLAYER1].DrawHead = &ArtHeads::ahsoka1head;
 				characters[PLAYER1].isSelected = true;
 
 			}
 		}
+		characters[PLAYER1].DrawRobe = &ArtRobes::Robe1;
+		characters[PLAYER2].DrawRobe = &ArtRobes::Robe2;
+
+
 		//else {
 			//Player1Select = false;
 		//}
@@ -187,43 +195,43 @@ void Game::CharacterSelect(bool iskeypressed)
 			//p2
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::anakin2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::anakin2head;
 				characters[PLAYER2].isSelected = true;
 				
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F2))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::Marajade2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::Marajade2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F3))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::emperor2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::emperor2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F4))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::Leia2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::Leia2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F5))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::Luke2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::Luke2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F6))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::Rey2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::Rey2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F7))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::Obiwan2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::Obiwan2head;
 				characters[PLAYER2].isSelected = true;
 			}
 			if (wnd.kbd.KeyIsPressed(VK_F8))
 			{
-				characters[PLAYER2].DrawCharacter = &ArtHeads::ahsoka2head;
+				characters[PLAYER2].DrawHead = &ArtHeads::ahsoka2head;
 				characters[PLAYER2].isSelected = true;
 			}
 
@@ -247,25 +255,33 @@ void Game::LightSaberSelect()
 	{
 		if (wnd.kbd.KeyIsPressed('1'))
 		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upblue1;
+			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Upblue1;
+			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downblue1;
+
 			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::BLUE1;
 			characters[PLAYER1].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('2'))
 		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upgreen1;
+			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Upgreen1;
+			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downgreen1;
+
 			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::GREEN1;
 			characters[PLAYER1].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('3'))
 		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upred1;
+			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Upred1;
+			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downred1;
+
 			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::RED1;
 			characters[PLAYER1].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('4'))
 		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Uppurple1;
+			characters[PLAYER1].lightSaber.DrawSaber[0] = &ArtSaber::Uppurple1;
+			characters[PLAYER1].lightSaber.DrawSaber[1] = &ArtSaber::Downpurple1;
+
 			characters[PLAYER1].lightSaber.saberColor = LightsaberColor::PURPLE1;
 			characters[PLAYER1].lightSaber.isSelected = true;
 		}
@@ -281,25 +297,33 @@ void Game::LightSaberSelect()
 
 		if (wnd.kbd.KeyIsPressed('5'))
 		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upblue2;
+			characters[PLAYER2].lightSaber.DrawSaber[0] = &ArtSaber::Upblue2;
+			characters[PLAYER2].lightSaber.DrawSaber[1] = &ArtSaber::Downblue2;
+
 			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::BLUE2;
 			characters[PLAYER2].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('7'))
 		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upgreen2;
+			characters[PLAYER2].lightSaber.DrawSaber[0] = &ArtSaber::Upgreen2;
+			characters[PLAYER2].lightSaber.DrawSaber[1] = &ArtSaber::Downgreen2;
+
 			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::GREEN2;
 			characters[PLAYER2].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('6'))
 		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upred2;
+			characters[PLAYER2].lightSaber.DrawSaber[0] = &ArtSaber::Upred2;
+			characters[PLAYER2].lightSaber.DrawSaber[1] = &ArtSaber::Downred2;
+
 			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::RED2;
 			characters[PLAYER2].lightSaber.isSelected = true;
 		}
 		if (wnd.kbd.KeyIsPressed('8'))
 		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Uppurple2;
+			characters[PLAYER2].lightSaber.DrawSaber[0] = &ArtSaber::Uppurple2;
+			characters[PLAYER2].lightSaber.DrawSaber[1] = &ArtSaber::Downpurple2;
+
 			characters[PLAYER2].lightSaber.saberColor = LightsaberColor::PURPLE2;
 			characters[PLAYER2].lightSaber.isSelected = true;
 		}
@@ -412,8 +436,7 @@ void Game::CharacterDisplay()
 	// via a function pointer
 	for (int i = 0; i < NUMBER_OF_CHRS; i++)
 	{
-		(this->artHeads.*(characters[i].DrawCharacter))((int)characters[i].loc.x, (int)characters[i].loc.y, gfx);
-
+		characters[i].Draw(gfx, artHeads, artRobes, artSaber);
 	}
 }
 void Game::UpdateLightSaber()
@@ -421,95 +444,22 @@ void Game::UpdateLightSaber()
 	//p1
 	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
-		if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::BLUE1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upblue1;
-		}
-		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::GREEN1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upgreen1;
-		}
-		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::RED1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Upred1;
-		}
-		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::PURPLE1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Uppurple1;
-		}
-
-
+		characters[PLAYER1].lightSaber.isdown = false;
 	}
 	else {
-		if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::BLUE1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downblue1;
-		}
-		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::GREEN1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downgreen1;
-		}
-		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::RED1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downred1;
-		}
-		else if (characters[PLAYER1].lightSaber.saberColor == LightsaberColor::PURPLE1)
-		{
-			characters[PLAYER1].lightSaber.DrawLightSaber = &LightSaber::Downpurple1;
-		}
-
+		characters[PLAYER1].lightSaber.isdown = true;
 	}
 	//p2
-	if (!wnd.kbd.KeyIsPressed(VK_SPACE))
+	if (!wnd.kbd.KeyIsPressed(VK_NUMPAD0))
 	{
-		if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::BLUE2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upblue2;
-		}
-		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::GREEN2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upgreen2;
-		}
-		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::RED2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Upred2;
-		}
-		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::PURPLE2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Uppurple2;
-		}
-
-
+		characters[PLAYER2].lightSaber.isdown = false;
 	}
 	else {
-		if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::BLUE2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downblue2;
-		}
-		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::GREEN2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downgreen2;
-		}
-		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::RED2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downred2;
-		}
-		else if (characters[PLAYER2].lightSaber.saberColor == LightsaberColor::PURPLE2)
-		{
-			characters[PLAYER2].lightSaber.DrawLightSaber = &LightSaber::Downpurple2;
-		}
-
+		characters[PLAYER2].lightSaber.isdown = true;
 	}
 }
 
-void Game::LightsaberDisplay()
-{
-	for (int i = 0; i < NUMBER_OF_CHRS; i++)
-	{
-		(characters[i].lightSaber.*(characters[i].lightSaber.DrawLightSaber))(gfx);
 
-	}
-}
 
 
 
@@ -535,7 +485,7 @@ void Game::ComposeFrame()
 	if(LightsabersSelected)
 	{
 		UpdateLightSaber();
-		LightsaberDisplay();
+		
 	}
 	if (GameStarted)
 	{

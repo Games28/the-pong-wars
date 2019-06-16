@@ -90,11 +90,14 @@
     <ClInclude Include="Menus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArtRobes.h">
-      <Filter>characters</Filter>
-    </ClInclude>
     <ClInclude Include="ArtHeads.h">
-      <Filter>characters</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtRobes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtSaber.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +153,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArtRobes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtSaber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
