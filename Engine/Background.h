@@ -16,7 +16,8 @@ public:
 	void Vader(Graphics& gfx);
 	void EmperorGuard(int x, int y, Graphics& gfx);
 	void GuardSaber(int x, int y, Graphics& gfx);
-	void SaberChange();
+	void SaberColorChange();
+	
 	
 	
 private:
@@ -31,8 +32,10 @@ private:
 	static constexpr int ChairH = 50;
 	Graphics& gfx;
 	Color c = Colors::White;
-	int W = 0;
-	Color R = Colors::Red;
+	Color R = { 127,0,0 };
+	int BR = 255;
+	int DR = 128;
+	bool colorIncreasing = true;
 	int ColorCounter = 0;
 	int ColorReset = 100;
 	Vec2 loc;

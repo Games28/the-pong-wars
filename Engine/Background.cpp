@@ -88,7 +88,7 @@ void Background::Window(Graphics & gfx)
 
 }
 
-void Background::Theemperor(Graphics & gfx)
+void Background::Theemperor(Graphics& gfx)
 {
 	Vec2 loc{ 355,180 };
 	int x = int(loc.x);
@@ -11615,6 +11615,7 @@ void Background::Theemperor(Graphics & gfx)
 	gfx.PutPixel(x + 95, y + 119, 0, 0, 0);
 
 }
+
 
 void Background::Vader(Graphics& gfx)
 {
@@ -42184,20 +42185,31 @@ void Background::GuardSaber(int x, int y, Graphics& gfx)
 
 }
 
-void Background::SaberChange()
+void Background::SaberColorChange()
 {
-	ColorCounter++;
-	if (ColorCounter >= ColorReset)
+	if (colorIncreasing)
 	{
-		ColorCounter = 0;
-	}
-	if (ColorCounter > 50)
-	{
-		R = Colors::MakeRGB(255, 128, 128);
+		if (R.GetR() >= 253)
+		{
+			colorIncreasing = false;
+		}
+		else
+		{
+			R = Color(R.GetR() + 2, R.GetG()  , R.GetB() );
+		}
 
 	}
-	else if (ColorCounter < 0)
+	else
 	{
-		 R = Colors::MakeRGB(255, 0, 0);
+		if (R.GetR() <= 127)
+		{
+			colorIncreasing = true;
+		}
+		else
+		{
+			R = Color(R.GetR() - 2, R.GetG() , R.GetB());
+		}
+
 	}
 }
+
