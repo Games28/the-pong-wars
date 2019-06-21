@@ -2,28 +2,32 @@
 
 Character::Character(Vec2 &head_loc, Vec2 & robe_loc, Vec2& saber_loc)
 	:
-	lightSaber(saber_loc)
+	lightSaber(saber_loc),
+	collision(head_loc,Vec2(100,227))
 {
-	loc.head = head_loc;
-	loc.robe = robe_loc;
+	artpos.head = head_loc;
+	artpos.robe = robe_loc;
 	lightSaber.loc = saber_loc;
 	lightSaber.DrawSaber[0] = 0;
 	lightSaber.DrawSaber[1] = 0;
-
+	
 	
 }
 
+
+
 void Character::Move(Vec2 moveAmount)
 {
-	loc.head += moveAmount;
-	loc.robe += moveAmount;
+	artpos.head += moveAmount;
+	artpos.robe += moveAmount;
 	lightSaber.Move(moveAmount);
-}
+	//SPACE RESPECING DEBUG COLLISION CODE!
+	 collision.Move(moveAmount);}
 
 void Character::Draw(Graphics& gfx)
 {
-	(gfx.robes.*(DrawRobe))((int)loc.robe.x, (int)loc.robe.y, gfx);
-	(gfx.heads.*(DrawHead))((int)loc.head.x, (int)loc.head.y, gfx);
+	(gfx.robes.*(DrawRobe))((int)artpos.robe.x, (int)artpos.robe.y, gfx);
+	(gfx.heads.*(DrawHead))((int)artpos.head.x, (int)artpos.head.y, gfx);
 	if (lightSaber.isSelected)
 	{
 		if (lightSaber.isdown)
@@ -37,50 +41,8 @@ void Character::Draw(Graphics& gfx)
 												lightSaber.length, lightSaber.color, gfx);
 		}
 	}
+	//SPACE RESPECING DEBUG COLLISION CODE!
+	collision.DrawBox(gfx, Colors::Blue);
 }
 
 
-/*void Characters::Player2Collision()
-{
-	const float bottom = loc.y + height;
-	if (loc.y < 100)
-	{
-		loc.y = 100;
-	}
-	else if (bottom >= float(Graphics::ScreenHeight - 100))
-	{
-		loc.y = float(Graphics::ScreenHeight - 100) - height;
-	}
-	const float right = loc.x + width;
-	if (loc.x < 460)
-	{
-		loc.x = 460;
-	}
-	else if (right >= float(Graphics::ScreenWidth - 100))
-	{
-		loc.x = float(Graphics::ScreenWidth - 100) - width;
-	}
-}
-
-void Characters::Player1Collision()
-{
-	const float bottom = loc.y + height;
-	if (loc.y < 100)
-	{
-		loc.y = 100;
-	}
-	else if (bottom >= float(Graphics::ScreenHeight - 100))
-	{
-		loc.y = float(Graphics::ScreenHeight - 100) - height;
-	}
-	const float right = loc.x + width;
-	if (loc.x < 50)
-	{
-		loc.x = 50;
-	}
-	else if (right >= float(Graphics::ScreenWidth - 530))
-	{
-		loc.x = float(Graphics::ScreenWidth - 530) - width;
-	}
-}
-*/

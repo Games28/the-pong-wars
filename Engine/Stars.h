@@ -4,6 +4,7 @@
 class Stars
 {
 public:
+	Stars() = default;
 	void StarSet(int in_x, int in_y);
 	void DrawBrightStar1(Graphics& gfx) const;
 	void DrawBrightStar2(Graphics& gfx) const;

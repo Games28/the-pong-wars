@@ -86,8 +86,7 @@ private:
 	std::uniform_real_distribution<float> ydist;
 
 	Background back;
-	Direction dirP1;
-	Direction dirP2;
+	
 
 	Character characters[NUMBER_OF_CHRS];
 	int ColorCounter = 0;

@@ -8,12 +8,14 @@ LightSaber::LightSaber(Vec2& in_loc)
 	Draw[1] = &ArtSaber::DrawDown;
 }
 
+
+
 void LightSaber::Move(Vec2 moveAmount)
 {
 	loc += moveAmount;
 }
 
-void LightSaber::P1Collision()
+/*void LightSaber::P1Collision()
 {
 	const float bottom = loc.y + height;
 	if (loc.y < 60)
@@ -56,3 +58,4 @@ void LightSaber::P2Collision()
 		loc.x = float(Graphics::ScreenWidth - 110) - width;
 	}
 }
+*/

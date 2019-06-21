@@ -13,8 +13,9 @@ public:
 	LightSaber(Vec2& in_loc);
 
 	// collision
-	void P1Collision();
-	void P2Collision();
+	
+	//void P1Collision();
+	//void P2Collision();
 
 private:
 	static constexpr float width = 25;

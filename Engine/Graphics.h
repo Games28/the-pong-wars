@@ -70,6 +70,9 @@ public:
 	{
 		DrawRect(int(rect.left), int(rect.top),int(rect.right), int(rect.bottom), c);
 	}
+	void DrawBox(Vec2& loc, Vec2& size, Color c);
+	void DrawX(Vec2& loc, int width, Color c);
+	void DrawY(Vec2& loc, int height, Color c);
 	
 	//Character Art
 	ArtHeads heads;

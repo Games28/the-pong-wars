@@ -2,30 +2,33 @@
 #include "Graphics.h"
 #include "Vec2.h"
 #include "Stars.h"
+#include "ArtBackground.h"
+#include "Collision.h"
+#include "Colors.h"
 #include <random>
 
 class Background
 {
 public:
+	Background() = default;
 	Background(Graphics& gfx);
-	void Midline(Graphics& gfx) const;
-	void Throne(Graphics& gfx) const;
+	void Midline(Graphics& gfx);
+	void Throne(Graphics& gfx);
 	void Thestars(Graphics& gfx);
 	void Window(Graphics& gfx);
-	void Theemperor(Graphics& gfx);
-	void Vader(Graphics& gfx);
-	void EmperorGuard(int x, int y, Graphics& gfx);
-	void GuardSaber(int x, int y, Graphics& gfx);
 	void SaberColorChange();
-	
+	void EmperorThroneRoom(Graphics& gfx);
+	Collision collide[2];
 	
 	
 private:
+
+	ArtBackground art;
 	std::mt19937 rng;
 	static constexpr int maxRegularStars = 20;
-	Stars Regularstars[maxRegularStars];
+	Stars Regularstars[maxRegularStars] = {};
 	static constexpr int maxBrightStars = 15;
-	Stars Brightstars[maxBrightStars];
+	Stars Brightstars[maxBrightStars] = {};
 	int BrightStarresetMax = 100;
 	int BrightStarCounter = 0;
 	static constexpr int height = 4;

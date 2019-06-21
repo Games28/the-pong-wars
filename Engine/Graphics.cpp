@@ -157,7 +157,7 @@ Graphics::Graphics( HWNDKey& key )
 	// Ignore the intellisense error "namespace has no member"
 	if( FAILED( hr = pDevice->CreatePixelShader(
 		FramebufferShaders::FramebufferPSBytecode,
-		sizeof( FramebufferShaders::FramebufferPSBytecode ),
+		(int)sizeof( FramebufferShaders::FramebufferPSBytecode ),
 		nullptr,
 		&pPixelShader ) ) )
 	{
@@ -170,7 +170,7 @@ Graphics::Graphics( HWNDKey& key )
 	// Ignore the intellisense error "namespace has no member"
 	if( FAILED( hr = pDevice->CreateVertexShader(
 		FramebufferShaders::FramebufferVSBytecode,
-		sizeof( FramebufferShaders::FramebufferVSBytecode ),
+		(int)sizeof( FramebufferShaders::FramebufferVSBytecode ),
 		nullptr,
 		&pVertexShader ) ) )
 	{
@@ -191,7 +191,7 @@ Graphics::Graphics( HWNDKey& key )
 	};
 	D3D11_BUFFER_DESC bd = {};
 	bd.Usage = D3D11_USAGE_DEFAULT;
-	bd.ByteWidth = sizeof( FSQVertex ) * 6;
+	bd.ByteWidth = (int)sizeof( FSQVertex ) * 6;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	bd.CPUAccessFlags = 0u;
 	D3D11_SUBRESOURCE_DATA initData = {};
@@ -213,7 +213,7 @@ Graphics::Graphics( HWNDKey& key )
 	// Ignore the intellisense error "namespace has no member"
 	if( FAILED( hr = pDevice->CreateInputLayout( ied,2,
 		FramebufferShaders::FramebufferVSBytecode,
-		sizeof( FramebufferShaders::FramebufferVSBytecode ),
+		(int)sizeof( FramebufferShaders::FramebufferVSBytecode ),
 		&pInputLayout ) ) )
 	{
 		throw CHILI_GFX_EXCEPTION( hr,L"Creating input layout" );
@@ -237,7 +237,7 @@ Graphics::Graphics( HWNDKey& key )
 
 	// allocate memory for sysbuffer (16-byte aligned for faster access)
 	pSysBuffer = reinterpret_cast<Color*>( 
-		_aligned_malloc( sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
+		_aligned_malloc( (int)sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
 }
 
 void Graphics::PstartPosition(int x, int y)
@@ -26168,11 +26168,11 @@ void Graphics::EndFrame()
 	}
 	// setup parameters for copy operation
 	Color* pDst = reinterpret_cast<Color*>(mappedSysBufferTexture.pData );
-	const size_t dstPitch = mappedSysBufferTexture.RowPitch / sizeof( Color );
+	const size_t dstPitch = mappedSysBufferTexture.RowPitch / (int)sizeof( Color );
 	const size_t srcPitch = Graphics::ScreenWidth;
-	const size_t rowBytes = srcPitch * sizeof( Color );
+	const size_t rowBytes = srcPitch * (int)sizeof( Color );
 	// perform the copy line-by-line
-	for( size_t y = 0u; y < Graphics::ScreenHeight; y++ )
+	for( size_t y = 0; y < Graphics::ScreenHeight; y++ )
 	{
 		memcpy( &pDst[ y * dstPitch ],&pSysBuffer[y * srcPitch],rowBytes );
 	}
@@ -26184,8 +26184,8 @@ void Graphics::EndFrame()
 	pImmediateContext->VSSetShader( pVertexShader.Get(),nullptr,0u );
 	pImmediateContext->PSSetShader( pPixelShader.Get(),nullptr,0u );
 	pImmediateContext->IASetPrimitiveTopology( D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
-	const UINT stride = sizeof( FSQVertex );
-	const UINT offset = 0u;
+	const UINT stride = (int)sizeof( FSQVertex );
+	const UINT offset = 0;
 	pImmediateContext->IASetVertexBuffers( 0u,1u,pVertexBuffer.GetAddressOf(),&stride,&offset );
 	pImmediateContext->PSSetShaderResources( 0u,1u,pSysBufferTextureView.GetAddressOf() );
 	pImmediateContext->PSSetSamplers( 0u,1u,pSamplerState.GetAddressOf() );
@@ -26208,7 +26208,7 @@ void Graphics::EndFrame()
 void Graphics::BeginFrame()
 {
 	// clear the sysbuffer
-	memset( pSysBuffer,0u,sizeof( Color ) * Graphics::ScreenHeight * Graphics::ScreenWidth );
+	memset( pSysBuffer,0u,(int)sizeof( Color ) * Graphics::ScreenHeight * Graphics::ScreenWidth );
 }
 //Primitives
 void Graphics::PutPixel( int x,int y,Color c )
@@ -26252,6 +26252,32 @@ void Graphics::DrawCircle(int x, int y, int radius, Color c)
 				PutPixel(x_loop, y_loop, c);
 			}
 		}
+	}
+}
+void Graphics::DrawBox(Vec2& loc, Vec2& size, Color c)
+{
+	//top
+	DrawX(loc, (int)size.x, c);
+	//left
+	DrawY(loc, (int)size.y, c);
+//bottom
+	DrawX(loc + Vec2(0,(int)size.y), (int)size.x, c);
+	//right
+	DrawY(loc + Vec2((int)size.x,0), (int)size.y, c);
+
+}
+void Graphics::DrawX(Vec2& loc, int width, Color c)
+{
+	for (int i = 0; i < width; i++)
+	{
+		PutPixel((int)loc.x + i, (int)loc.y, c);
+	}
+}
+void Graphics::DrawY(Vec2& loc, int height, Color c)
+{
+	for (int i = 0; i < height; i++)
+	{
+		PutPixel(loc.x , loc.y + i, c);
 	}
 }
 //////////////////////////////////////////////////
