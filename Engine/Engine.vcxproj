@@ -163,6 +163,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Stars.h" />
+    <ClInclude Include="TheSelector.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +187,7 @@
     <ClCompile Include="RectF.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stars.cpp" />
+    <ClCompile Include="TheSelector.cpp" />
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>

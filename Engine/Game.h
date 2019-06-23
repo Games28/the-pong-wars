@@ -26,7 +26,7 @@
 #include "Background.h"
 
 #include "Direction.h"
-
+#include "TheSelector.h"
 #include "Character.h"
 
 #include "LightSabers.h"
@@ -90,6 +90,7 @@ private:
 	Character characters[NUMBER_OF_CHRS];
 	int ColorCounter = 0;
 	int ColorReset = 100;
+	TheSelector selecting;
 	Laser Bolt;
 	Laser Remote;
 	Menus DOit;

@@ -13,6 +13,9 @@ public:
 	void Player2menu(Graphics& gfx);
 	void MainMenu(Graphics& gfx);
 	
+	void Saber1menu(Graphics& gfx);
+	void Saber2menu(Graphics& gfx);
+	
 private:
 	Graphics& gfx;
 	Vec2 loc;

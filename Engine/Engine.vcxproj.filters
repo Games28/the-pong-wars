@@ -108,6 +108,9 @@
     <ClInclude Include="Menus.h">
       <Filter>characters</Filter>
     </ClInclude>
+    <ClInclude Include="TheSelector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -171,6 +174,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArtBackground.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TheSelector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
