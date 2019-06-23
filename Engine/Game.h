@@ -75,7 +75,7 @@ private:
 	void UpdateCharacters();
 	void CharacterDisplay();
 	void UpdateLightSaber();
-	/********************************/
+		/********************************/
 	/*  User Functions              */
 	/********************************/
 private:
@@ -87,7 +87,6 @@ private:
 
 	Background back;
 	
-
 	Character characters[NUMBER_OF_CHRS];
 	int ColorCounter = 0;
 	int ColorReset = 100;

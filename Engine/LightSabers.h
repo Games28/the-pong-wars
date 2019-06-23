@@ -22,15 +22,17 @@ private:
 	static constexpr float height = 200;
 	
 public:
+	//int operator++(int x);
 	int length = 0;
-	bool isSelected = false;
+	bool isSelected1 = false;
+	bool isSelected2 = false;
 	bool isdown = false;
 	Vec2 loc;
-	Color color = Colors::Cyan;
+	Color color{ 0,0,0 };
 	LightsaberColor saberColor = LightsaberColor::DEFAULT;
 
 	void LightSaber::Move(Vec2 moveAmount);
 
-	void (ArtSaber::* Draw[2])(int, int, int, Color, Graphics&);
+	void (ArtSaber::* Draw[4])(int, int, int, Color, Graphics&);
 	void (ArtSaber::* DrawSaber[2])(int, int, Graphics&);
 };

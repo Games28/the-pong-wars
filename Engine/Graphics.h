@@ -77,7 +77,8 @@ public:
 	//Character Art
 	ArtHeads heads;
 	ArtRobes robes;
-	ArtSaber saber;
+	ArtSaber saber1;
+	ArtSaber saber2;
 
 	void PstartPosition(int x, int y);
 

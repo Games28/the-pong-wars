@@ -4,9 +4,13 @@ LightSaber::LightSaber(Vec2& in_loc)
 	:
 	loc(in_loc)
 {
-	Draw[0] = &ArtSaber::DrawUp;
-	Draw[1] = &ArtSaber::DrawDown;
+	Draw[0] = &ArtSaber::DrawUpLeft;
+	Draw[1] = &ArtSaber::DrawDownLeft;
+	Draw[2] = &ArtSaber::DrawUpRight;
+	Draw[3] = &ArtSaber::DrawDownRight;
 }
+
+
 
 
 

@@ -19,11 +19,11 @@ public:
 	void SaberColorChange();
 	void EmperorThroneRoom(Graphics& gfx);
 	Collision collide[2];
-	
+	ArtBackground art;
 	
 private:
 
-	ArtBackground art;
+	
 	std::mt19937 rng;
 	static constexpr int maxRegularStars = 20;
 	Stars Regularstars[maxRegularStars] = {};

@@ -33,15 +33,18 @@ private:
 	};
 	
 public:
+	
 	Vec2 pos;
 	ArtCoords artpos;
 	LightSaber lightSaber;
 	Collision collision;
 	bool isSelected = false;
+	bool ColorIncreasing = false;
 	
 	//Art
 	void (ArtHeads::*DrawHead)(int, int, Graphics&);
 	void (ArtRobes::*DrawRobe)(int, int, Graphics&);
 
 	void Draw(Graphics& gfx);
+	void SaberColorChange();
 };

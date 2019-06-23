@@ -19,6 +19,9 @@
     <Filter Include="characters">
       <UniqueIdentifier>{1f76d993-39ac-49eb-945d-ae0ce858ccc7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Art">
+      <UniqueIdentifier>{c3a61f03-f087-4e67-8921-10f1cec87cc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChiliWin.h">
@@ -84,18 +87,6 @@
     <ClInclude Include="HeadSelect.h">
       <Filter>characters</Filter>
     </ClInclude>
-    <ClInclude Include="Menus.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ArtHeads.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ArtRobes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ArtSaber.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>characters</Filter>
     </ClInclude>
@@ -103,7 +94,19 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ArtBackground.h">
-      <Filter>Header Files</Filter>
+      <Filter>Art</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtHeads.h">
+      <Filter>Art</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtSaber.h">
+      <Filter>Art</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtRobes.h">
+      <Filter>Art</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus.h">
+      <Filter>characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
