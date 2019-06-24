@@ -28,11 +28,11 @@ public:
 	bool isSelected2 = false;
 	bool isdown = false;
 	Vec2 loc;
-	Color color{ 0,0,0 };
+	Color color[2];
 	LightsaberColor saberColor = LightsaberColor::DEFAULT;
 
 	void LightSaber::Move(Vec2 moveAmount);
 
-	void (ArtSaber::* Draw[4])(int, int, int, Color, Graphics&);
+	void (ArtSaber::* Draw[4])(int, int, int, Color*, Graphics&);
 	void (ArtSaber::* DrawSaber[2])(int, int, Graphics&);
 };

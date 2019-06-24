@@ -69,34 +69,70 @@ void Character::Draw(Graphics& gfx)
 
 void Character::SaberColorChange()
 {
-	int Red = lightSaber.color.GetR();
-	int Blue = lightSaber.color.GetB();
-	int Green = lightSaber.color.GetG();
-
+	int Red = lightSaber.color[0].GetR();
+	int Blue = lightSaber.color[0].GetB();
+	int Green = lightSaber.color[0].GetG();
+	int increase = 3;
 	
-
 	if (ColorIncreasing)
 	{
 		
-		if (Red && Green && Blue  >= 253)
+		if (Red >= 253 || Green >= 253 || Blue  >= 253)
 		{
 			ColorIncreasing = false;
 		}
 		else
 		{
-			lightSaber.color = Color(Red+1, Green+1, Blue+1 );
+			lightSaber.color[0] = Color(Red+increase, Green+increase, Blue+increase );
 		}
 
 	}
 	else
 	{
-		if (Red && Green && Blue <= 127)
+		if (Red <= 0 || Green <= 0 || Blue <= 0)
 		{
 			ColorIncreasing = true;
 		}
 		else
 		{
-			lightSaber.color = Color(Red-1, Green-1, Blue-1);
+			lightSaber.color[0] = Color(Red-increase, Green-increase, Blue-increase);
+		}
+
+	}
+}
+
+void Character::SaberBackColorChange()
+{
+	float Red = 1.0f / (255.0f / (1 + lightSaber.color[0].GetR()));
+	float Blue = 1.0f /(255.0f / (1 + lightSaber.color[0].GetB()));
+	float Green = 1.0f /(255.0f / (1 + lightSaber.color[0].GetG()));
+	char increase = 3;
+	char MAX = 127;
+	if (ColorIncreasing)
+	{
+
+		if (lightSaber.color[1].GetR() >= MAX || lightSaber.color[1].GetB() >= MAX || lightSaber.color[1].GetG() >= MAX)
+		{
+			ColorIncreasing = false;
+		}
+		else
+		{
+			
+			Color blend = lightSaber.color[1];
+			lightSaber.color[1] = Color(blend.GetR() + Red * increase, blend.GetG() + Green * increase, blend.GetB() + Blue * increase );
+		}
+
+	}
+	else
+	{
+		if (lightSaber.color[1].GetR() <= 0 && lightSaber.color[1].GetB() <= 0 && lightSaber.color[1].GetG() <= 0)
+		{
+			ColorIncreasing = true;
+		}
+		else
+		{
+			Color blend = lightSaber.color[1];
+			lightSaber.color[1] = Color(blend.GetR() - Red * increase, blend.GetG() - Green * increase, blend.GetB() - Blue * increase);
 		}
 
 	}

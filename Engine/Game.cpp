@@ -263,54 +263,54 @@ void Game::CharacterSelect(bool iskeypressed)
 //lightsaber selecting
 void Game::LightSaberSelect()
 {
-	
+	unsigned char ColorValue = 127;
 	    if (wnd.kbd.KeyIsPressed('1'))
 		{
 			selecting.SaberSelector1(210, 350, gfx);
-			characters[PLAYER1].lightSaber.color = Color{ 0,0,127 };
+			characters[PLAYER1].lightSaber.color[0] = Color{ 0,0,ColorValue };
 			characters[PLAYER1].lightSaber.isSelected1 = true;
 		}
 		 if (wnd.kbd.KeyIsPressed('2'))
 		{
 			 selecting.SaberSelector1(210, 370, gfx);
-			characters[PLAYER1].lightSaber.color = Color{ 0,127,0 };
+			characters[PLAYER1].lightSaber.color[0] = Color{ 0,ColorValue,0 };
 			characters[PLAYER1].lightSaber.isSelected1 = true;
 		}
 		 if (wnd.kbd.KeyIsPressed('3'))
 		{
 			 selecting.SaberSelector1(210, 400, gfx);
-			characters[PLAYER1].lightSaber.color = Color{ 127,0,0 };
+			characters[PLAYER1].lightSaber.color[0] = Color{ ColorValue,0,0 };
 			characters[PLAYER1].lightSaber.isSelected1 = true;
 		}
 		if (wnd.kbd.KeyIsPressed('4'))
 		{
 			selecting.SaberSelector1(210, 430, gfx);
-			characters[PLAYER1].lightSaber.color = Color{ 127,0,127 };
+			characters[PLAYER1].lightSaber.color[0] = Color{ ColorValue,0,ColorValue };
 			characters[PLAYER1].lightSaber.isSelected1 = true;
 		}
 	    
 		if (wnd.kbd.KeyIsPressed('5'))
 		{
 			selecting.SaberSelector2(610, 350, gfx);
-			characters[PLAYER2].lightSaber.color = Color{ 0,0,127 };
+			characters[PLAYER2].lightSaber.color[0] = Color{ 0,0,ColorValue };
 			characters[PLAYER2].lightSaber.isSelected2 = true;
 		}
 		if (wnd.kbd.KeyIsPressed('6'))
 		{
 			selecting.SaberSelector2(610, 370, gfx);
-			characters[PLAYER2].lightSaber.color = Color{ 0,127,0 };
+			characters[PLAYER2].lightSaber.color[0] = Color{ 0,ColorValue,0 };
 			characters[PLAYER2].lightSaber.isSelected2 = true;
 		}
 		if (wnd.kbd.KeyIsPressed('7'))
 		{
 			selecting.SaberSelector2(610, 400, gfx);
-			characters[PLAYER2].lightSaber.color = Color{ 127,0,0 };
+			characters[PLAYER2].lightSaber.color[0] = Color{ ColorValue,0,0 };
 			characters[PLAYER2].lightSaber.isSelected2 = true;
 		}
 		 if (wnd.kbd.KeyIsPressed('8'))
 		{
 			 selecting.SaberSelector2(610, 430, gfx);
-			characters[PLAYER2 ].lightSaber.color = Color{ 127,0,127 };
+			characters[PLAYER2 ].lightSaber.color[0] = Color{ ColorValue,0,ColorValue };
 			characters[PLAYER2].lightSaber.isSelected2 = true;
 		}
 	
@@ -374,18 +374,15 @@ void Game::ComposeFrame()
 	
 	back.EmperorThroneRoom(gfx);
 	
-
-	
-
-	
-	
 	if (CharactersSelected || LightsabersSelected)
 	{
 		
 		CharacterDisplay();
 		UpdateLightSaber();
-		characters[PLAYER1].SaberColorChange();
-		characters[PLAYER2].SaberColorChange();
+		characters[PLAYER1].SaberBackColorChange();
+		characters[PLAYER2].SaberBackColorChange();
+		//characters[PLAYER1].SaberColorChange();
+		//characters[PLAYER2].SaberColorChange();
 	}
 	else {
 		mainmenu.MainMenu(gfx);

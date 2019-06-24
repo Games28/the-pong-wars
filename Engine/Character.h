@@ -47,4 +47,5 @@ public:
 
 	void Draw(Graphics& gfx);
 	void SaberColorChange();
+	void SaberBackColorChange();
 };
