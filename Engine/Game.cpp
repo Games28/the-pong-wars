@@ -377,22 +377,8 @@ void Game::ComposeFrame()
 
 	
 
-	if (!CharactersSelected)
-	{
-		//gfx.PstartPosition(150, 210);
-		//gfx.PstartPosition(550, 210);
-		mainmenu.MainMenu(gfx);
-		mainmenu.EmporerHand(gfx);
-		mainmenu.EmporerSelect(gfx);
-		
-		
 	
-	}
-	if (!GameStarted)
-	{
-		mainmenu.EmporerHand(gfx);
-		mainmenu.EmporerDoit(gfx);
-	}
+	
 	if (CharactersSelected || LightsabersSelected)
 	{
 		
@@ -400,6 +386,18 @@ void Game::ComposeFrame()
 		UpdateLightSaber();
 		characters[PLAYER1].SaberColorChange();
 		characters[PLAYER2].SaberColorChange();
+	}
+	else {
+		mainmenu.MainMenu(gfx);
+		mainmenu.EmporerHand(gfx);
+		mainmenu.EmporerSelect(gfx);
+		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
+		LightSaberSelect();
+	}
+	if (!GameStarted)
+	{
+		mainmenu.EmporerHand(gfx);
+		mainmenu.EmporerDoit(gfx);
 	}
 	
 	if (GameStarted)
