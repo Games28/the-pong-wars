@@ -143,7 +143,8 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="ChiliException.h" />
     <ClInclude Include="ChiliWin.h" />
-    <ClInclude Include="Collision.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="DXErr.h" />
@@ -172,7 +173,8 @@
     <ClCompile Include="ArtSaber.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DXErr.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Graphics.cpp" />

@@ -3,8 +3,9 @@
 #include "Vec2.h"
 #include "Stars.h"
 #include "ArtBackground.h"
-#include "Collision.h"
+#include "Collider.h"
 #include "Colors.h"
+#include "Character.h"
 #include <random>
 
 class Background
@@ -18,8 +19,11 @@ public:
 	void Window(Graphics& gfx);
 	void SaberColorChange();
 	void EmperorThroneRoom(Graphics& gfx);
-	Collision collide[2];
+	Collider colliders[2];
 	ArtBackground art;
+	void TestCollision(Character& player);
+	static constexpr float BackBorderwidth = 300;
+	static constexpr float BackBorderHeight = 500;
 	
 private:
 

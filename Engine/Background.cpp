@@ -4,7 +4,8 @@ Background::Background(Graphics& gfx)
 	:
 	gfx(gfx),
 	rng(std::random_device()()),
-	collide{ {Vec2(50,50), Vec2(300,500)},{Vec2(420,50), Vec2(300,500)} }
+	colliders{ {Vec2(20,40), Vec2(BackBorderwidth,BackBorderHeight)}
+		,{Vec2(480,40), Vec2(BackBorderwidth,BackBorderHeight)} }
 	
 {
 	std::uniform_int_distribution<int> xdist(350, 480);
@@ -133,8 +134,16 @@ void Background::EmperorThroneRoom(Graphics& gfx)
 	//this is debug code
 	for (int i = 0; i < 2; i++)
 	{
-		collide[i].DrawBox(gfx, Colors::Blue);
+		colliders[i].DrawBox(gfx, Colors::Blue);
 	}
 	
+}
+
+void Background::TestCollision(Character& player)
+{
+	//for (int i = 0; i < player.NumberofCharacters; i++)
+	//{
+	//	const float PlayerLeft = player.CharacterBoundry[i].
+	//}
 }
 

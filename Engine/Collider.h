@@ -2,15 +2,16 @@
 #include "Vec2.h"
 #include "Graphics.h"
 
-class Collision
+class Collider
 {
 public:
-	Collision() = default;
-	Collision(const Vec2& in_loc, const Vec2& in_size);
+	Collider() = default;
+	Collider(const Vec2& loc, const Vec2& size);
 	void Box();
 	void DrawBox(Graphics& gfx, Color c);
 	void Move(Vec2& Amount);
-private:
+	void Init(const Vec2& loc, const Vec2& sixe);
+public:
 	Vec2 loc;
 	Vec2 size;
 };

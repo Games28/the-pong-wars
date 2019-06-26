@@ -2,8 +2,12 @@
 
 Character::Character(Vec2 &head_loc, Vec2 & robe_loc, Vec2& saber_loc)
 	:
-	lightSaber(saber_loc),
-	collision(head_loc,Vec2(100,227))
+	lightSaber(saber_loc)
+	
+              
+	//Head			Robe			Saber
+	//{Vec2{110,192}, Vec2{100,240}, Vec2{210,282}},
+	//{Vec2{637,195}, Vec2{600,240}, Vec2{580,282}} },
 {
 	artpos.head = head_loc;
 	artpos.robe = robe_loc;
@@ -22,7 +26,9 @@ void Character::Move(Vec2 moveAmount)
 	artpos.robe += moveAmount;
 	lightSaber.Move(moveAmount);
 	//SPACE RESPECING DEBUG COLLISION CODE!
-	 collision.Move(moveAmount);}
+	collider.Move(moveAmount);
+	 
+}
 
 
 
@@ -64,7 +70,7 @@ void Character::Draw(Graphics& gfx)
 		}
 	}
 	//SPACE RESPECING DEBUG COLLISION CODE!
-	collision.DrawBox(gfx, Colors::Blue);
+	collider.DrawBox(gfx, Colors::Blue);
 }
 
 void Character::SaberColorChange()

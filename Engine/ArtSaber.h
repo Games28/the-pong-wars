@@ -12,8 +12,8 @@ public:
 	void DrawDownRight(int x, int y, int length, Color *c, Graphics& gfx);
 	//Updated Saber parts
 	void Bit(int x, int y, Color *c, Graphics& gfx);
-	void TopUp(int x, int y, Color c, Graphics& gfx);
-	void TopDown(int x, int y, Color c, Graphics& gfx);
+	void TopUp(int x, int y, Color *c, Graphics& gfx);
+	void TopDown(int x, int y, Color *c, Graphics& gfx);
 	void HiltLeftUp(int x, int y, Graphics& gfx);
 	void HiltRightUp(int x, int y, Graphics& gfx);
 	void HiltLeftDown(int x, int y, Graphics& gfx);

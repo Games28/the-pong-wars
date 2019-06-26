@@ -8,7 +8,7 @@
 #include "ArtHeads.h"
 #include "ArtRobes.h"
 #include "ArtSaber.h"
-#include "Collision.h"
+#include "Collider.h"
 
 class Character
 {
@@ -21,9 +21,10 @@ public:
 	void Move(Vec2 moveAmount);
 	
 	
+	Vec2 CharacterSize{ 80,270 };
 private:
-	static constexpr float width = 127;
-	static constexpr float height = 245;
+	//static constexpr float width = 127;
+	//static constexpr float height = 245;
 
 	struct ArtCoords
 	{
@@ -37,7 +38,8 @@ public:
 	Vec2 pos;
 	ArtCoords artpos;
 	LightSaber lightSaber;
-	Collision collision;
+	
+	Collider collider;
 	bool isSelected = false;
 	bool ColorIncreasing = false;
 	

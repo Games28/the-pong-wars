@@ -42,9 +42,19 @@ Game::Game( MainWindow& wnd )
 {
 	characters[PLAYER1].DrawHead = &ArtHeads::ahsoka1head;
 	characters[PLAYER1].DrawRobe = &ArtRobes::Robe1;
+	
 
 	characters[PLAYER2].DrawHead = &ArtHeads::ahsoka2head;
 	characters[PLAYER2].DrawRobe = &ArtRobes::Robe2;
+	for (int i = 0; i < NUMBER_OF_CHRS; i++)
+	{
+		Vec2 Playerboxpos = characters[i].artpos.head;
+		Vec2 Playerboxsize = characters[i].CharacterSize;
+
+		characters[i].collider.Init(Playerboxpos, Playerboxsize);
+		
+	}
+	
 
 }
 
@@ -78,8 +88,11 @@ void Game::UpdateModel()
 	if (GameStarted)
 	{
 		//character movement
-		UpdateCharacters();
-		
+		//MoveCharacters();
+		if (collideManager.Contains(back.colliders[0],characters[PLAYER1].collider ))
+		{
+			MoveCharacters();
+		}
 
 		
 
@@ -88,7 +101,7 @@ void Game::UpdateModel()
 	
 }
 //movement update
-void Game::UpdateCharacters()
+void Game::MoveCharacters()
 {
 	float moveAmount = 2.0f;
 	//keyboard update
@@ -353,8 +366,10 @@ void Game::UpdateLightSaber()
 		characters[PLAYER2].lightSaber.isdown = false;
 
 	}
+	
 	for (int i = 0; i < 2; i++)
 	{
+		characters[i].lightSaber.length = 8;
 		if (wnd.kbd.KeyIsPressed('G'))
 		{
 			characters[i].lightSaber.length++;

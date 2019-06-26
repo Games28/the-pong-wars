@@ -28,12 +28,12 @@
 #include "Direction.h"
 #include "TheSelector.h"
 #include "Character.h"
-
+#include "CollisionManager.h"
 #include "LightSabers.h"
 #include "LightsaberColor.h"
 #include "Menus.h"
 #include "HeadSelect.h"
-
+#include "Collider.h"
 #include "Laser.h"
 #include <random>
 //#define NUMBER_OF_CHRS 2
@@ -71,8 +71,8 @@ private:
 	void UpdateModel();
 	void CharacterSelect(bool iskeypressed);
 	void LightSaberSelect();
-	//void CharacterAnimation();
-	void UpdateCharacters();
+	void CharacterAnimation();
+	void MoveCharacters();
 	void CharacterDisplay();
 	void UpdateLightSaber();
 		/********************************/
@@ -86,7 +86,7 @@ private:
 	std::uniform_real_distribution<float> ydist;
 
 	Background back;
-	
+	CollisionManager collideManager;
 	Character characters[NUMBER_OF_CHRS];
 	int ColorCounter = 0;
 	int ColorReset = 100;
