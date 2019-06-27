@@ -87,21 +87,19 @@ void Game::UpdateModel()
 	if (GameStarted)
 	{
 		//character movement
-		//MoveCharacters();
 
-		//Vec2 moveAmount = GetMoveDirection_P1(3.0f);
-		//characters[PLAYER1].Move(moveAmount);
-		//Vec2 reflection = collideManager.GetInnerReflection(characters[PLAYER1].collider, back.colliders[PLAYER1]);
-		//if (reflection.GetLengthSq())
-		//{
-		//	characters[PLAYER1].Move(reflection);
-		//}
 		Vec2 moveAmount = GetMoveDirection_P1(3.0f);
-		characters[PLAYER1].Move(moveAmount);
-		if (!collideManager.Contains(characters[PLAYER1].collider, back.colliders[PLAYER1]))
+		for (int i = 0; i < NUMBER_OF_CHRS; ++i)
 		{
-			characters[PLAYER1].Move(moveAmount *-1.0f);
+			characters[i].Move(moveAmount);
+
+			Vec2 reflection = collideManager.GetInnerReflection(characters[i].collider, back.colliders[i]);
+			if (reflection.GetLengthSq())
+			{
+				characters[i].Move(reflection);
+			}
 		}
+		
 	}
 }
 Vec2 Game::GetMoveDirection_P1(float moveAmount)
