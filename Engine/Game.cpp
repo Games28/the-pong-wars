@@ -88,10 +88,13 @@ void Game::UpdateModel()
 	{
 		//character movement
 
-		Vec2 moveAmount = GetMoveDirection_P1(3.0f);
+		Vec2 moveAmount[2];
+		moveAmount[0] = GetMoveDirection_P1(3.0f);
+		moveAmount[1] = GetMoveDirection_P2(3.0f);
 		for (int i = 0; i < NUMBER_OF_CHRS; ++i)
 		{
-			characters[i].Move(moveAmount);
+			
+			characters[i].Move(moveAmount[i]);
 
 			Vec2 reflection = collideManager.GetInnerReflection(characters[i].collider, back.colliders[i]);
 			if (reflection.GetLengthSq())
@@ -330,6 +333,7 @@ void Game::LightSaberSelect()
 			selecting.SaberSelector1(210, 350, gfx);
 			characters[PLAYER1].lightSaber.color[0] = Color{ 0,0,ColorValue };
 			characters[PLAYER1].lightSaber.isSelected1 = true;
+			
 		}
 		 if (wnd.kbd.KeyIsPressed('2'))
 		{
@@ -442,10 +446,32 @@ void Game::ComposeFrame()
 		
 		CharacterDisplay();
 		UpdateLightSaber();
-		characters[PLAYER1].SaberBackColorChange();
-		characters[PLAYER2].SaberBackColorChange();
+		//characters[PLAYER1].SaberBackColorChange();
+		//characters[PLAYER2].SaberBackColorChange();
 		//characters[PLAYER1].SaberColorChange();
 		//characters[PLAYER2].SaberColorChange();
+
+		if (!GameStarted)
+		{
+			mainmenu.EmporerDoit(gfx);
+			mainmenu.EmporerHand(gfx);
+
+		}
+		else if (GameStarted)
+		{
+
+			Bolt.Mainbolt(gfx);
+			Bolt.WallCollision(gfx);
+
+			Remote.TrainingRemote(gfx);
+
+			//CharacterAnimation();
+			characters[PLAYER1].SaberBackColorChange();
+			characters[PLAYER2].SaberBackColorChange();
+			//characters[PLAYER1].SaberColorChange();
+			//characters[PLAYER2].SaberColorChange();
+
+		}
 	}
 	else {
 		mainmenu.MainMenu(gfx);
@@ -454,21 +480,7 @@ void Game::ComposeFrame()
 		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
 		LightSaberSelect();
 	}
-	if (!GameStarted)
-	{
-		mainmenu.EmporerHand(gfx);
-		mainmenu.EmporerDoit(gfx);
-	}
 	
-	if (GameStarted)
-	{
-
-		Bolt.Mainbolt(gfx);
-		Bolt.WallCollision(gfx);
-
-		Remote.TrainingRemote(gfx);
-
-		//CharacterAnimation();
-
-	}
+	
+	
 }
