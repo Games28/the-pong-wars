@@ -4,6 +4,7 @@ class CollisionManager
 {
 public:
 	CollisionManager() = default;
-	bool Contains(Collider& outer, Collider& inner);
+	bool Contains(Collider& inner, Collider& outer);
+	Vec2 GetInnerReflection(Collider& collider, Collider& other);
 };
 

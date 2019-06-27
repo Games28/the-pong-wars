@@ -72,6 +72,8 @@ private:
 	void CharacterSelect(bool iskeypressed);
 	void LightSaberSelect();
 	void CharacterAnimation();
+	Vec2 GetMoveDirection_P1(float moveAmount);
+	Vec2 GetMoveDirection_P2(float moveAmount);
 	void MoveCharacters();
 	void CharacterDisplay();
 	void UpdateLightSaber();

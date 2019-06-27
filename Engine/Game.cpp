@@ -83,23 +83,73 @@ void Game::UpdateModel()
 		//selecting.DrawCharacterSelect(gfx, wnd.kbd, wnd.kbd.KeyIsPressed(VK_TAB));
 		//selecting.DrawSaberSelect(gfx, wnd.kbd);
 	}
-		
 	
 	if (GameStarted)
 	{
 		//character movement
 		//MoveCharacters();
-		if (collideManager.Contains(back.colliders[0],characters[PLAYER1].collider ))
+
+		//Vec2 moveAmount = GetMoveDirection_P1(3.0f);
+		//characters[PLAYER1].Move(moveAmount);
+		//Vec2 reflection = collideManager.GetInnerReflection(characters[PLAYER1].collider, back.colliders[PLAYER1]);
+		//if (reflection.GetLengthSq())
+		//{
+		//	characters[PLAYER1].Move(reflection);
+		//}
+		Vec2 moveAmount = GetMoveDirection_P1(3.0f);
+		characters[PLAYER1].Move(moveAmount);
+		if (!collideManager.Contains(characters[PLAYER1].collider, back.colliders[PLAYER1]))
 		{
-			MoveCharacters();
+			characters[PLAYER1].Move(moveAmount *-1.0f);
 		}
-
-		
-
 	}
-	
-	
 }
+Vec2 Game::GetMoveDirection_P1(float moveAmount)
+{
+	Vec2 finalMoveAmount = Vec2(0.0f, 0.0f);
+
+	//keyboard update
+	if (wnd.kbd.KeyIsPressed('W'))
+	{
+		finalMoveAmount += Vec2(0, -moveAmount);
+	}
+	if (wnd.kbd.KeyIsPressed('S'))
+	{
+		finalMoveAmount += Vec2(0, moveAmount);
+	}
+	if (wnd.kbd.KeyIsPressed('A'))
+	{
+		finalMoveAmount += Vec2(-moveAmount, 0);
+	}
+	if (wnd.kbd.KeyIsPressed('D'))
+	{
+		finalMoveAmount += Vec2(moveAmount, 0);
+	}
+	return finalMoveAmount;
+}
+Vec2 Game::GetMoveDirection_P2(float moveAmount)
+{
+	Vec2 finalMoveAmount = Vec2(0.0f, 0.0f);
+
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		finalMoveAmount += Vec2(0, -moveAmount);
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		finalMoveAmount += Vec2(0, moveAmount);
+	}
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		finalMoveAmount += Vec2(-moveAmount, 0);
+	}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		finalMoveAmount += Vec2(moveAmount, 0);
+	}
+	return finalMoveAmount;
+}
+
 //movement update
 void Game::MoveCharacters()
 {

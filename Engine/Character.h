@@ -34,7 +34,7 @@ private:
 	};
 	
 public:
-	
+	Vec2 nextMove;
 	Vec2 pos;
 	ArtCoords artpos;
 	LightSaber lightSaber;
