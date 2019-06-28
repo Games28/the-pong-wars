@@ -33,7 +33,7 @@ Game::Game( MainWindow& wnd )
 	//			Head			Robe			Saber
 	characters{ {Vec2{110,192}, Vec2{100,240}, Vec2{210,282}},
 				{Vec2{637,195}, Vec2{600,240}, Vec2{580,282}} },
-	Bolt(Vec2{380,280},Vec2{xdist(rng),ydist(rng)}),
+	Bolt(Vec2{380,280},rng),
 	Remote(Vec2{380,280}),
 	DOit(gfx),
 	mainmenu(gfx)
@@ -87,7 +87,7 @@ void Game::UpdateModel()
 	if (GameStarted)
 	{
 		//character movement
-
+		//Bolt.Respawn(Vec2{ 380,280 }, rng);
 		Vec2 moveAmount[2];
 		moveAmount[0] = GetMoveDirection_P1(3.0f);
 		moveAmount[1] = GetMoveDirection_P2(3.0f);
@@ -460,10 +460,10 @@ void Game::ComposeFrame()
 		else if (GameStarted)
 		{
 
-			Bolt.Mainbolt(gfx);
-			Bolt.WallCollision(gfx);
+			//Bolt.DrawLaser(gfx);
+			
 
-			Remote.TrainingRemote(gfx);
+			Remote.DrawRemote(gfx);
 
 			//CharacterAnimation();
 			characters[PLAYER1].SaberBackColorChange();

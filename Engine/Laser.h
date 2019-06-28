@@ -2,33 +2,32 @@
 
 #include"Graphics.h"
 #include"Vec2.h"
+#include "ArtLaser.h"
+#include <random>
 
 class Laser
 {
 public:
-	Laser(Vec2& in_loc,Vec2& in_vel);
-	Laser(Vec2& in_loc);
-	void TrainingRemote(Graphics& gfx);
-	void Mainbolt(Graphics& gfx);
-	void Boltleft(Graphics& gfx);
-	void Boltright(Graphics& gfx);
-	//sparks
-	void SparksLeft(Graphics& gfx);
-	void SparksRight(Graphics& gfx);
-	void SparksTop(Graphics& gfx);
-	void SparksBottom(Graphics& gfx);
+	Laser(Vec2& loc);
+	Laser(Vec2& loc, std::mt19937& rng);
+	
+	
 	//interaction
-	void WallCollision(Graphics& gfx);
+	void Respawn(Vec2& in_loc, std::mt19937& rng);
+	void DrawLaser(Graphics& gfx);
+	void DrawRemote(Graphics& gfx);
 	Vec2 getVel();
 	void ReboundY();
 	float getboltWidth();
 	float getboltHeight();
 	
 	
-private:
+public:
+	
 	static constexpr float Boltwidth = 50;
 	static constexpr float Boltheight = 15;
 	Vec2 loc;
 	Vec2 vel;
+	ArtLaser art;
 	bool isVaporized = false;
 };
