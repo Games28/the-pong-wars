@@ -22,24 +22,27 @@
 #include "Game.h"
 
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ),
+	wnd(wnd),
+	gfx(wnd),
 	back(gfx),
 	rng(std::random_device()()),
-	xdist(-1.0f,1.0f),
-	ydist(-1.0f,1.0f),
+	xdist(-1.0f, 1.0f),
+	ydist(-1.0f, 1.0f),
 	//			Head			Robe			Saber
 	characters{ {Vec2{110,192}, Vec2{100,240}, Vec2{210,282}},
 				{Vec2{637,195}, Vec2{600,240}, Vec2{580,282}} },
-	Bolt(Vec2{380,280},rng),
-	Remote(Vec2{380,280}),
+	Bolt(Vec2{ 380,280 }, rng),
+	Remote(Vec2{ 380,280 }),
 	DOit(gfx),
 	mainmenu(gfx)
 	
 	
+	
 {
+	GetMoveDirection[PLAYER1] = &Game::GetMoveDirection_P1;
+	GetMoveDirection[PLAYER2] = &Game::GetMoveDirection_P2;
 	characters[PLAYER1].DrawHead = &ArtHeads::ahsoka1head;
 	characters[PLAYER1].DrawRobe = &ArtRobes::Robe1;
 	
@@ -88,18 +91,35 @@ void Game::UpdateModel()
 	{
 		//character movement
 		//Bolt.Respawn(Vec2{ 380,280 }, rng);
-		Vec2 moveAmount[2];
-		moveAmount[0] = GetMoveDirection_P1(3.0f);
-		moveAmount[1] = GetMoveDirection_P2(3.0f);
+		if (wnd.kbd.KeyIsPressed('N'))
+		{
+			Bolt.Respawn(Vec2{ 380,280 }, rng);
+			
+		}
+		Bolt.update();
+		//Vec2 moveAmount[2];
+		//float movementspeed = 3.0f;
+		//
+		//moveAmount[0] = GetMoveDirection_P1(movementspeed);
+		//moveAmount[1] = GetMoveDirection_P2(movementspeed);
 		for (int i = 0; i < NUMBER_OF_CHRS; ++i)
 		{
-			
-			characters[i].Move(moveAmount[i]);
+			float movementspeed = 3.0f;
+			Vec2 moveAmount = (*this.*GetMoveDirection[i])(movementspeed);
+			characters[i].Move(moveAmount);
 
 			Vec2 reflection = collideManager.GetInnerReflection(characters[i].collider, back.colliders[i]);
+			Vec2 BoltRedirect = collideManager.GetInnerReflection(Bolt.collider, back.colliders[2]);
 			if (reflection.GetLengthSq())
 			{
 				characters[i].Move(reflection);
+	
+			}
+			if (BoltRedirect.GetLengthSq())
+			{
+				Bolt.loc += BoltRedirect;
+				Bolt.vel *= -1.0f;
+				
 			}
 		}
 		
@@ -460,7 +480,7 @@ void Game::ComposeFrame()
 		else if (GameStarted)
 		{
 
-			//Bolt.DrawLaser(gfx);
+			Bolt.DrawLaser(gfx);
 			
 
 			Remote.DrawRemote(gfx);

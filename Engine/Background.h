@@ -19,7 +19,7 @@ public:
 	void Window(Graphics& gfx);
 	void SaberColorChange();
 	void EmperorThroneRoom(Graphics& gfx);
-	Collider colliders[2];
+	Collider colliders[3];
 	ArtBackground art;
 	void TestCollision(Character& player);
 	static constexpr float BackBorderwidth = 300;

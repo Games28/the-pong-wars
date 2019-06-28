@@ -4,6 +4,7 @@
 #include "Keyboard.h"
 #include "LightsaberColor.h"
 #include "ArtSaber.h"
+#include "Collider.h"
 #include "Colors.h"
 
 class LightSaber
@@ -12,14 +13,16 @@ public:
 	LightSaber() = default;
 	LightSaber(Vec2& in_loc);
 
+
 	// collision
 	
 	//void P1Collision();
 	//void P2Collision();
 
-private:
+public:
 	static constexpr float width = 25;
 	static constexpr float height = 200;
+	Vec2 size;
 	
 public:
 	//int operator++(int x);
@@ -28,6 +31,7 @@ public:
 	bool isSelected2 = false;
 	bool isdown = false;
 	Vec2 loc;
+	Collider collider;
 	Color color[2];
 	LightsaberColor saberColor = LightsaberColor::DEFAULT;
 

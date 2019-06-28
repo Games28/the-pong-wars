@@ -5,7 +5,8 @@ Background::Background(Graphics& gfx)
 	gfx(gfx),
 	rng(std::random_device()()),
 	colliders{ {Vec2(20,40), Vec2(BackBorderwidth,BackBorderHeight)}
-		,{Vec2(480,40), Vec2(BackBorderwidth,BackBorderHeight)} }
+		,{Vec2(480,40), Vec2(BackBorderwidth,BackBorderHeight)},
+		 {Vec2(0,0), Vec2(Graphics::ScreenWidth - 1,Graphics::ScreenHeight - 1)} }
 	
 {
 	std::uniform_int_distribution<int> xdist(350, 480);
@@ -132,9 +133,9 @@ void Background::EmperorThroneRoom(Graphics& gfx)
 	art.GuardSaber(110, 90, gfx, R);
 	art.GuardSaber(610, 90, gfx, R);
 	//this is debug code
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
-		colliders[i].DrawBox(gfx, Colors::Blue);
+		colliders[i].DrawBox(gfx, Colors::Cyan);
 	}
 	
 }

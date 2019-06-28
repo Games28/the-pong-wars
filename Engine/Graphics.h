@@ -26,6 +26,7 @@
 #include "RectF.h"
 #include "ArtHeads.h"
 #include "ArtRobes.h"
+#include "ArtLaser.h"
 #include "ArtSaber.h"
 class Graphics
 {
@@ -79,7 +80,7 @@ public:
 	ArtRobes robes;
 	ArtSaber saber1;
 	ArtSaber saber2;
-
+	ArtLaser laser;
 	void PstartPosition(int x, int y);
 
 	~Graphics();

@@ -1,4 +1,6 @@
+#include "Graphics.h"
 #include "ArtLaser.h"
+
 
 void ArtLaser::TrainingRemote( int x, int y, Graphics& gfx)
 {

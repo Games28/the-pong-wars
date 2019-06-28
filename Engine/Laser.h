@@ -4,7 +4,9 @@
 #include"Vec2.h"
 #include "ArtLaser.h"
 #include <random>
-
+#include <math.h>
+#include "Collider.h"
+using namespace std;
 class Laser
 {
 public:
@@ -16,6 +18,7 @@ public:
 	void Respawn(Vec2& in_loc, std::mt19937& rng);
 	void DrawLaser(Graphics& gfx);
 	void DrawRemote(Graphics& gfx);
+	void update();
 	Vec2 getVel();
 	void ReboundY();
 	float getboltWidth();
@@ -23,11 +26,11 @@ public:
 	
 	
 public:
-	
-	static constexpr float Boltwidth = 50;
-	static constexpr float Boltheight = 15;
+	Collider collider;
+	void (ArtLaser::* DrawBolt)(int, int, Graphics&);
+	float Boltwidth = 50;
+	float Boltheight = 15;
 	Vec2 loc;
 	Vec2 vel;
-	ArtLaser art;
 	bool isVaporized = false;
 };

@@ -86,7 +86,7 @@ private:
 	std::mt19937 rng;
 	std::uniform_real_distribution<float> xdist;
 	std::uniform_real_distribution<float> ydist;
-
+	Vec2 (Game::* GetMoveDirection[2])(float moveAmount);
 	Background back;
 	CollisionManager collideManager;
 	Character characters[NUMBER_OF_CHRS];

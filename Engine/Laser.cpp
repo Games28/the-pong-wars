@@ -3,11 +3,15 @@
 Laser::Laser(Vec2& loc)
 {
 	this->loc = loc;
+
 }
 
 Laser::Laser(Vec2 & loc, std::mt19937& rng)
+	:
+	collider(loc,Vec2(50,15))
 {
 	Respawn(loc, rng);
+
 }
 
 
@@ -18,32 +22,90 @@ Laser::Laser(Vec2 & loc, std::mt19937& rng)
 
 void Laser::Respawn(Vec2& in_loc, std::mt19937& rng)
 {
-	loc += vel;
-	std::uniform_real_distribution<float> Xdist(-1.5f, 1.5f);
-	std::uniform_real_distribution<float> Ydist(-1.5f, 1.5f);
+	float Pi = 3.14159;
+	float LeftUp = Pi * 3.0f * 0.25f;
+	float LeftDown = Pi * 5.0f * 0.25f;
+	float RightUp = Pi * 0.25f;
+	float RightUpMiddle = 0.0f;
+	float RightDownMiddle = Pi * 7.0f * 0.25f;
+	float RightDown = Pi * 6.0f * 0.25f;
+	
+	loc = in_loc;
+	float cosUp = cos(LeftUp);
+	float cosDown = cos(LeftDown);
+	float sinUp = sin(LeftUp);
+	float sinDown = sin(LeftDown);
+	
+
+std::uniform_real_distribution<float> Angle;
+	std::uniform_int_distribution<int> selection(1, 2);
+	//switch (selection(rng))
+	//{
+	//case 1:
+	//	Angle = std::uniform_real_distribution<float> (LeftUp, LeftDown);
+	//	break;
+	//case 2: 
+	//	Angle = std::uniform_real_distribution<float> (RightUpMiddle, RightUp);
+	//
+	//	break;
+	//case 3:
+	//	Angle = std::uniform_real_distribution<float> (RightDown, RightDownMiddle);
+	//	break;
+	//default:
+	//	Angle = std::uniform_real_distribution<float> (RightDown, RightDownMiddle);
+	//	break;
+	//}
+	Angle = std::uniform_real_distribution<float>(LeftUp, LeftDown);
+	float angle = Angle(rng);
 	Vec2 newVel;
-	newVel.x = Xdist(rng);
-	newVel.y = Ydist(rng);
-	if (newVel.x == 0.0f || newVel.y == 0.0f)
-	{ 
-		newVel.x = Xdist(rng);
-		newVel.y = Ydist(rng);
-		
+
+	newVel.x = cos(angle);
+	newVel.y = sin(angle);
+	
+	
+	if (selection(rng) == 1)
+	{
+		newVel *= -1.0f;
 	}
-	else {
+	
+	
+    
+	//if (newVel.x == 0.0f || newVel.y == 0.0f)
+	//{ 
+	//	newVel.x = Xdist(rng);
+	//	newVel.y = Ydist(rng);
+	//	
+	//}
+	//else {
 		vel = newVel;
-	}
+	//}
+	loc += vel;
 }
 
 void Laser::DrawLaser(Graphics& gfx)
 {
-	art.Mainbolt(loc.x, loc.y, gfx);
+	//(gfx.robes.*(DrawRobe))((int)artpos.robe.x, (int)artpos.robe.y, gfx);
+	(gfx.laser.*(DrawBolt))((int)loc.x, (int)loc.y, gfx);
+	collider.DrawBox(gfx, Colors::Green);
 	
 }
 
 void Laser::DrawRemote(Graphics& gfx)
 {
-	art.TrainingRemote(loc.x, loc.y, gfx);
+	gfx.laser.TrainingRemote(loc.x, loc.y, gfx);
+}
+
+void Laser::update()
+{
+	loc += vel;
+	if (vel.x < 0.0f)
+	{
+		DrawBolt = &ArtLaser::Boltleft;
+	}
+	else {
+		DrawBolt = &ArtLaser::Boltright;
+	}
+	collider.loc = loc;
 }
 
 Vec2 Laser::getVel()

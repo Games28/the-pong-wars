@@ -71,6 +71,7 @@ void Character::Draw(Graphics& gfx)
 	}
 	//SPACE RESPECING DEBUG COLLISION CODE!
 	collider.DrawBox(gfx, Colors::Blue);
+	lightSaber.collider.DrawBox(gfx, Colors::Magenta);
 }
 
 void Character::SaberColorChange()
