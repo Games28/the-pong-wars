@@ -117,8 +117,11 @@ void Game::UpdateModel()
 			}
 			if (BoltRedirect.GetLengthSq())
 			{
+				
 				Bolt.loc += BoltRedirect;
-				Bolt.vel *= -1.0f;
+				Bolt.Rebound();
+				
+			
 				
 			}
 		}

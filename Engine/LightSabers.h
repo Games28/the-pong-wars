@@ -22,7 +22,8 @@ public:
 public:
 	static constexpr float width = 25;
 	static constexpr float height = 200;
-	Vec2 size;
+	Vec2 sizeUP;
+	Vec2 sizeDown;
 	
 public:
 	//int operator++(int x);
@@ -31,7 +32,7 @@ public:
 	bool isSelected2 = false;
 	bool isdown = false;
 	Vec2 loc;
-	Collider collider;
+	Collider collider[4];
 	Color color[2];
 	LightsaberColor saberColor = LightsaberColor::DEFAULT;
 

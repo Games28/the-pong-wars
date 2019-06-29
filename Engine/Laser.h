@@ -20,14 +20,15 @@ public:
 	void DrawRemote(Graphics& gfx);
 	void update();
 	Vec2 getVel();
-	void ReboundY();
-	float getboltWidth();
-	float getboltHeight();
+	void Rebound();
+	void boltSparks(Graphics& gfx);
+	
 	
 	
 public:
 	Collider collider;
 	void (ArtLaser::* DrawBolt)(int, int, Graphics&);
+	void (ArtLaser::* DrawSpark)(int, int, Graphics&);
 	float Boltwidth = 50;
 	float Boltheight = 15;
 	Vec2 loc;

@@ -44,12 +44,14 @@ void Character::Draw(Graphics& gfx)
 		{
 			(gfx.saber1.*(lightSaber.Draw[1]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, 
 												lightSaber.length, lightSaber.color, gfx);
+			lightSaber.collider[0].DrawBox(gfx, Colors::Magenta);
 			
 		}
 		else
 		{
 			(gfx.saber1.*(lightSaber.Draw[0]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, 
 												lightSaber.length, lightSaber.color, gfx);
+			lightSaber.collider[1].DrawBox(gfx, Colors::Magenta);
 			
 
 		}
@@ -61,17 +63,19 @@ void Character::Draw(Graphics& gfx)
 		{
 			(gfx.saber2.*(lightSaber.Draw[3]))((int)lightSaber.loc.x, (int)lightSaber.loc.y,
 				lightSaber.length, lightSaber.color, gfx);
+			lightSaber.collider[2].DrawBox(gfx, Colors::Magenta);
 		}
 		else
 		{
 			(gfx.saber2.*(lightSaber.Draw[2]))((int)lightSaber.loc.x, (int)lightSaber.loc.y,
 				lightSaber.length, lightSaber.color, gfx);
+			lightSaber.collider[3].DrawBox(gfx, Colors::Magenta);
 
 		}
 	}
 	//SPACE RESPECING DEBUG COLLISION CODE!
 	collider.DrawBox(gfx, Colors::Blue);
-	lightSaber.collider.DrawBox(gfx, Colors::Magenta);
+	
 }
 
 void Character::SaberColorChange()

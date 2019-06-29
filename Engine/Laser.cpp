@@ -39,22 +39,7 @@ void Laser::Respawn(Vec2& in_loc, std::mt19937& rng)
 
 std::uniform_real_distribution<float> Angle;
 	std::uniform_int_distribution<int> selection(1, 2);
-	//switch (selection(rng))
-	//{
-	//case 1:
-	//	Angle = std::uniform_real_distribution<float> (LeftUp, LeftDown);
-	//	break;
-	//case 2: 
-	//	Angle = std::uniform_real_distribution<float> (RightUpMiddle, RightUp);
-	//
-	//	break;
-	//case 3:
-	//	Angle = std::uniform_real_distribution<float> (RightDown, RightDownMiddle);
-	//	break;
-	//default:
-	//	Angle = std::uniform_real_distribution<float> (RightDown, RightDownMiddle);
-	//	break;
-	//}
+	
 	Angle = std::uniform_real_distribution<float>(LeftUp, LeftDown);
 	float angle = Angle(rng);
 	Vec2 newVel;
@@ -84,7 +69,7 @@ std::uniform_real_distribution<float> Angle;
 
 void Laser::DrawLaser(Graphics& gfx)
 {
-	//(gfx.robes.*(DrawRobe))((int)artpos.robe.x, (int)artpos.robe.y, gfx);
+	
 	(gfx.laser.*(DrawBolt))((int)loc.x, (int)loc.y, gfx);
 	collider.DrawBox(gfx, Colors::Green);
 	
@@ -113,20 +98,40 @@ Vec2 Laser::getVel()
 	return vel;
 }
 
-void Laser::ReboundY()
+void Laser::Rebound()
 {
-	vel.y = -vel.y;
+	if (loc.x <= 0)
+	{
+		
+		DrawSpark = &ArtLaser::SparksLeft;
+		vel.x = -vel.x;
+	}
+	if (loc.x + Boltwidth >= (int)Graphics::ScreenWidth - 1)
+	{
+		
+		DrawSpark = &ArtLaser::SparksRight;
+		vel.x = -vel.x;
+	}
+	if (loc.y <= 0)
+	{
+		
+		DrawSpark = &ArtLaser::SparksTop;
+		vel.y = -vel.y;
+	}
+	 if (loc.y + Boltheight >= (int)Graphics::ScreenHeight - 1)
+	{
+		
+		DrawSpark = &ArtLaser::SparksBottom;
+		vel.y = -vel.y;
+	}
 }
 
-float Laser::getboltWidth()
+void Laser::boltSparks(Graphics& gfx)
 {
-	return Boltwidth;
+	(gfx.laser.*(DrawSpark))((int)loc.x , (int) loc.y, gfx);
 }
 
-float Laser::getboltHeight()
-{
-	return Boltheight;
-}
+
 
 
 
