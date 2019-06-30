@@ -22,6 +22,7 @@ public:
 public:
 	static constexpr float width = 25;
 	static constexpr float height = 200;
+	Vec2 SaberBladeSize{ 14,110 };
 	Vec2 sizeUP;
 	Vec2 sizeDown;
 	
@@ -32,7 +33,7 @@ public:
 	bool isSelected2 = false;
 	bool isdown = false;
 	Vec2 loc;
-	Collider collider[4];
+	Collider colliders[4];
 	Color color[2];
 	LightsaberColor saberColor = LightsaberColor::DEFAULT;
 
@@ -40,4 +41,5 @@ public:
 
 	void (ArtSaber::* Draw[4])(int, int, int, Color*, Graphics&);
 	void (ArtSaber::* DrawSaber[2])(int, int, Graphics&);
+	
 };

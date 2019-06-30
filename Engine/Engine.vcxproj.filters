@@ -84,9 +84,6 @@
     <ClInclude Include="HeadSelect.h">
       <Filter>characters</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>characters</Filter>
-    </ClInclude>
     <ClInclude Include="ArtBackground.h">
       <Filter>Art</Filter>
     </ClInclude>
@@ -116,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="Laser.h">
       <Filter>characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Art</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

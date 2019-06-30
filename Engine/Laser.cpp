@@ -11,7 +11,7 @@ Laser::Laser(Vec2 & loc, std::mt19937& rng)
 	collider(loc,Vec2(50,15))
 {
 	Respawn(loc, rng);
-
+	DrawSpark = 0;
 }
 
 
@@ -82,7 +82,7 @@ void Laser::DrawRemote(Graphics& gfx)
 
 void Laser::update()
 {
-	loc += vel;
+	loc += vel * 10.0f;
 	if (vel.x < 0.0f)
 	{
 		DrawBolt = &ArtLaser::Boltleft;
@@ -100,35 +100,40 @@ Vec2 Laser::getVel()
 
 void Laser::Rebound()
 {
+	//if (&Bolt.boltSparks)
+	//{
+	//	Bolt.boltSparks(gfx);
+	//}
 	if (loc.x <= 0)
 	{
 		
-		DrawSpark = &ArtLaser::SparksLeft;
+		//DrawSpark = &ArtLaser::SparksLeft;
 		vel.x = -vel.x;
 	}
 	if (loc.x + Boltwidth >= (int)Graphics::ScreenWidth - 1)
 	{
 		
-		DrawSpark = &ArtLaser::SparksRight;
+		//DrawSpark = &ArtLaser::SparksRight;
 		vel.x = -vel.x;
 	}
 	if (loc.y <= 0)
 	{
 		
-		DrawSpark = &ArtLaser::SparksTop;
+		//DrawSpark = &ArtLaser::SparksTop;
 		vel.y = -vel.y;
 	}
 	 if (loc.y + Boltheight >= (int)Graphics::ScreenHeight - 1)
 	{
 		
-		DrawSpark = &ArtLaser::SparksBottom;
+		//DrawSpark = &ArtLaser::SparksBottom;
 		vel.y = -vel.y;
 	}
 }
 
 void Laser::boltSparks(Graphics& gfx)
 {
-	(gfx.laser.*(DrawSpark))((int)loc.x , (int) loc.y, gfx);
+
+	(gfx.laser.*(DrawSpark))((int)loc.x, (int)loc.y, gfx);
 }
 
 

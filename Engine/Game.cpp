@@ -89,43 +89,51 @@ void Game::UpdateModel()
 	
 	if (GameStarted)
 	{
-		//character movement
-		//Bolt.Respawn(Vec2{ 380,280 }, rng);
+		
 		if (wnd.kbd.KeyIsPressed('N'))
 		{
 			Bolt.Respawn(Vec2{ 380,280 }, rng);
 			
 		}
 		Bolt.update();
-		//Vec2 moveAmount[2];
-		//float movementspeed = 3.0f;
-		//
-		//moveAmount[0] = GetMoveDirection_P1(movementspeed);
-		//moveAmount[1] = GetMoveDirection_P2(movementspeed);
+		
 		for (int i = 0; i < NUMBER_OF_CHRS; ++i)
 		{
+			//character movement and collision detections
 			float movementspeed = 3.0f;
 			Vec2 moveAmount = (*this.*GetMoveDirection[i])(movementspeed);
 			characters[i].Move(moveAmount);
 
 			Vec2 reflection = collideManager.GetInnerReflection(characters[i].collider, back.colliders[i]);
-			Vec2 BoltRedirect = collideManager.GetInnerReflection(Bolt.collider, back.colliders[2]);
+			
 			if (reflection.GetLengthSq())
 			{
 				characters[i].Move(reflection);
 	
 			}
-			if (BoltRedirect.GetLengthSq())
-			{
-				
-				Bolt.loc += BoltRedirect;
-				Bolt.Rebound();
-				
 			
+		}
+		//bolt collision and redirection
+		Vec2 BoltRedirect = collideManager.GetInnerReflection(Bolt.collider, back.colliders[2]);
+		if (BoltRedirect.GetLengthSq())
+		{
+			                //adjust bolt location from off screen to put back on
+				Bolt.loc += BoltRedirect;
+				Bolt.collider.loc += BoltRedirect;
+				
+			//Bolt.Rebound();
+			if (BoltRedirect.x )
+			{
+				Bolt.vel.x = -Bolt.vel.x;
 				
 			}
+			
+			if (BoltRedirect.y)
+			{
+				Bolt.vel.y = -Bolt.vel.y;
+			}
+
 		}
-		
 	}
 }
 Vec2 Game::GetMoveDirection_P1(float moveAmount)
@@ -485,7 +493,7 @@ void Game::ComposeFrame()
 
 			Bolt.DrawLaser(gfx);
 			
-
+			
 			Remote.DrawRemote(gfx);
 
 			//CharacterAnimation();

@@ -1,6 +1,7 @@
 #pragma once
 class Graphics;
 class Color;
+class Collider;
 class ArtSaber
 {
 public:

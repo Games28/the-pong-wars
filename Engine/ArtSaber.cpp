@@ -1,6 +1,7 @@
 #include "ArtSaber.h"
 #include "Graphics.h"
 #include "Colors.h"
+#include "Collider.h"
 
 void ArtSaber::DrawUpLeft(int x, int y, int length, Color* c, Graphics& gfx)
 {
@@ -8,7 +9,7 @@ void ArtSaber::DrawUpLeft(int x, int y, int length, Color* c, Graphics& gfx)
 	int SaberBitWidth = 13;
 	int SaberTopHeight = 13;
 	int HiltHeight = 58;
-
+	
 	HiltLeftUp(x, y, gfx);
 	if (length > 0)
 	{
@@ -30,7 +31,7 @@ void ArtSaber::DrawDownLeft(int x, int y, int length, Color *c, Graphics& gfx)
 	int SaberTopHeight = 13;
 	int HiltHeight = 58;
 	int Base = y + HiltHeight;
-
+	
 	HiltLeftDown(x, y, gfx);
 	if (length > 0)
 	{
@@ -52,7 +53,7 @@ void ArtSaber::DrawUpRight(int x, int y, int length, Color *c, Graphics& gfx)
 	int SaberTopHeight = 13;
 	int HiltHeight = 58;
 	int saberoffset = 8;
-
+	
 	HiltRightUp(x, y, gfx);
 	if (length > 0)
 	{
@@ -75,7 +76,7 @@ void ArtSaber::DrawDownRight(int x, int y, int length, Color *c, Graphics& gfx)
 	int HiltHeight = 58;
 	int Base = y + HiltHeight;
 	int saberoffset = 8;
-
+	
 	HiltRightDown(x, y, gfx);
 	if (length > 0)
 	{

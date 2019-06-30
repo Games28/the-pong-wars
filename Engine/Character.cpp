@@ -14,6 +14,10 @@ Character::Character(Vec2 &head_loc, Vec2 & robe_loc, Vec2& saber_loc)
 	lightSaber.loc = saber_loc;
 	lightSaber.DrawSaber[0] = 0;
 	lightSaber.DrawSaber[1] = 0;
+	lightSaber.colliders[0].Init(lightSaber.loc + Vec2(0, 50.0f), lightSaber.SaberBladeSize);
+	lightSaber.colliders[1].Init(lightSaber.loc - Vec2(0, 100.0f), lightSaber.SaberBladeSize);
+	lightSaber.colliders[2].Init(lightSaber.loc + Vec2(7, 50.0f), lightSaber.SaberBladeSize);
+	lightSaber.colliders[3].Init(lightSaber.loc + Vec2(7, -100.0f), lightSaber.SaberBladeSize);
 	
 	
 }
@@ -26,8 +30,11 @@ void Character::Move(Vec2 moveAmount)
 	artpos.robe += moveAmount;
 	lightSaber.Move(moveAmount);
 	//SPACE RESPECING DEBUG COLLISION CODE!
+	for (int i = 0; i < 4; i++)
+	{
+		lightSaber.colliders[i].Move(moveAmount);
+	}
 	collider.Move(moveAmount);
-	 
 }
 
 
@@ -44,14 +51,14 @@ void Character::Draw(Graphics& gfx)
 		{
 			(gfx.saber1.*(lightSaber.Draw[1]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, 
 												lightSaber.length, lightSaber.color, gfx);
-			lightSaber.collider[0].DrawBox(gfx, Colors::Magenta);
+			lightSaber.colliders[0].DrawBox(gfx,Colors::Green);
 			
 		}
 		else
 		{
 			(gfx.saber1.*(lightSaber.Draw[0]))((int)lightSaber.loc.x, (int)lightSaber.loc.y, 
 												lightSaber.length, lightSaber.color, gfx);
-			lightSaber.collider[1].DrawBox(gfx, Colors::Magenta);
+			lightSaber.colliders[1].DrawBox(gfx, Colors::Green);
 			
 
 		}
@@ -63,13 +70,15 @@ void Character::Draw(Graphics& gfx)
 		{
 			(gfx.saber2.*(lightSaber.Draw[3]))((int)lightSaber.loc.x, (int)lightSaber.loc.y,
 				lightSaber.length, lightSaber.color, gfx);
-			lightSaber.collider[2].DrawBox(gfx, Colors::Magenta);
+			lightSaber.colliders[2].DrawBox(gfx, Colors::Green);
+			
 		}
 		else
 		{
 			(gfx.saber2.*(lightSaber.Draw[2]))((int)lightSaber.loc.x, (int)lightSaber.loc.y,
 				lightSaber.length, lightSaber.color, gfx);
-			lightSaber.collider[3].DrawBox(gfx, Colors::Magenta);
+			lightSaber.colliders[3].DrawBox(gfx, Colors::Green);
+
 
 		}
 	}
