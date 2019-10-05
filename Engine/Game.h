@@ -38,21 +38,10 @@
 #include <random>
 //#define NUMBER_OF_CHRS 2
 
-/*current objects 1. get Laser object collision working with lightsaber for player1 and player2.
-                  2. get laser collision detection with window border to display sparks images when 
-				     it by laser.
-			       3. a getting method of doing character selection for all characters instead of 
-				     just current 4. 
-			       4. code clean up. 
 
-				   main objective of game will be to make menus with character and saber color selection.
-				   with gameplay being to deflect the laser from your character with saber and no get hit.
-				   if hit will have a health bar the will go down when the player it hit. also it the laser
-				   hits the walls it will respawn in the middle again.
-				 
-*/
 class Game
 {
+public:
 	enum
 	{
 		// Note: keep the following settings
@@ -60,6 +49,13 @@ class Game
 		PLAYER1 = 0,
 		PLAYER2 = 1,
 		NUMBER_OF_CHRS = 2
+	};
+	enum GameState
+	{
+		TITLE,
+		SELECTION,
+		GAMESTART,
+		GAMEEND
 	};
 public:
 	Game( class MainWindow& wnd );
@@ -77,6 +73,7 @@ private:
 	void MoveCharacters();
 	void CharacterDisplay();
 	void UpdateLightSaber();
+	void StateChange(GameState state);
 		/********************************/
 	/*  User Functions              */
 	/********************************/
@@ -97,6 +94,7 @@ private:
 	Laser Remote;
 	Menus DOit;
 	Menus mainmenu;
+	GameState stateofgame;
 	bool GameOver = false;
 	bool CharactersSelected = false;
 	bool LightsabersSelected = false;

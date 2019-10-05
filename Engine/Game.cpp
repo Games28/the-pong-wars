@@ -68,74 +68,7 @@ void Game::Go()
 	ComposeFrame();
 	gfx.EndFrame();
 }
-void Game::UpdateModel()
-{
-	//backgroumd guard colorchange
-	back.SaberColorChange();
-	
 
-	if (wnd.kbd.KeyIsPressed(VK_RETURN))
-	{
-		GameStarted = true;
-	}
-	else
-	{
-		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
-		//here
-		LightSaberSelect();
-		//selecting.DrawCharacterSelect(gfx, wnd.kbd, wnd.kbd.KeyIsPressed(VK_TAB));
-		//selecting.DrawSaberSelect(gfx, wnd.kbd);
-	}
-	
-	if (GameStarted)
-	{
-		
-		if (wnd.kbd.KeyIsPressed('N'))
-		{
-			Bolt.Respawn(Vec2{ 380,280 }, rng);
-			
-		}
-		Bolt.update();
-		
-		for (int i = 0; i < NUMBER_OF_CHRS; ++i)
-		{
-			//character movement and collision detections
-			float movementspeed = 3.0f;
-			Vec2 moveAmount = (*this.*GetMoveDirection[i])(movementspeed);
-			characters[i].Move(moveAmount);
-
-			Vec2 reflection = collideManager.GetInnerReflection(characters[i].collider, back.colliders[i]);
-			
-			if (reflection.GetLengthSq())
-			{
-				characters[i].Move(reflection);
-	
-			}
-			
-		}
-		//bolt collision and redirection
-		Vec2 BoltRedirect = collideManager.GetInnerReflection(Bolt.collider, back.colliders[2]);
-		if (BoltRedirect.GetLengthSq())
-		{
-			                //adjust bolt location from off screen to put back on
-				Bolt.loc += BoltRedirect;
-				Bolt.collider.loc += BoltRedirect;
-				
-			//Bolt.Rebound();
-			if (BoltRedirect.x )
-			{
-				Bolt.vel.x = -Bolt.vel.x;
-				
-			}
-			
-			if (BoltRedirect.y)
-			{
-				Bolt.vel.y = -Bolt.vel.y;
-			}
-
-		}
-	}
-}
 Vec2 Game::GetMoveDirection_P1(float moveAmount)
 {
 	Vec2 finalMoveAmount = Vec2(0.0f, 0.0f);
@@ -226,7 +159,7 @@ void Game::CharacterSelect(bool iskeypressed)
 {
 	if (!iskeypressed)
 	{
-		//if (!Player1Select) Vec2 loc{ 20,280 };
+		
 		
 			if (wnd.kbd.KeyIsPressed(VK_F1))
 			{
@@ -466,52 +399,135 @@ void Game::UpdateLightSaber()
 	}
 }
 
+void Game::StateChange(GameState state)
+{
+	stateofgame = state;
+}
+void Game::UpdateModel()
+{ //switch statment not working.
+	switch(stateofgame)
+	{
+	case GameState::TITLE:
+	   {
+		if (wnd.kbd.KeyIsPressed(VK_RETURN))
+		{
+			StateChange(GameState::SELECTION);
+		}
+		break;
+	   }
+	case GameState::SELECTION:
+	   {
+		//backgroumd guard colorchange
+		back.SaberColorChange();
+		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
+		//here
+		LightSaberSelect();
+
+
+		if (wnd.kbd.KeyIsPressed(VK_RETURN))
+		{
+			StateChange(GameState::GAMESTART);
+		}
+		break;
+	    }
+	case GameState::GAMESTART:
+	    {
+		if (wnd.kbd.KeyIsPressed('N'))
+		{
+			Bolt.Respawn(Vec2{ 380,280 }, rng);
+
+		}
+		Bolt.update();
+
+		for (int i = 0; i < NUMBER_OF_CHRS; ++i)
+		{
+			//character movement and collision detections
+			float movementspeed = 3.0f;
+			Vec2 moveAmount = (*this.*GetMoveDirection[i])(movementspeed);
+			characters[i].Move(moveAmount);
+
+			Vec2 reflection = collideManager.GetInnerReflection(characters[i].collider, back.colliders[i]);
+
+			if (reflection.GetLengthSq())
+			{
+				characters[i].Move(reflection);
+
+			}
+
+		}
+		UpdateLightSaber();
+		//bolt collision and redirection
+		Vec2 BoltRedirect = collideManager.GetInnerReflection(Bolt.collider, back.colliders[2]);
+		if (BoltRedirect.GetLengthSq())
+		{
+			//adjust bolt location from off screen to put back on
+			Bolt.loc += BoltRedirect;
+			Bolt.collider.loc += BoltRedirect;
+
+			//Bolt.Rebound();
+			if (BoltRedirect.x)
+			{
+				Bolt.vel.x = -Bolt.vel.x;
+
+			}
+
+			if (BoltRedirect.y)
+			{
+				Bolt.vel.y = -Bolt.vel.y;
+			}
+
+		}
+		if (wnd.kbd.KeyIsPressed(VK_RETURN))
+		{
+			StateChange(GameState::GAMEEND);
+		}
+		break;
+	}
+	case GameState::GAMEEND:
+	  {
+
+		break;
+	  }
+	}
+}
 
 void Game::ComposeFrame()
 {
-	
-	back.EmperorThroneRoom(gfx);
-	
-	if (CharactersSelected || LightsabersSelected)
+	switch (stateofgame)
 	{
-		
-		CharacterDisplay();
-		UpdateLightSaber();
-		//characters[PLAYER1].SaberBackColorChange();
-		//characters[PLAYER2].SaberBackColorChange();
-		//characters[PLAYER1].SaberColorChange();
-		//characters[PLAYER2].SaberColorChange();
+	case GameState::TITLE:
+	   {
+		back.EmperorThroneRoom(gfx);
+		break;
+	   }
+	case GameState::SELECTION:
+	  {
+	 	back.EmperorThroneRoom(gfx);
 
-		if (!GameStarted)
-		{
-			mainmenu.EmporerDoit(gfx);
-			mainmenu.EmporerHand(gfx);
-
-		}
-		else if (GameStarted)
-		{
-
-			Bolt.DrawLaser(gfx);
-			
-			
-			Remote.DrawRemote(gfx);
-
-			//CharacterAnimation();
-			characters[PLAYER1].SaberBackColorChange();
-			characters[PLAYER2].SaberBackColorChange();
-			//characters[PLAYER1].SaberColorChange();
-			//characters[PLAYER2].SaberColorChange();
-
-		}
-	}
-	else {
 		mainmenu.MainMenu(gfx);
 		mainmenu.EmporerHand(gfx);
 		mainmenu.EmporerSelect(gfx);
-		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
-		LightSaberSelect();
+		break;
+	  }
+	case GameState::GAMESTART:
+	  {
+		back.EmperorThroneRoom(gfx);
+		Bolt.DrawLaser(gfx);
+
+
+		Remote.DrawRemote(gfx);
+		CharacterDisplay();
+		//CharacterAnimation();
+		characters[PLAYER1].SaberBackColorChange();
+		characters[PLAYER2].SaberBackColorChange();
+		break;
+	  }
+	case GameState::GAMEEND:
+	  {
+		back.EmperorThroneRoom(gfx);
+		break;
+	  }
+
+
 	}
-	
-	
-	
 }

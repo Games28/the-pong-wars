@@ -12,6 +12,7 @@ Laser::Laser(Vec2 & loc, std::mt19937& rng)
 {
 	Respawn(loc, rng);
 	DrawSpark = 0;
+	DrawBolt = 0;
 }
 
 
@@ -77,7 +78,7 @@ void Laser::DrawLaser(Graphics& gfx)
 
 void Laser::DrawRemote(Graphics& gfx)
 {
-	gfx.laser.TrainingRemote(loc.x, loc.y, gfx);
+	gfx.laser.TrainingRemote((int)loc.x, (int)loc.y, gfx);
 }
 
 void Laser::update()
