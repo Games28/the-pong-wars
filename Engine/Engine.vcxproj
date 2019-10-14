@@ -163,6 +163,7 @@
     <ClInclude Include="ArtHeads.h" />
     <ClInclude Include="RectF.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SaberSelector.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Stars.h" />
     <ClInclude Include="TheSelector.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ArtHeads.cpp" />
     <ClCompile Include="RectF.cpp" />
+    <ClCompile Include="SaberSelector.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stars.cpp" />
     <ClCompile Include="TheSelector.cpp" />

@@ -5,7 +5,7 @@ Background::Background(Graphics& gfx)
 	gfx(gfx),
 	rng(std::random_device()()),
 	colliders{ {Vec2(20,40), Vec2(BackBorderwidth,BackBorderHeight)}
-		,{Vec2(480,40), Vec2(BackBorderwidth,BackBorderHeight)},
+		,{Vec2(570,40), Vec2(BackBorderwidth,BackBorderHeight)},
 		 {Vec2(0,0), Vec2(Graphics::ScreenWidth - 1,Graphics::ScreenHeight - 1)} }
 	
 {

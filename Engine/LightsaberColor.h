@@ -13,7 +13,7 @@ enum class LightsaberColor
 	PURPLE2,
 	RED2,
 	WHITE2,
-	DEFAULT
+	DEFAULT 
 	
 
 };

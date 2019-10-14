@@ -22,7 +22,7 @@ public:
 	Collider colliders[3];
 	ArtBackground art;
 	void TestCollision(Character& player);
-	static constexpr float BackBorderwidth = 300;
+	static constexpr float BackBorderwidth = 200;
 	static constexpr float BackBorderHeight = 500;
 	
 private:

@@ -22,6 +22,9 @@
     <Filter Include="Art">
       <UniqueIdentifier>{c3a61f03-f087-4e67-8921-10f1cec87cc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="enum">
+      <UniqueIdentifier>{db18a96c-a0b8-43e6-9028-a77a4e299613}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChiliWin.h">
@@ -72,16 +75,7 @@
     <ClInclude Include="Background.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Meter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LightsaberColor.h">
-      <Filter>characters</Filter>
-    </ClInclude>
     <ClInclude Include="LightSabers.h">
-      <Filter>characters</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadSelect.h">
       <Filter>characters</Filter>
     </ClInclude>
     <ClInclude Include="ArtBackground.h">
@@ -116,6 +110,18 @@
     </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>Art</Filter>
+    </ClInclude>
+    <ClInclude Include="SaberSelector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightsaberColor.h">
+      <Filter>enum</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadSelect.h">
+      <Filter>enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Meter.h">
+      <Filter>enum</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +195,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArtLaser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaberSelector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

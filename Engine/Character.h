@@ -40,6 +40,7 @@ public:
 	LightSaber lightSaber;
 	
 	Collider collider;
+
 	
 	bool isSelected = false;
 	bool ColorIncreasing = false;

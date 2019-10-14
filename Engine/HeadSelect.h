@@ -16,5 +16,6 @@ enum class HeadSelect
 	EMPEROR2,
 	REY2,
 	OBIWAN2,
-	MARAJADE2
+	MARAJADE2,
+	DEFAULT
 };

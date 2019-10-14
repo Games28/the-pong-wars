@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "LightSabers.h"
 
 
 Game::Game(MainWindow& wnd)
@@ -41,8 +42,8 @@ Game::Game(MainWindow& wnd)
 	
 	
 {
-	GetMoveDirection[PLAYER1] = &Game::GetMoveDirection_P1;
-	GetMoveDirection[PLAYER2] = &Game::GetMoveDirection_P2;
+	GetMoveDirection[PLAYER1] = &Game::GetPlayer1Movement;
+	GetMoveDirection[PLAYER2] = &Game::GetPlayer2Movement;
 	characters[PLAYER1].DrawHead = &ArtHeads::ahsoka1head;
 	characters[PLAYER1].DrawRobe = &ArtRobes::Robe1;
 	
@@ -57,7 +58,12 @@ Game::Game(MainWindow& wnd)
 		characters[i].collider.Init(Playerboxpos, Playerboxsize);
 		
 	}
-	
+	stateofgame = GameState::TITLE;
+	theselecter = Selector::DEFAULT;
+	player1Head = HeadSelect::DEFAULT;
+	player1Color = LightsaberColor::DEFAULT;
+	player2Head = HeadSelect::DEFAULT;
+	player2Color = LightsaberColor::DEFAULT;
 
 }
 
@@ -69,7 +75,7 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
-Vec2 Game::GetMoveDirection_P1(float moveAmount)
+Vec2 Game::GetPlayer1Movement(float moveAmount)
 {
 	Vec2 finalMoveAmount = Vec2(0.0f, 0.0f);
 
@@ -92,7 +98,7 @@ Vec2 Game::GetMoveDirection_P1(float moveAmount)
 	}
 	return finalMoveAmount;
 }
-Vec2 Game::GetMoveDirection_P2(float moveAmount)
+Vec2 Game::GetPlayer2Movement(float moveAmount)
 {
 	Vec2 finalMoveAmount = Vec2(0.0f, 0.0f);
 
@@ -155,7 +161,7 @@ void Game::MoveCharacters()
 }
 
 //character selecting
-void Game::CharacterSelect(bool iskeypressed)
+void Game::PlayerCharacter(bool iskeypressed)
 {
 	if (!iskeypressed)
 	{
@@ -288,8 +294,474 @@ void Game::CharacterSelect(bool iskeypressed)
 		CharactersSelected = true;
 	}
 }
+void Game::TestPlayerchar()
+{
+	switch (player1Head)
+	{
+	case HeadSelect::ANAKIN1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::anakin1head;
+		break;
+	}
+	case HeadSelect::MARAJADE1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::Marajade1head;
+		break;
+	}
+	case HeadSelect::EMPEROR1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::emperor1head;
+		break;
+	}
+	case HeadSelect::LEIA1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::Leia1head;
+		break;
+	}
+	case HeadSelect::LUKE1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::Luke1head;
+		break;
+	}
+	case HeadSelect::REY1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::Rey1head;
+		break;
+	}
+	case HeadSelect::OBIWAN1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::Obiwan1head;
+		break;
+	}
+	case HeadSelect::AHSOKA1:
+	{
+		characters[PLAYER1].DrawHead = &ArtHeads::anakin1head;
+		break;
+	}
+	}
+
+	switch (player2Head)
+	{
+	case HeadSelect::ANAKIN2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::anakin2head;
+		break;
+	}
+	case HeadSelect::MARAJADE2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::Marajade2head;
+		break;
+	}
+	case HeadSelect::EMPEROR2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::emperor2head;
+		break;
+	}
+	case HeadSelect::LEIA2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::Leia2head;
+		break;
+	}
+	case HeadSelect::LUKE2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::Luke2head;
+		break;
+	}
+	case HeadSelect::REY2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::Rey2head;
+		break;
+	}
+	case HeadSelect::OBIWAN2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::Obiwan2head;
+		break;
+	}
+	case HeadSelect::AHSOKA2:
+	{
+		characters[PLAYER2].DrawHead = &ArtHeads::ahsoka2head;
+		break;
+	}
+	}
+}
+void Game::Testchosesaber()
+{
+	unsigned char ColorValue = 127;
+	switch (player1Color)
+	{
+	case LightsaberColor::BLUE1:
+	{
+		characters[PLAYER1].lightSaber.color[0] = Color{ 0,0,ColorValue };
+		characters[PLAYER1].lightSaber.isSelected1 = true;
+		break;
+	}
+	case LightsaberColor::GREEN1:
+	{
+		characters[PLAYER1].lightSaber.color[0] = Color{ 0,ColorValue,0 };
+		characters[PLAYER1].lightSaber.isSelected1 = true;
+		break;
+	}
+	case LightsaberColor::RED1:
+	{
+		characters[PLAYER1].lightSaber.color[0] = Color{ ColorValue,0,0 };
+		characters[PLAYER1].lightSaber.isSelected1 = true;
+		break;
+	}
+	case LightsaberColor::PURPLE1:
+	{
+		characters[PLAYER1].lightSaber.color[0] = Color{ ColorValue,0,ColorValue };
+		characters[PLAYER1].lightSaber.isSelected1 = true;
+		break;
+	}
+	}
+
+	switch (player2Color)
+	{
+	case LightsaberColor::BLUE2:
+	{
+		characters[PLAYER2].lightSaber.color[1] = Color{ 0,0,ColorValue };
+		characters[PLAYER2].lightSaber.isSelected2 = true;
+		break;
+	}
+	case LightsaberColor::GREEN2:
+	{
+		characters[PLAYER2].lightSaber.color[1] = Color{ 0,ColorValue,0 };
+		characters[PLAYER2].lightSaber.isSelected2 = true;
+		break;
+	}
+	case LightsaberColor::RED2:
+	{
+		characters[PLAYER2].lightSaber.color[1] = Color{ ColorValue,0,0 };
+		characters[PLAYER2].lightSaber.isSelected2 = true;
+		break;
+	}
+	case LightsaberColor::PURPLE2:
+	{
+		characters[PLAYER2].lightSaber.color[1] = Color{ ColorValue,0,ColorValue };
+		characters[PLAYER2].lightSaber.isSelected2 = true;
+		break;
+	}
+	}
+	
+}
+void Game::TheMenuSelector(Keyboard::Event* E)  // currently function working on
+{
+	char P1 = E->GetCode();
+	if (!wnd.kbd.KeyIsPressed(VK_TAB))
+	{
+		if (E->IsPress())
+		{// player 1 heads
+			switch (P1)
+			{
+			case VK_F1:
+			{
+
+				selecting.CharacterSelector1(20, 350, gfx);
+				player1Head = HeadSelect::ANAKIN1;
+				break;
+			}
+			case VK_F2:
+			{
+				selecting.CharacterSelector1(20, 370, gfx);
+				player1Head = HeadSelect::MARAJADE1;
+				break;
+			}
+			case VK_F3:
+			{
+				selecting.CharacterSelector1(20, 400, gfx);
+				player1Head = HeadSelect::EMPEROR1;
+				break;
+			}
+			case VK_F4:
+			{
+				selecting.CharacterSelector1(20, 430, gfx);
+				player1Head = HeadSelect::LEIA1;
+				break;
+			}
+			case VK_F5:
+			{
+				selecting.CharacterSelector1(20, 460, gfx);
+				player1Head = HeadSelect::LUKE1;
+				break;
+			}
+			case VK_F6:
+			{
+				selecting.CharacterSelector1(20, 490, gfx);
+				player1Head = HeadSelect::REY1;
+				break;
+			}
+			case VK_F7:
+			{
+				selecting.CharacterSelector1(20, 520, gfx);
+				player1Head = HeadSelect::OBIWAN1;
+				break;
+			}
+			case VK_F8:
+			{
+				selecting.CharacterSelector1(20, 545, gfx);
+				player1Head = HeadSelect::AHSOKA1;
+				break;
+			}
+			case '1':
+			{
+				selecting.SaberSelector1(210, 350, gfx);
+				player1Color = LightsaberColor::BLUE1;
+				break;
+			}
+			case '2':
+			{
+				selecting.SaberSelector1(210, 370, gfx);
+				player1Color = LightsaberColor::GREEN1;
+				break;
+			}
+			case '3':
+			{
+				selecting.SaberSelector1(210, 400, gfx);
+				player1Color = LightsaberColor::RED1;
+				break;
+			}
+			case '4':
+			{
+				selecting.SaberSelector1(210, 430, gfx);
+				player1Color = LightsaberColor::PURPLE1;
+				break;
+			}
+
+			}
+		}
+	}
+	
+	if (wnd.kbd.KeyIsPressed(VK_TAB))
+	{
+		char P2 = E->GetCode();
+		if (E->IsPress())
+		{// player 2 heads
+			switch (P2)
+			{
+			case VK_F1:
+			{
+				selecting.CharacterSelector2(420, 350, gfx);
+				player2Head = HeadSelect::ANAKIN2;
+				break;
+			}
+			case VK_F2:
+			{
+				selecting.CharacterSelector2(420, 370, gfx);
+				player2Head = HeadSelect::MARAJADE2;
+				break;
+			}
+			case VK_F3:
+			{
+				selecting.CharacterSelector2(420, 400, gfx);
+				player2Head = HeadSelect::EMPEROR2;
+				break;
+			}
+			case VK_F4:
+			{
+				selecting.CharacterSelector2(420, 430, gfx);
+				player2Head = HeadSelect::LEIA2;
+				break;
+			}
+			case VK_F5:
+			{
+				selecting.CharacterSelector2(420, 460, gfx);
+				player2Head = HeadSelect::LUKE2;
+				break;
+			}
+			case VK_F6:
+			{
+				selecting.CharacterSelector2(420, 490, gfx);
+				player2Head = HeadSelect::REY2;
+				break;
+			}
+			case VK_F7:
+			{
+				selecting.CharacterSelector2(420, 520, gfx);
+				player2Head = HeadSelect::OBIWAN2;
+				break;
+			}
+			case VK_F8:
+			{
+				selecting.CharacterSelector2(420, 545, gfx);
+				player2Head = HeadSelect::AHSOKA2;
+				break;
+			}
+			case '1':
+			{
+				selecting.SaberSelector2(610, 350, gfx);
+				player2Color = LightsaberColor::BLUE2;
+				break;
+			}
+			case '2':
+			{
+				selecting.SaberSelector2(610, 370, gfx);
+				player2Color = LightsaberColor::GREEN2;
+				break;
+			}
+			case '3':
+			{
+				selecting.SaberSelector2(610, 400, gfx);
+				player2Color = LightsaberColor::RED2;
+				break;
+			}
+			case '4':
+			{
+				selecting.SaberSelector2(610, 430, gfx);
+				player2Color = LightsaberColor::PURPLE2;
+				break;
+			}
+
+			
+			}
+			
+		}
+
+	}
+
+	
+} // current 
+void Game::DrawSelectingSaber()
+{
+	//player characters
+	switch (player1Head)
+	{
+	case HeadSelect::ANAKIN1:
+	{
+		selecting.CharacterSelector1(20, 350, gfx);
+		break;
+	}
+	case HeadSelect::MARAJADE1:
+	{
+		selecting.CharacterSelector1(20, 370, gfx);
+		break;
+	}
+	case HeadSelect::EMPEROR1:
+	{
+		selecting.CharacterSelector1(20, 400, gfx);
+		break;
+	}
+	case HeadSelect::LEIA1:
+	{
+		selecting.CharacterSelector1(20, 430, gfx);
+		break;
+	}
+	case HeadSelect::LUKE1:
+	{
+		selecting.CharacterSelector1(20, 460, gfx);
+		break;
+	}
+	case HeadSelect::REY1:
+	{
+		selecting.CharacterSelector1(20, 490, gfx);
+		break;
+	}
+	case HeadSelect::OBIWAN1:
+	{
+		selecting.CharacterSelector1(20, 520, gfx);
+		break;
+	}
+	case HeadSelect::AHSOKA1:
+	{
+		selecting.CharacterSelector1(20, 545, gfx);
+		break;
+	}
+	}
+
+	switch (player2Head)
+	{
+	case HeadSelect::ANAKIN2:
+	{
+		selecting.CharacterSelector2(420, 350, gfx);
+		break;
+	}
+	case HeadSelect::MARAJADE2:
+	{
+		selecting.CharacterSelector2(420, 370, gfx);
+		break;
+	}
+	case HeadSelect::EMPEROR2:
+	{
+		selecting.CharacterSelector2(420, 400, gfx);
+		break;
+	}
+	case HeadSelect::LEIA2:
+	{
+		selecting.CharacterSelector2(420, 430, gfx);
+		break;
+	}
+	case HeadSelect::LUKE2:
+	{
+		selecting.CharacterSelector2(420, 460, gfx);
+		break;
+	}
+	case HeadSelect::REY2:
+	{
+		selecting.CharacterSelector2(420, 490, gfx);
+		break;
+	}
+	case HeadSelect::OBIWAN2:
+	{
+		selecting.CharacterSelector2(420, 520, gfx);
+		break;
+	}
+	case HeadSelect::AHSOKA2:
+	{
+		selecting.CharacterSelector2(420, 545, gfx);
+		break;
+	}
+	}
+
+	//lightsabers
+	switch (player1Color)
+	{
+	case LightsaberColor::BLUE1:
+	{
+		selecting.SaberSelector1(210, 350, gfx);
+		break;
+	}
+	case LightsaberColor::GREEN1:
+	{
+		selecting.SaberSelector1(210, 370, gfx);
+		break;
+	}
+	case LightsaberColor::RED1:
+	{
+		selecting.SaberSelector1(210, 400, gfx);
+		break;
+	}
+	case LightsaberColor::PURPLE1:
+	{
+		selecting.SaberSelector1(210, 430, gfx);
+		break;
+	}
+	}
+
+	switch (player2Color)
+	{
+	case LightsaberColor::BLUE2:
+	{
+		selecting.SaberSelector2(610, 350, gfx);
+		break;
+	}
+	case LightsaberColor::GREEN2:
+	{
+		selecting.SaberSelector2(610, 370, gfx);
+		break;
+	}
+	case LightsaberColor::RED2:
+	{
+		selecting.SaberSelector2(610, 400, gfx);
+		break;
+	}
+	case LightsaberColor::PURPLE2:
+	{
+		selecting.SaberSelector2(610, 430, gfx);
+		break;
+	}
+	}
+}
 //lightsaber selecting
-void Game::LightSaberSelect()
+void Game::ChosenLightSaber()
 {
 	unsigned char ColorValue = 127;
 	    if (wnd.kbd.KeyIsPressed('1'))
@@ -351,6 +823,8 @@ void Game::LightSaberSelect()
 	}
 }
 
+
+
 // Loop through characters and call selected character 
 	// via a function pointer
 void Game::CharacterDisplay()
@@ -409,6 +883,7 @@ void Game::UpdateModel()
 	{
 	case GameState::TITLE:
 	   {
+		back.SaberColorChange();
 		if (wnd.kbd.KeyIsPressed(VK_RETURN))
 		{
 			StateChange(GameState::SELECTION);
@@ -419,12 +894,12 @@ void Game::UpdateModel()
 	   {
 		//backgroumd guard colorchange
 		back.SaberColorChange();
-		CharacterSelect(wnd.kbd.KeyIsPressed(VK_TAB));
+		//PlayerCharacter(wnd.kbd.KeyIsPressed(VK_TAB));
 		//here
-		LightSaberSelect();
+		//ChosenLightSaber();
+		TheMenuSelector(&wnd.kbd.ReadKey());
 
-
-		if (wnd.kbd.KeyIsPressed(VK_RETURN))
+		if (wnd.kbd.KeyIsPressed(VK_SHIFT) && wnd.kbd.KeyIsPressed(VK_RETURN))
 		{
 			StateChange(GameState::GAMESTART);
 		}
@@ -432,20 +907,24 @@ void Game::UpdateModel()
 	    }
 	case GameState::GAMESTART:
 	    {
+		back.SaberColorChange();
 		if (wnd.kbd.KeyIsPressed('N'))
 		{
 			Bolt.Respawn(Vec2{ 380,280 }, rng);
 
 		}
 		Bolt.update();
-
+		
 		for (int i = 0; i < NUMBER_OF_CHRS; ++i)
 		{
+			TestPlayerchar();
+			Testchosesaber();
+			UpdateLightSaber();
 			//character movement and collision detections
 			float movementspeed = 3.0f;
 			Vec2 moveAmount = (*this.*GetMoveDirection[i])(movementspeed);
 			characters[i].Move(moveAmount);
-
+			//character to wall collision
 			Vec2 reflection = collideManager.GetInnerReflection(characters[i].collider, back.colliders[i]);
 
 			if (reflection.GetLengthSq())
@@ -453,10 +932,31 @@ void Game::UpdateModel()
 				characters[i].Move(reflection);
 
 			}
-
+			//for (int j = 0; j < 4; j++)
+			//{
+			//	//bolt to lightsaber collision
+			//	bool SaberDeflection = collideManager.ReboundTestbool(Bolt.collider, characters[i].lightSaber.colliders[j]);
+			//
+			//	if (SaberDeflection)
+			//	{
+			//		Bolt.loc.x = -Bolt.loc.x;
+			//	}
+			//}
 		}
-		UpdateLightSaber();
-		//bolt collision and redirection
+
+	   //for (int j = 0; j < 4; j++)
+	   //{
+	   //	//bolt to lightsaber collision
+	   //	bool SaberDeflection = collideManager.ReboundTestbool(Bolt.collider,Character::colliders[j]);
+	   //
+	   //	if (SaberDeflection)
+	   //	{
+	   //		Bolt.loc.x = -Bolt.loc.x;
+	   //	}
+	   //}
+		
+		
+		//bolt to wall redirection
 		Vec2 BoltRedirect = collideManager.GetInnerReflection(Bolt.collider, back.colliders[2]);
 		if (BoltRedirect.GetLengthSq())
 		{
@@ -465,7 +965,7 @@ void Game::UpdateModel()
 			Bolt.collider.loc += BoltRedirect;
 
 			//Bolt.Rebound();
-			if (BoltRedirect.x)
+			//if (BoltRedirect.x)
 			{
 				Bolt.vel.x = -Bolt.vel.x;
 
@@ -477,18 +977,23 @@ void Game::UpdateModel()
 			}
 
 		}
-		if (wnd.kbd.KeyIsPressed(VK_RETURN))
+		if (wnd.kbd.KeyIsPressed(VK_BACK))
 		{
 			StateChange(GameState::GAMEEND);
 		}
 		break;
-	}
+		
+	
+	    }
 	case GameState::GAMEEND:
 	  {
 
 		break;
 	  }
+    default:
+	{ int i = 0; break; }
 	}
+	
 }
 
 void Game::ComposeFrame()
@@ -498,22 +1003,26 @@ void Game::ComposeFrame()
 	case GameState::TITLE:
 	   {
 		back.EmperorThroneRoom(gfx);
+		mainmenu.EmporerHand(gfx);
+		mainmenu.EmporerDoit(gfx);
+		mainmenu.TitleScreen(gfx);
 		break;
 	   }
 	case GameState::SELECTION:
 	  {
 	 	back.EmperorThroneRoom(gfx);
-
+		
 		mainmenu.MainMenu(gfx);
 		mainmenu.EmporerHand(gfx);
 		mainmenu.EmporerSelect(gfx);
+		DrawSelectingSaber();
 		break;
 	  }
 	case GameState::GAMESTART:
 	  {
 		back.EmperorThroneRoom(gfx);
 		Bolt.DrawLaser(gfx);
-
+		
 
 		Remote.DrawRemote(gfx);
 		CharacterDisplay();
@@ -527,7 +1036,8 @@ void Game::ComposeFrame()
 		back.EmperorThroneRoom(gfx);
 		break;
 	  }
-
-
+	default:
+	{ int i = 0; break; }
+   
 	}
 }

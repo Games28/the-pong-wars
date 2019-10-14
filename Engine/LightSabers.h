@@ -33,6 +33,7 @@ public:
 	bool isSelected2 = false;
 	bool isdown = false;
 	Vec2 loc;
+	
 	Collider colliders[4];
 	Color color[2];
 	LightsaberColor saberColor = LightsaberColor::DEFAULT;

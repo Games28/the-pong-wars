@@ -29,7 +29,7 @@
 #include "TheSelector.h"
 #include "Character.h"
 #include "CollisionManager.h"
-#include "LightSabers.h"
+class LightSabers;
 #include "LightsaberColor.h"
 #include "Menus.h"
 #include "HeadSelect.h"
@@ -41,7 +41,7 @@
 
 class Game
 {
-public:
+
 	enum
 	{
 		// Note: keep the following settings
@@ -57,20 +57,34 @@ public:
 		GAMESTART,
 		GAMEEND
 	};
+	
+	enum Selector
+	{
+		PLAYER1HEAD,
+		PLAYER1SABER,
+		PLAYER2HEAD,
+		PLAYER2SABER,
+		DEFAULT
+	};
 public:
 	Game( class MainWindow& wnd );
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
 	void Go();
 private:
+
 	void ComposeFrame();
 	void UpdateModel();
-	void CharacterSelect(bool iskeypressed);
-	void LightSaberSelect();
+	void PlayerCharacter(bool iskeypressed);
+	void TestPlayerchar();
+	void Testchosesaber();
+	void ChosenLightSaber();
+	void TheMenuSelector(Keyboard::Event* E);
+	void DrawSelectingSaber();
 	void CharacterAnimation();
-	Vec2 GetMoveDirection_P1(float moveAmount);
-	Vec2 GetMoveDirection_P2(float moveAmount);
-	void MoveCharacters();
+	Vec2 GetPlayer1Movement(float moveAmount);
+	Vec2 GetPlayer2Movement(float moveAmount);
+	void MoveCharacters();// not used
 	void CharacterDisplay();
 	void UpdateLightSaber();
 	void StateChange(GameState state);
@@ -95,6 +109,12 @@ private:
 	Menus DOit;
 	Menus mainmenu;
 	GameState stateofgame;
+	Selector theselecter;
+	LightsaberColor player1Color;
+	HeadSelect player1Head;
+	LightsaberColor player2Color;
+	HeadSelect player2Head;
+	
 	bool GameOver = false;
 	bool CharactersSelected = false;
 	bool LightsabersSelected = false;

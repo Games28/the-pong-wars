@@ -12,6 +12,7 @@ public:
 	void Player1menu(Graphics& gfx);
 	void Player2menu(Graphics& gfx);
 	void MainMenu(Graphics& gfx);
+	void TitleScreen(Graphics& gfx);
 	
 	void Saber1menu(Graphics& gfx);
 	void Saber2menu(Graphics& gfx);

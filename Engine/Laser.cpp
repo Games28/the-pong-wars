@@ -11,8 +11,8 @@ Laser::Laser(Vec2 & loc, std::mt19937& rng)
 	collider(loc,Vec2(50,15))
 {
 	Respawn(loc, rng);
-	DrawSpark = 0;
-	DrawBolt = 0;
+	//DrawSpark = 0;
+	DrawBolt = &ArtLaser::Boltleft;
 }
 
 
